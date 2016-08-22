@@ -1,0 +1,1 @@
+concrete WarriorsEng of Warriors = WarriorsI with (Syntax = SyntaxEng), (LexWarriors = LexWarriorsEng);
