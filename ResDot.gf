@@ -3,6 +3,7 @@ resource ResDot = {
 		Animacy = Anim | Inanim ;
 		Genus = Nom | Acc | Gen | All | Abl ;
 		Number = Sing | Pl ;
-		
-		NForm = NAnim Genus Number | NInamin Genus ;
+	
+	oper
+		NForm = {g : Genus ; n : Number} ;
 }

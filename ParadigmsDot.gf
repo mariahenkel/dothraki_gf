@@ -1,4 +1,4 @@
-resource ParadigmsDot = open ResDot in {
+resource ParadigmsDot = open ResDot, CatDot in {
 	oper
 	-- Declarations
 		Animacy : Type ;
@@ -13,7 +13,10 @@ resource ParadigmsDot = open ResDot in {
 		inanimate = Inanim ;
 		
 	-- Implementation
-		mkN = \s,a -> {
-			
-		} ;
+		mkN = \s,a -> lin N ({
+			s = table {
+				x => s
+			} ;
+			a = a
+		}) ;
 }
