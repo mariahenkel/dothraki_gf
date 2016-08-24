@@ -1,3 +1,5 @@
+--# -path=.:../api
+
 incomplete concrete WarriorsI of Warriors = open Syntax, LexWarriors in {
 	lincat
 		Comment = Utt ;

@@ -1,3 +1,5 @@
+--# -path=../api
+
 interface LexWarriors = open Syntax in {
   oper
     warrior_N : N ;

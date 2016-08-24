@@ -1,4 +1,4 @@
---# -path=./cloned:.:alltenses:prelude
+--# -path=.:../cloned
 
 resource CombinatorsDot = Combinators with 
   (Cat = CatDot),

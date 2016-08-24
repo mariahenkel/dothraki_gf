@@ -1,3 +1,3 @@
---# -path=.:alltenses:prelude
+--# -path=.:../cloned
 
 resource ConstructorsDot = Constructors with (Grammar = GrammarDot) ;
