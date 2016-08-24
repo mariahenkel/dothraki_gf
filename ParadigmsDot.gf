@@ -8,6 +8,8 @@ resource ParadigmsDot = open ResDot, CatDot in {
 		
 		mkN : Str -> Animacy -> N ;
 		
+		mkV2 : Str -> V2 ;
+		
 		Animacy = ResDot.Animacy ;
 		animate = Anim ;
 		inanimate = Inanim ;
@@ -19,4 +21,6 @@ resource ParadigmsDot = open ResDot, CatDot in {
 			} ;
 			a = a
 		}) ;
+		
+		mkV2 = \s -> lin V2 ({s = s}) ;
 }

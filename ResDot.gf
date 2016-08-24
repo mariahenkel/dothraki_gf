@@ -1,9 +1,8 @@
-resource ResDot = {
+resource ResDot = ParamX ** {
 	param
 		Animacy = Anim | Inanim ;
-		Genus = Nom | Acc | Gen | All | Abl ;
-		Number = Sing | Pl ;
+		Case = Nom | Acc | Gen | All | Abl ;
 	
 	oper
-		NForm = {g : Genus ; n : Number} ;
+		NForm = {g : Case ; n : Number} ;
 }
