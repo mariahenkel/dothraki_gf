@@ -1,6 +1,6 @@
---# -path=../api
+--# -path=../simpleapi
 
-interface LexWarriors = open Syntax in {
+interface LexWarriors = open SyntaxSimple in {
   oper
     warrior_N : N ;
 	goat_N : N ;

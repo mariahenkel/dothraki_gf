@@ -1,6 +1,6 @@
---# -path=.:../api
+--# -path=.:../simpleapi
 
-incomplete concrete WarriorsI of Warriors = open Syntax, LexWarriors in {
+incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
 	lincat
 		Comment = Utt ;
 		Stabber = NP ;

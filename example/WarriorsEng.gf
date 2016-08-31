@@ -1,1 +1,3 @@
-concrete WarriorsEng of Warriors = WarriorsI with (Syntax = SyntaxEng), (LexWarriors = LexWarriorsEng);
+--# -path=.:../simpleapi:../simpleenglish:../simpleabstract
+
+concrete WarriorsEng of Warriors = WarriorsI with (SyntaxSimple = SyntaxSimpleEng), (LexWarriors = LexWarriorsEng);
