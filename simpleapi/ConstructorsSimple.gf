@@ -1,7 +1,10 @@
+--# -path=.:../simpleabstract
+
 incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
 
-  flags optimize=noexpand ;  --%
-
+  flags optimize=noexpand ;
+  
+  oper
 
     mkUtt = overload { 
       mkUtt : S -> Utt                     -- she slept   --:  
@@ -47,8 +50,6 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
     mkVP = overload { 
       mkVP : V   -> VP                -- sleep --:
       = UseV      ; --% 
-      mkVP : V2  -> NP -> VP          -- love him 
-      = ComplV2   ; --% 
       } ; --% 
 
     mkNP = overload { 
@@ -82,5 +83,9 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       mkCN : N  -> CN            -- house  --:
       = UseN     ; --%  
       } ; --%  
+
+	  
+	TUseCl  : Tense -> Ant -> Pol ->  Cl ->  S = \t,a -> UseCl  (TTAnt t a) ; 
+	ComplV2 : V2 -> NP -> VP = \v,np -> ComplSlash (SlashV2a v) np ;
 
 }  

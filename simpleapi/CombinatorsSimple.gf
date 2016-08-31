@@ -1,3 +1,5 @@
+--# -path=.:../simpleabstract
+
 --1 Combinators: a High-Level Syntax API
 
 -- This module defines some "grammatical functions" that give shortcuts to

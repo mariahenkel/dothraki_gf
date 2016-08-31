@@ -1,0 +1,1 @@
+resource ConstructorsSimpleDot = ConstructorsSimple with (GrammarSimple = GrammarSimpleDot) ;

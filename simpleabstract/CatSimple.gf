@@ -6,7 +6,13 @@ abstract CatSimple = Common ** {
 	Cl ;
 	CN ;
 	NP ;
+    Det ;
+    Quant ;
+	Num ;
+	Prep ;
 	VP ;
+	VPSlash ;
+	V ;
 	V2 ;
 	N ;
 }
