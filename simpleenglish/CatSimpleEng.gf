@@ -1,3 +1,5 @@
+
+
 concrete CatSimpleEng of CatSimple = CommonX - [Pol] ** open ResSimpleEng, Prelude in {
 
   flags optimize=all_subs ;

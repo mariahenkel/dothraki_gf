@@ -1,2 +1,4 @@
+--# -path=.:../simpledothraki:../simpleabstract
+
 instance SyntaxSimpleDot of SyntaxSimple =
-	ConstructorsSimpleDot, CatSimpleDot, StructuralSimpleDot, CaombinatorsSimpleDot ;
+	ConstructorsSimpleDot, CatSimpleDot, StructuralSimpleDot, CombinatorsSimpleDot ;

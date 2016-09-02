@@ -1,3 +1,3 @@
---# -path=.:../api:../cloned
+--# -path=.:../simpleapi:../simpledothraki:../simpleabstract
 
-concrete WarriorsDot of Warriors = WarriorsI with (Syntax = SyntaxDot), (LexWarriors = LexWarriorsDot);
+concrete WarriorsDot of Warriors = WarriorsI with (SyntaxSimple = SyntaxSimpleDot), (LexWarriors = LexWarriorsDot);
