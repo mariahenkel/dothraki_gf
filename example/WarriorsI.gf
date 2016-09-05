@@ -3,10 +3,15 @@
 incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
 	lincat
 		Comment = Utt ;
-		Stabber = NP ;
-		Stabbee = NP ;
+		Actor = NP ;
+		Undergoer = NP ;
+
 	lin
 		Warrior = mkNP the_Det warrior_N ;
+        Queen = mkNP the_Det queen_N;
 		Goat = mkNP the_Det goat_N ;
-		Stabbing stabber stabbee = mkUtt (mkCl stabber stab_V2 stabbee) ;
+        Turtle = mkNP the_Det turtle_N ;
+
+		Relation actor undergoer = mkUtt (mkCl actor stab_V2 undergoer) ; -- this only uses stab, not other Actions TODO!
+
 }

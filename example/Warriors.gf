@@ -1,9 +1,13 @@
 abstract Warriors = {
 	flags startcat = Comment;
-	cat 
-		Comment; Stabber; Stabbee;
+	cat
+		Comment; Actor; Undergoer; 
 	fun
-		Stabbing : Stabber -> Stabbee -> Comment ;
-		Warrior : Stabber ;
-		Goat : Stabbee ;
+		Relation : Actor -> Undergoer -> Comment ;
+
+        Warrior, Queen : Actor ;
+
+		Goat, Turtle : Undergoer ;
+
+
 }
