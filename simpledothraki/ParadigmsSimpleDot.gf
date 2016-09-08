@@ -47,8 +47,25 @@ resource ParadigmsSimpleDot = open
     allative = All ;
     ablative = Abl;
     
-    mkN = \lajak,a -> case a of {
-      Anim => {s = table {
+  mkN = \lajak,a -> case a of {
+      Anim => case lajak of { 
+        adra + ("i"|"a"|"e"|"o"|"u") => lin N {s = table {
+        Sg => table {
+          Nom => lajak ;
+          Acc => lajak + "es" ;
+          Gen => lajak + "si" ;
+          All => lajak + "saan" ;
+          Abl => lajak + "soon"
+        } ;
+        Pl => table {
+          Nom => lajak + "si";
+          Acc => lajak + "es" ; -- when to use -es and when -(i)s?
+          Gen => lajak + "si" ;
+          All => lajak + "sea" ;
+          Abl => lajak + "soa"
+        }
+      } ; a = Anim} ;
+        chaf => lin N {s = table {
         Sg => table {
           Nom => lajak ;
           Acc => lajak + "es" ;
@@ -58,23 +75,25 @@ resource ParadigmsSimpleDot = open
         } ;
         Pl => table {
           Nom => lajak + "i";
-          Acc => lajak + "is" ;
+          Acc => lajak + "es" ;
           Gen => lajak + "i" ;
           All => lajak + "ea" ;
           Abl => lajak + "oa"
         }
-      } ; a = Anim} ;
+      } ; a = Anim } 
+ };
+      
       Inanim => case lajak of {
-        dorv + "i" => {s = table {
+        dorv + ("i"|"a"|"e"|"o"|"u") => lin N {s = table {
         _ => table {
-          Nom => dorv + "i" ;
-          Acc => dorv + "e" ;
+          Nom => lajak ;
+          Acc => dorv;   -- epenthesis -e not implemented yet (check with vocabulary list, which has acc forms, in the end)
           Gen => dorv + "i" ;
           All => dorv + "aan" ;
           Abl => dorv + "oon"
         }
         } ; a = Inanim} ;
-        os => {s = table {
+        os => lin N {s = table {
         _ => table {
           Nom => os ;
           Acc => os ;
@@ -85,64 +104,6 @@ resource ParadigmsSimpleDot = open
         } ; a = Inanim}
       }
     } ;
-
---  mkN = \lajak,a -> case a of {
---      Anim => case lajak of { 
---        adra + ("i"|"a"|"e"|"o"|"u") => {s = table {
---        Sg => table {
---          Nom => lajak ;
---          Acc => lajak + "es" ;
---          Gen => lajak + "si" ;
---          All => lajak + "saan" ;
---          Abl => lajak + "soon"
---        } ;
---        Pl => table {
---          Nom => lajak + "si";
---          Acc => lajak + "es" ; -- when to use -es and when -(i)s?
---          Gen => lajak + "si" ;
---          All => lajak + "sea" ;
---          Abl => lajak + "soa"
---        }
---      } ; a = Anim} ;
---        chaf => {s = table {
---        Sg => table {
---          Nom => lajak ;
---          Acc => lajak + "es" ;
---          Gen => lajak + "i" ;
---          All => lajak + "aan" ;
---          Abl => lajak + "oon"
---        } ;
---        Pl => table {
---          Nom => lajak + "i";
---          Acc => lajak + "es" ;
---          Gen => lajak + "i" ;
---          All => lajak + "ea" ;
---          Abl => lajak + "oa"
---        }
---      } ; a = Anim } 
--- };
---      
---      Inanim => case lajak of {
---        dorv + ("i"|"a"|"e"|"o"|"u") => {s = table {
---        _ => table {
---          Nom => lajak ;
---          Acc => dorv;   -- epenthesis -e not implemented yet (check with vocabulary list, which has acc forms, in the end)
---          Gen => dorv + "i" ;
---          All => dorv + "aan" ;
---          Abl => dorv + "oon"
---        }
---        } ; a = Inanim} ;
---        os => {s = table {
---        _ => table {
---          Nom => os ;
---          Acc => os ;
---          Gen => os + "i" ;
---          All => os + "aan" ;
---          Abl => os + "oon"
---        }
---        } ; a = Inanim}
---      }
---    } ;
     
     mkV2 = \ezolat -> let ezo = Predef.tk 3 ezolat in lin V2 {s = table {
       Pers1 Sg => ezo + "k" ;
