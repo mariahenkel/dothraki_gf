@@ -105,11 +105,20 @@ resource ParadigmsSimpleDot = open
       }
     } ;
     
-    mkV2 = \ezolat -> let ezo = Predef.tk 3 ezolat in lin V2 {s = table {
+    mkV2 = \ezolat -> case ezolat of {
+    ezo + "lat" => let ezo = Predef.tk 3 ezolat in lin V2 {s = table {   -- Predef.tk 3 seems redundant since ezo variable takes no suffix anyways
       Pers1 Sg => ezo + "k" ;
       Pers1 Pl => ezo + "ki" ;
       Pers2 => ezo + "e" ;
       Pers3 Sg => ezo + "e" ;
       Pers3 Pl => ezo + "e"
-    } ; inf = ezolat } ;
+    } ; inf = ezolat };
+    ezol + "at" => lin V2 {s = table {    -- i deleted Predef.tk 2 here. still works. dunno it it is the most efficient way (if ...else tk 2  above?)
+      Pers1 Sg => ezol + "ak" ;
+      Pers1 Pl => ezol + "aki" ;
+      Pers2 => ezol + "i" ;
+      Pers3 Sg => ezol + "a" ;
+      Pers3 Pl => ezol + "i"
+    } ; inf = ezolat }
+  } ; 
 }

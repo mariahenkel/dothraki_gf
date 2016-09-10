@@ -12,6 +12,6 @@ incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
 		Goat = mkNP the_Det goat_N ;
         Turtle = mkNP the_Det turtle_N ;
 
-		Relation actor undergoer = mkUtt (mkCl actor stab_V2 undergoer) ; -- this only uses stab, not other Actions TODO!
+		Relation actor undergoer = mkUtt (mkCl actor kiss_V2 undergoer) ; -- this only uses stab, not other Actions TODO!
 
 }
