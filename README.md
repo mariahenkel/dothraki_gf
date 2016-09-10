@@ -6,6 +6,7 @@ Dothraki Nouns : text2mindmap.com/B7b25jR *updated*
 TO DO
 
 * vary verbs (currently only stab_v2 is being used)
+* negative verbs/sentences
 
 DONE
 
