@@ -5,10 +5,14 @@ Dothraki Nouns : text2mindmap.com/B7b25jR *updated*
 
 TO DO
 
-* vary verbs (currently only stab_v2 is being used)
+* add new grammar
 * negative verbs/sentences
+
 
 DONE
 
-* fix bug regarding noun declination (selection of Animate Nouns depending on vowels)
+* fix bug regarding noun declination (selection of animate nouns depending on vowels)
 * complete noun declination
+* vary verbs (currently only stab_v2 is being used)
+* verb declination for both stem-options
+* update English version
