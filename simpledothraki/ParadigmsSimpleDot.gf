@@ -53,23 +53,23 @@ resource ParadigmsSimpleDot = open
     
     -- for inanimate nouns with an irregular accusative form
     mk2Ni : Str -> Str -> N = \nom,acc -> case nom of {
-    	jell + ("i"|"a"|"e"|"o"|"u") => mk3Ni nom acc (jell + "i") ;
+    	jell + ("i"|"a"|"e"|"o") => mk3Ni nom acc (jell + "i") ;
     	os => mk3Ni nom acc (os + "i") 
     } ;
     
 	mk1N : Str -> Animacy -> N = \nom,a -> case a of {
 		Anim => case nom of {
-			(ma@(m+("a"|"e"|"o"|"u"|"i")))+"i" => 
+			(ma@(m+("a"|"e"|"o"|"i")))+"i" => 
 				(mk4Na nom (ma + "isi") (ma + "yes") (ma + "yes")) ; -- when a noun ends in vowel+i, the i gets replaced by y in the accusative
-			dav + ("e"|"i"|"a"|"o"|"u") => 
+			dav + ("e"|"i"|"a"|"o") => 
 				(mk4Na nom (nom + "si") (nom + "es") (nom + "es")) ;
 			chaf =>  
 				(mk4Na chaf (chaf + "i") (chaf + "es") (chaf + "is"))
 		};
   
 		Inanim => case nom of {
-			dorv + ("i"|"a"|"e"|"o"|"u") => case dorv of {
-				zhal + ("i"|"e"|"a"|"o"|"u") => 			-- noun ends in two vowels, e.g. zhalia-zhalie-zhalii
+			dorv + ("i"|"a"|"e"|"o") => case dorv of {
+				zhal + ("i"|"e"|"a"|"o") => 			-- noun ends in two vowels, e.g. zhalia-zhalie-zhalii
 					mk3Ni nom (dorv + "e") (dorv + "i") ;
 				_ => 										-- noun ends in one vowel but not two, e.g. dorvi-dorv-dorvi
 					mk3Ni nom (addepenthesis dorv) (dorv + "i")  
