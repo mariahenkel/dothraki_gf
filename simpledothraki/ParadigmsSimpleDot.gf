@@ -68,7 +68,12 @@ resource ParadigmsSimpleDot = open
 		};
   
 		Inanim => case nom of {
-			dorv + ("i"|"a"|"e"|"o"|"u") => (mk3Ni nom dorv (dorv + "i")) ; 
+			dorv + ("i"|"a"|"e"|"o"|"u") => case dorv of {
+				zhal + ("i"|"e"|"a"|"o"|"u") => 			-- noun ends in two vowels, e.g. zhalia-zhalie-zhalii
+					mk3Ni nom (dorv + "e") (dorv + "i") ;
+				_ => 										-- noun ends in one vowel but not two, e.g. dorvi-dorv-dorvi
+					mk3Ni nom dorv (dorv + "i")  
+			} ;
 			os => (mk3Ni os os (os + "i"))
 		}
 	} ;
