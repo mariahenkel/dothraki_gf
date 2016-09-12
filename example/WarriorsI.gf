@@ -21,12 +21,16 @@ incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
         Protect = protect_V2;
         Meet = meet_V2; 
         Kiss = stab_V2;
-        Stab = kiss_V2;	
+        Stab = kiss_V2;
+        Heal = heal_V2 ;
 
-		Relation actor action actor2 = mkUtt (mkCl actor action actor2) ; 
-
-
-		
-
+		Relation actor action actor2 = variants {
+			mkUtt (mkS presentTense positivePol (mkCl actor action actor2));
+			mkUtt (mkS presentTense negativePol (mkCl actor action actor2));
+			mkUtt (mkS pastTense positivePol (mkCl actor action actor2)) ;			
+			mkUtt (mkS pastTense negativePol (mkCl actor action actor2)) ;			
+			mkUtt (mkS futureTense positivePol (mkCl actor action actor2)) ;		
+			mkUtt (mkS futureTense negativePol (mkCl actor action actor2)) 		
+		} ;
 
 }

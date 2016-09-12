@@ -16,4 +16,5 @@ interface LexWarriors = open SyntaxSimple in {
     kiss_V2 : V2 ;
     meet_V2 : V2;
     protect_V2 : V2;
+    heal_V2 : V2 ;
 }

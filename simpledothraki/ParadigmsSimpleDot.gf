@@ -84,23 +84,88 @@ resource ParadigmsSimpleDot = open
     } ;
     
     
-	mkV2 = \ezolat -> lin V2 { 
-		s = case ezolat of {
-	    	ezo + "lat" => table {
-				Pers1 Sg => ezo + "k" ;
-	      		Pers1 Pl => ezo + "ki" ;
-	      		Pers2 => ezo + "e" ;
-	      		Pers3 Sg => ezo + "e" ;
-	      		Pers3 Pl => ezo + "e"
-	    	} ;
-	    	em + "at" => table {
-	      		Pers1 Sg => em + "ak" ;
-	      		Pers1 Pl => em + "aki" ;
-	      		Pers2 => em + "i" ;
-	      		Pers3 Sg => em + "a" ;
-	      		Pers3 Pl => em + "i"
-	    	}
+    -- Finds the stem of a verb based on the infinitive and sg past.
+    -- The stem cannot always be derived from the infinitive alone, when
+    -- the word ends in -lat, since the l might be part of the stem or not. 
+    -- Usually, the sg past IS the stem of the verb, but this is complicated
+    -- by epenthesis: "rissat" has sg past "risse", because words cannot end in -ss.
+    -- So if the sg past ends in "e", then the "e" might be part of the stem
+    -- (e.g. eyelat-eye) or not (e.g. rissat-risse).
+    stemV : Str -> Str -> Str = \zalat,zal -> case zal of {
+    	riss + "e" => case zalat of {	-- if the sg past ends in "e"
+    		eye + "lat" => eye ;		-- the -e might belong to the stem,
+    		_ => riss 					-- or be forced by epenthesis
     	} ;
-    	inf = ezolat
-  	} ; 
+    	_ => zal
+    } ;
+    
+    presForm : Str -> Polarity -> Agr -> Str = \stem,pol,pn -> case stem of {
+    	fati@(fat + ("a"|"e"|"i"|"o")) => case <pol,pn> of {
+    		<Pos, Pers1 Sg> => fati + "k" ;
+    		<Pos, Pers1 Pl> => fati + "ki" ;
+    		<Pos, Pers2> => fati + "e" ;
+    		<Pos, Pers3 Sg> => fati + "e" ;
+    		<Pos, Pers3 Pl> => fati + "e" ;
+    		
+    		<Neg, Pers1 Sg> => fat + "ok" ;
+    		<Neg, Pers1 Pl> => fat + "oki" ;
+    		<Neg, Pers2> => fati + "o" ;
+    		<Neg, Pers3 Sg> => fati + "o" ;
+    		<Neg, Pers3 Pl> => fati + "o"
+   		} ;
+   		em => case <pol,pn> of {
+    		<Pos, Pers1 Sg> => em + "ak" ;
+    		<Pos, Pers1 Pl> => em + "aki" ;
+    		<Pos, Pers2> => em + "i" ;
+    		<Pos, Pers3 Sg> => em + "a" ;
+    		<Pos, Pers3 Pl> => em + "i" ;
+    		
+    		<Neg, Pers1 Sg> => em + "ok" ;
+    		<Neg, Pers1 Pl> => em + "oki" ;
+    		<Neg, Pers2> => em + "i" ;
+    		<Neg, Pers3 Sg> => em + "o" ;
+    		<Neg, Pers3 Pl> => em + "i"
+   		}
+   	} ;
+    
+    mk2V : Str -> Str -> Verb = \zalat,zal -> let {stem = stemV zalat zal} in {
+    	inf = zalat ;
+    	s = case stem of {
+    		fati@(fat + ("a"|"e"|"i"|"o")) => table {
+    			APast Pos Sg => zal ;
+    			APast Pos Pl => fati + "sh" ;
+    			APast Neg Sg => fat + "o" ;
+    			APast Neg Pl => fat + "osh" ;
+    			
+    			APresent pol pn => presForm fati pol pn ; 
+    			
+    			AFuture Pos pn => presForm (pre {"a"|"e"|"i"|"o" => "v" ; _ => "a"} + fati) Pos pn ;
+    			AFuture Neg pn => presForm (pre {"a"|"e"|"i"|"o" => "v" ; _ => "o"} + fati) Neg pn
+    		} ;
+    		em => table {
+    			APast Pos Sg => zal ;
+    			APast Pos Pl => em + "ish" ;
+    			APast Neg Sg => em + "o" ;
+    			APast Neg Pl => em + "osh" ;
+    			
+    			APresent pol pn => presForm em pol pn ;
+    			
+    			AFuture Pos pn => presForm (pre {"a"|"e"|"i"|"o" => "v" ; _ => "a"} + em) Pos pn ;
+    			AFuture Neg pn => presForm (pre {"a"|"e"|"i"|"o" => "v" ; _ => "o"} + em) Neg pn
+    		} 
+    	} ;
+    	part = case stem of {
+    		fat + ("a"|"e"|"i"|"o") => stem + "y" ;
+    		_ => stem + "ay"
+    	}
+    } ;
+    
+    mk1V : Str -> Verb = \w -> case w of {
+    	ezo + "lat" => mk2V w ezo ;
+    	riss + "at" => mk2V w (addepenthesis riss) 
+    } ;
+    
+    
+    
+	mkV2 w = (mk1V w) ** {lock_V2=<>};
 }

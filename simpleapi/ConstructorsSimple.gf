@@ -38,6 +38,22 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
     mkS = overload {  --%
       mkS : Cl  -> S  --%  
       = TUseCl TPres ASimul PPos ;   --%    
+      mkS : Tense -> Cl -> S    --%  
+      = \t -> TUseCl t ASimul PPos ;   --%  
+      mkS : Ant -> Cl -> S   --%  
+      = \a -> TUseCl TPres a PPos ;   --%   
+      mkS : Pol -> Cl -> S    --%  
+      = \p -> TUseCl TPres ASimul p ;   --%    
+      mkS : Tense -> Ant -> Cl -> S   --%  
+      = \t,a -> TUseCl t a PPos ;   --%  
+      mkS : Tense -> Pol -> Cl -> S   --%  
+      = \t,p -> TUseCl t ASimul p ;   --%  
+      mkS : Ant -> Pol -> Cl -> S   --%  
+      = \a,p -> TUseCl TPres a p ;   --%  
+      mkS : (Tense) -> (Ant) -> (Pol) -> Cl  -> S -- she wouldn't have slept
+      = \t,a -> TUseCl t a ;   --%  
+      mkS : Temp -> Pol -> Cl -> S -- she wouldn't have slept  --:
+      = UseCl ; --%
       } ; 
 
     mkCl = overload { 

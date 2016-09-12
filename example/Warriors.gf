@@ -8,7 +8,7 @@ abstract Warriors = {
 
         Warrior, Queen, Woman, Rider, Goat, Turtle, Mom, Rabbit, Cheese : Actor ;
 	
-		Stab, Meet, Protect, Kiss : Action; 
+		Stab, Meet, Protect, Kiss, Heal : Action; 
 
 
 }

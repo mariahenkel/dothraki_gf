@@ -6,6 +6,6 @@ lin
     
     SlashV2a v = v ** {compl = []} ;
 	
-    ComplSlash vp np = {s = vp.s ; inf = vp.inf ; compl = np.s!Acc} ;
+    ComplSlash vp np = vp ** {compl = np.s!Acc} ;
 	
 }

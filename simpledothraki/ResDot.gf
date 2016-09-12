@@ -5,11 +5,13 @@ resource ResDot = ParamX ** {
 		
 		Agr = Pers1 Number | Pers2 | Pers3 Number ;
 		
+		VForm = APast Polarity Number | APresent Polarity Agr | AFuture Polarity Agr ;
+		
 	oper
 		Noun : Type = {s : Number => Case => Str ; a : Animacy} ;
 		
-		Verb : Type = {s : Agr => Str ; inf : Str} ;
-		
+		Verb : Type = {s : VForm => Str ; inf : Str ; part : Str} ;
+				
 		
 		-- the following are convenience methods, implementing the
 		-- "worst case" constructors for nouns. The more sophisticated
