@@ -64,5 +64,42 @@ resource ResDot = ParamX ** {
 			let {rizhR = Predef.tk 1 rizhi} in
 				(mk9Na rizh rizhi rizhes rizhis rizhi (rizhR + "aan") (rizhR + "ea") (rizhR + "oon") (rizhR + "oa")) ;
 		
-
+		-- The rules for epenthetic -e in Dothraki are a little complex:
+		-- * Words cannot end in w, g or q
+		-- * Words cannot end in three or more consonants
+		-- * Words cannot end in two consonants, the first of which is less sonorant than the second
+		--   (i.e. "dorvi" becomes "dorv" in the accusative, because r is more sonorant than v, 
+		--   but "alegra" becomes "alegre", since g is less sonorant than r, so "alegr" is disallowed)  	
+		addepenthesis : Str -> Str = \w -> case w of {
+			_ + ("a"|"e"|"i"|"o") => w ;
+			_ + ("w"|"g"|"q") => w + "e" ;
+			x + ("y"|"r"|"l") => case x of {
+				_ + ("a"|"e"|"i"|"o") => w ;
+				_ => w + "e"
+			} ;
+			x + ("m"|"n") => case x of {
+				_ + ("a"|"e"|"i"|"o") => w ;
+				y + ("w"|"y"|"r"|"l") => case y of {
+					_ + ("a"|"e"|"i"|"o") => w ;
+					_ => w + "e"
+				} ;
+				_ => w + "e"
+			} ;
+			x + ("th"|"s"|"sh"|"z"|"zh"|"kh"|"f"|"v") => case x of {
+				_ + ("a"|"e"|"i"|"o") => w ;
+				y + ("w"|"y"|"r"|"l"|"m"|"n") => case y of {
+					_ + ("a"|"e"|"i"|"o") => w ;
+					_ => w + "e"
+				} ;
+				_ => w + "e" 
+			} ;
+			x + ("j"|"ch"|"t"|"d"|"k") => case x of {
+				_ + ("a"|"e"|"i"|"o") => w ;
+				y + ("w"|"y"|"r"|"l"|"m"|"n"|"th"|"s"|"sh"|"z"|"zh"|"kh"|"f"|"v") => case y of {
+					_ + ("a"|"e"|"i"|"o") => w ;
+					_ => w + "e"
+				} ;
+				_ => w + "e"
+			}
+		} ;
 }

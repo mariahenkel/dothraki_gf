@@ -15,6 +15,8 @@ incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
         Woman = mkNP the_Det woman_N ;
         Rider = mkNP the_Det rider_N;
         Mom = mkNP the_Det mom_N ;
+        Rabbit = mkNP the_Det rabbit_N ;
+        Cheese = mkNP the_Det cheese_N ;
 
         Protect = protect_V2;
         Meet = meet_V2; 

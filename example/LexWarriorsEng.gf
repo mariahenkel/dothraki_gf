@@ -9,6 +9,8 @@ instance LexWarriorsEng of LexWarriors = open SyntaxSimpleEng, ParadigmsSimpleEn
 		woman_N = mkN "woman";
 		rider_N = mkN "rider";
 		mom_N = mkN "mom" ;
+		rabbit_N = mkN "rabbit" ;
+		cheese_N = mkN "cheese" ;
 
 		stab_V2 = mkV2 "stab" ;
         kiss_V2 = mkV2 "kiss" ;

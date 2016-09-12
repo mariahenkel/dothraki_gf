@@ -8,6 +8,9 @@ interface LexWarriors = open SyntaxSimple in {
     queen_N: N;
     woman_N: N;
     rider_N: N;
+    mom_N: N;
+    rabbit_N: N;
+    cheese_N: N;
 
 	stab_V2 : V2 ;
     kiss_V2 : V2 ;
