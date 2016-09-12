@@ -7,7 +7,8 @@ instance LexWarriorsDot of LexWarriors = open SyntaxSimpleDot, ParadigmsSimpleDo
         turtle_N = mkN "adra" animate ;
         queen_N = mkN "khaleesi" animate;
         woman_N = mkN "chiori" animate; 
-        rider_N = mkN "dothrak" animate; 
+        rider_N = mkN "dothrak" animate;
+        mom_N = mkN "mai" animate ;
 
         stab_V2 = mkV2 "vindelat" ;
         kiss_V2 = mkV2 "zoqwat" ;
