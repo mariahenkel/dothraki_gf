@@ -6,7 +6,18 @@ Dothraki Nouns : text2mindmap.com/B7b25jR *updated*
 TO DO
 
 * add new grammar
-* negative verbs/sentences
+  some ideas:
+  * zero copula sentences ("the queen is a warrior" -- "khaleesi lajak") [fairly easy]
+  * expletive constructions ("there is ..." -- " ... vekha") [fairly easy]
+  * demonstrative pronouns (this/that -- jin/haz/rek) [medium]
+  * personal pronouns (I/you/he/we/they/it -- anha/yer/me/kisha/yeri/mori) [somewhat difficult?]
+  * relative clauses [difficult?]
+  * adjectives [medium/difficult?]
+  * prepositions [medium/difficult?]
+  * auxiliaries [difficult?]
+  
+* more test cases for epenthesis
+* transitive verbs should assign case to their object(s)
 
 
 DONE
@@ -16,3 +27,5 @@ DONE
 * vary verbs (currently only stab_v2 is being used)
 * verb declination for both stem-options
 * update English version
+* negative verbs/sentences
+* tenses
