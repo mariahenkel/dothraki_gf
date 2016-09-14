@@ -6,7 +6,7 @@ abstract Warriors = {
 		Relation : Actor -> Action -> Actor -> Comment ;
 
 
-        Warrior, Queen, Woman, Rider, Goat, Turtle, Mom, Rabbit, Cheese : Actor ;
+        Warrior, Queen, Woman, Rider, Goat, Turtle, Mom, Rabbit, Cheese, I, YouSg, YouPol, We, It, YouPl, They : Actor ;
 	
 		Stab, Meet, Protect, Kiss, Heal : Action; 
 

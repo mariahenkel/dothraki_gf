@@ -6,6 +6,8 @@ concrete CatSimpleDot of CatSimple = CommonX ** open ResDot in {
 		CN = Noun ;
 		NP = {s : Case => Str ; agr : Agr} ;
 		
+		Pron = {s : Case => Str ; p : Person ; n : Number} ;
+		
 		Det, Num = {n : Number} ; -- temporary. For now, determiners only choose the number of the NP
 		Quant = {s : Str} ;
 		

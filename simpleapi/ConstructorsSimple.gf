@@ -54,7 +54,7 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       = \t,a -> TUseCl t a ;   --%  
       mkS : Temp -> Pol -> Cl -> S -- she wouldn't have slept  --:
       = UseCl ; --%
-      } ; 
+      } ;
 
     mkCl = overload { 
       mkCl : NP -> V -> Cl                -- she sleeps   
@@ -73,6 +73,8 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
           =  DetCN    ; --%   
       mkNP : Det -> N -> NP       -- the first man   
           =  \d,n -> DetCN d (UseN n)   ; --%   
+      mkNP : Pron -> NP           -- he  --:
+      	  = UsePron  ; --%  
       } ; --% 
 
 

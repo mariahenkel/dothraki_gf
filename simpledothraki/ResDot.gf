@@ -104,4 +104,5 @@ resource ResDot = ParamX ** {
 				_ => w + "e"
 			}
 		} ;
+		
 }

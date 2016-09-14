@@ -1,4 +1,4 @@
-
+--# -path=.:../simpleabstract:../common
 
 concrete CatSimpleEng of CatSimple = CommonX - [Pol] ** open ResSimpleEng, Prelude in {
 
@@ -17,6 +17,8 @@ concrete CatSimpleEng of CatSimple = CommonX - [Pol] ** open ResSimpleEng, Prelu
 
     CN = {s : Number => Case => Str ; g : Gender} ;
     NP = {s : NPCase => Str ; a : Agr} ;
+
+    Pron = {s : NPCase => Str ; sp : Case => Str ; a : Agr} ;
 
     Det = {s : Str ; sp : NPCase => Str ; n : Number ; hasNum : Bool} ;
     Num  = {s : Case => Str ; n : Number ; hasCard : Bool} ;

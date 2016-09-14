@@ -1,3 +1,5 @@
+--# -path=.:../simpleabstract
+
 concrete NounSimpleEng of NounSimple = CatSimpleEng ** open MorphoSimpleEng, ResSimpleEng, Prelude in {
 
   flags optimize=all_subs ;
@@ -7,6 +9,7 @@ concrete NounSimpleEng of NounSimple = CatSimpleEng ** open MorphoSimpleEng, Res
       s = \\c => det.s ++ cn.s ! det.n ! npcase2case c ; 
       a = agrgP3 det.n cn.g
       } ;
+    UsePron p = p ;
 
 	  
     DetQuant quant num = {
