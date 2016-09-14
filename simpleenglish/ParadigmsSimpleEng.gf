@@ -1,4 +1,4 @@
---# -path=.:../abstract:../../prelude:../common
+--# -path=.:../simpleabstract:prelude:../common
 
 resource ParadigmsSimpleEng = open 
   (Predef=Predef), 
@@ -121,6 +121,10 @@ oper
   prepV2 : V -> Prep -> V2 ;
   dirV2 : V -> V2 ;
 
+  mkQuant : overload {
+    mkQuant : (this, these : Str) -> Quant ; --%
+    mkQuant : (no_sg, no_pl, none_sg, non_pl : Str) -> Quant ; --%
+  } ;
   
   
   
@@ -277,5 +281,16 @@ oper
   }; 
 
 
+  mkQuant = overload {
+    mkQuant : (this, these : Str) -> Quant = \sg,pl -> mkQuantifier sg pl sg pl;
+    mkQuant : (no_sg, no_pl, none_sg, non_pl : Str) -> Quant = mkQuantifier;
+  } ;
+
+  mkQuantifier : Str -> Str -> Str -> Str -> Quant = 
+   \sg,pl,sg',pl' -> lin Quant {
+    s = \\_  => table { Sg => sg ; Pl => pl } ;
+    sp = \\_ => table { 
+      Sg => \\c => regGenitiveS sg' ! npcase2case c ; Pl => \\c => regGenitiveS pl' ! npcase2case c}
+    } ;
 
 } ;

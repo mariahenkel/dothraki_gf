@@ -108,6 +108,18 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
         = DetQuant IndefArt NumSg ; --% 
       aPl_Det   : Det -- (houses)
         = DetQuant IndefArt NumPl ; --% 
+        
+	  this_Det : Det 
+	  = (DetQuant this_Quant sgNum) ; --% 
+	  that_Det : Det 
+	  = (DetQuant that_Quant sgNum) ; --% 
+	  these_Det : Det 
+	  = (DetQuant this_Quant plNum) ; --% 
+	  those_Det : Det 
+	  = (DetQuant that_Quant plNum) ; --% 
+
+    sgNum : Num = NumSg ;  
+    plNum : Num = NumPl ;  
 
     the_Quant : Quant    -- the --:
       = DefArt ; --% 

@@ -4,12 +4,16 @@ concrete CatSimpleDot of CatSimple = CommonX ** open ResDot in {
 	lincat
 		N = Noun ;
 		CN = Noun ;
-		NP = {s : Case => Str ; agr : Agr} ;
+		NP = {s : Case => Str ; agr : Agr } ;
 		
-		Pron = {s : Case => Str ; p : Person ; n : Number} ;
+		Pron = {s : Case => Str ; agr : Agr } ;
 		
-		Det, Num = {n : Number} ; -- temporary. For now, determiners only choose the number of the NP
-		Quant = {s : Str} ;
+		Num = {n : Number} ; 	-- this is a dummy. 
+								-- We don't actually implement numerals in determiners ("these five") so far.
+								-- So, for now, the "numeral part" is only used to determine the number agreement
+								-- of the Quant part of Det. 
+		Quant = ResDot.Quant ;
+		Det = {s : Animacy => Case => Str ; n : Number } ;
 		
 		Prep = {s : Str} ;
 		

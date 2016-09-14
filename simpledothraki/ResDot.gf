@@ -3,15 +3,32 @@ resource ResDot = ParamX ** {
 		Animacy = Anim | Inanim ;
 		Case = Nom | Gen | Acc | All | Abl ;
 		
-		Agr = Pers1 Number | Pers2 | Pers3 Number ;
+		VFormPN = Pers1 Number | Pers2 | Pers3 Number ;
 		
-		VForm = APast Polarity Number | APresent Polarity Agr | AFuture Polarity Agr ;
+		Agr = Ag Person Number ;
+		
+		VForm = APast Polarity Number | APresent Polarity VFormPN | AFuture Polarity VFormPN ;
+		
+		QuForm = QAnim Number | QInanim ;
 		
 	oper
-		Noun : Type = {s : Number => Case => Str ; a : Animacy} ;
+		Noun : Type = {s : Number => Case => Str ; a : Animacy ; p : Person } ;
 		
 		Verb : Type = {s : VForm => Str ; inf : Str ; part : Str} ;
+		
+		Quant : Type = {s : QuForm => Case => Str } ;
 				
+				
+		agrToVFormPN : Agr -> VFormPN = \a -> case a of {
+			Ag P2 _ => Pers2 ;
+			Ag P1 n => Pers1 n ;
+			Ag P3 n => Pers3 n
+		} ;
+		
+		extrNum : Agr -> Number = \a -> case a of {
+			Ag _ n => n
+		} ;
+
 		
 		-- the following are convenience methods, implementing the
 		-- "worst case" constructors for nouns. The more sophisticated
@@ -30,7 +47,8 @@ resource ResDot = ParamX ** {
 					Abl => sondroon 
 				}
 			} ;
-			a = Inanim
+			a = Inanim ;
+			p = P3 
 		} ;
 		
 		-- ... but actually, it seems that allative and ablative can 
@@ -58,13 +76,41 @@ resource ResDot = ParamX ** {
 					Abl => rizhoa
 				}
 			} ;
-			a = Anim
+			a = Anim ;
+			p = P3 
 		} ;
 		
 		-- but again, 5 of those seem to *always* be regular:
 		mk4Na : (_,_,_,_:Str) -> Noun = \rizh,rizhi,rizhes,rizhis -> 
 			let {rizhR = Predef.tk 1 rizhi} in
 				(mk9Na rizh rizhi rizhes rizhis rizhi (rizhR + "aan") (rizhR + "ea") (rizhR + "oon") (rizhR + "oa")) ;
+				
+				
+		mkQuant : Str -> Quant = \jin -> {
+			s = table {
+				QInanim => table {
+					Nom => jin + "i" ;
+					Acc => jin ;
+					Gen => jin + "i" ;
+					All => jin + "aan" ;
+					Abl => jin + "oon"
+				} ;
+				QAnim Sg => table {
+					Nom => jin + "ak" ;
+					Acc => jin + "akes";
+					Gen => jin + "aki" ;
+					All => jin + "akaan" ;
+					Abl => jin + "akoon"
+				} ;
+				QAnim Pl => table {
+					Nom => jin + "aki" ;
+					Acc => jin + "akis" ;
+					Gen => jin + "aki" ;
+					All => jin + "akea" ;
+					Abl => jin + "akoa"
+				}
+			}
+		} ;
 		
 		-- The rules for epenthetic -e in Dothraki are a little complex:
 		-- * Words cannot end in w, g or q

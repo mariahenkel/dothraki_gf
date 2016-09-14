@@ -65,7 +65,7 @@ resource ParadigmsSimpleDot = open
 				(mk4Na nom (nom + "si") (nom + "es") (nom + "es")) ;
 			chaf =>  
 				(mk4Na chaf (chaf + "i") (chaf + "es") (chaf + "is"))
-		};
+		} ;
   
 		Inanim => case nom of {
 			dorv + ("i"|"a"|"e"|"o") => case dorv of {
@@ -99,7 +99,7 @@ resource ParadigmsSimpleDot = open
     	_ => zal
     } ;
     
-    presForm : Str -> Polarity -> Agr -> Str = \stem,pol,pn -> case stem of {
+    presForm : Str -> Polarity -> VFormPN -> Str = \stem,pol,pn -> case stem of {
     	fati@(fat + ("a"|"e"|"i"|"o")) => case <pol,pn> of {
     		<Pos, Pers1 Sg> => fati + "k" ;
     		<Pos, Pers1 Pl> => fati + "ki" ;

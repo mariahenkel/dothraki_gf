@@ -2,7 +2,7 @@
 
 resource MorphoSimpleDot = open Prelude, (Predef=Predef), ResDot in {
 	oper
-		mkPron : (_,_,_,_,_:Str) -> Person -> Number -> {s : Case => Str ; p : Person ; n : Number} = \anha,anna,anni,anhaan,anhoon,p,n -> {
+		mkPron : (_,_,_,_,_:Str) -> Person -> Number -> {s : Case => Str ; agr : Agr } = \anha,anna,anni,anhaan,anhoon,p,n -> {
 			s = table {
 				Nom => anha ;
 				Acc => anna ;
@@ -10,8 +10,7 @@ resource MorphoSimpleDot = open Prelude, (Predef=Predef), ResDot in {
 				All => anhaan ;
 				Abl => anhoon 
 			} ;
-			p = p ;
-			n = n
+			agr = Ag p n;
 		} ;
 
 } ;

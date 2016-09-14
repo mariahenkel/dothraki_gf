@@ -16,6 +16,8 @@ lin
   youPl_Pron = mkPron "you" "you" "your" "yours" plural P2 human ;
   they_Pron = mkPron "they" "them" "their" "theirs" plural P3 human ;
   
+  that_Quant = mkQuant "that" "those" ;
+  this_Quant = mkQuant "this" "these" ;
 
 }
 

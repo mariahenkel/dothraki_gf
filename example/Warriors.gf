@@ -1,12 +1,17 @@
 abstract Warriors = {
 	flags startcat = Comment;
 	cat
-		Comment; Actor; Action; 
+		Comment; Actor; SpecActor ; Action; Detr; 
 	fun
-		Relation : Actor -> Action -> Actor -> Comment ;
+		Relation : SpecActor -> Action -> SpecActor -> Comment ;
+		
+		Spec : Detr -> Actor -> SpecActor ;
 
+		The, This, That, These, Those : Detr ;
 
-        Warrior, Queen, Woman, Rider, Goat, Turtle, Mom, Rabbit, Cheese, I, YouSg, YouPol, We, It, YouPl, They : Actor ;
+        Warrior, Queen, Woman, Rider, Goat, Turtle, Mom, Rabbit, Cheese : Actor ;
+        
+        I, YouSg, YouPol, We, It, YouPl, They : SpecActor ;
 	
 		Stab, Meet, Protect, Kiss, Heal : Action; 
 

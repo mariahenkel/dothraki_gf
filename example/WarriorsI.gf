@@ -3,27 +3,39 @@
 incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
 	lincat
 		Comment = Utt ;
-		Actor = NP ;
+		Actor = CN ;
+		SpecActor = NP ;
+		Detr = Det ;
 		Action = V2;
 
 
 	lin
-		Warrior = mkNP the_Det warrior_N ;
-        Queen = mkNP the_Det queen_N;
-		Goat = mkNP the_Det goat_N ;
-        Turtle = mkNP the_Det turtle_N ;
-        Woman = mkNP the_Det woman_N ;
-        Rider = mkNP the_Det rider_N;
-        Mom = mkNP the_Det mom_N ;
-        Rabbit = mkNP the_Det rabbit_N ;
-        Cheese = mkNP the_Det cheese_N ;
+		Warrior = mkCN warrior_N ;
+        Queen = mkCN queen_N;
+		Goat = mkCN  goat_N ;
+        Turtle = mkCN turtle_N ;
+        Woman = mkCN  woman_N ;
+        Rider = mkCN rider_N;
+        Mom = mkCN  mom_N ;
+        Rabbit = mkCN rabbit_N ;
+        Cheese = mkCN cheese_N ;
+        
         I = i_NP ;
         YouSg = you_NP ;
         It = it_NP ;
         We = we_NP ;
         YouPl = youPl_NP ;
         They = they_NP ;
-        YouPol = youPol_NP ; 
+        YouPol = youPol_NP ;
+        
+        Spec det a = mkNP det a ;
+        
+        
+		The = the_Det ;
+		This = this_Det ;
+		That = that_Det ;
+		These = these_Det ;
+		Those = those_Det ;
 
         Protect = protect_V2;
         Meet = meet_V2; 

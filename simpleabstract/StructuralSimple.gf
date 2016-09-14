@@ -9,4 +9,8 @@ fun
   youSg_Pron : Pron ; -- you (singular)
   youPl_Pron : Pron ; -- you (plural)
   youPol_Pron : Pron ; -- you (polite)
+  
+  that_Quant : Quant ;
+  this_Quant : Quant ;
+  
 }
