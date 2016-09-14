@@ -77,6 +77,24 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       	  = UsePron  ; --%  
       } ; --% 
 
+      i_NP : NP          -- I
+      = mkNP i_Pron ;
+      you_NP : NP        -- you (singular)
+      = mkNP youSg_Pron ;
+      youPol_NP : NP     -- you (polite singular)
+      = mkNP youPol_Pron ;
+      he_NP : NP         -- he
+      = mkNP he_Pron ;
+      she_NP : NP        -- she
+      = mkNP she_Pron ;
+      it_NP : NP         -- it
+      = mkNP it_Pron ;
+      we_NP : NP         -- we
+      = mkNP we_Pron ;
+      youPl_NP : NP      -- you (plural)
+      = mkNP youPl_Pron ;
+      they_NP : NP       -- they
+      = mkNP they_Pron ;
 
       the_Det   : Det -- the (house)
         = theSg_Det ; --% 

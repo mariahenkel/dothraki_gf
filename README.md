@@ -10,7 +10,6 @@ TO DO
   * zero copula sentences ("the queen is a warrior" -- "khaleesi lajak") [fairly easy] -> Maria
   * expletive constructions ("there is ..." -- " ... vekha") [fairly easy]
   * demonstrative pronouns (this/that -- jin/haz/rek) [medium]
-  * personal pronouns (I/you/he/we/they/it -- anha/yer/me/kisha/yeri/mori) [somewhat difficult?]
   * adjectives [medium/difficult?] -> Maria 
 
   * relative clauses [difficult?]
@@ -32,3 +31,4 @@ DONE
 * negative verbs/sentences
 * tenses
 * Python Vocabulary Script
+* personal pronouns (I/you/he/we/they/it -- anha/yer/me/kisha/yeri/mori)
