@@ -31,3 +31,4 @@ DONE
 * update English version
 * negative verbs/sentences
 * tenses
+* Python Vocabulary Script
