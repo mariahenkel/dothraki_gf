@@ -8,7 +8,6 @@ TO DO
 
 * some ideas:
   * zero copula sentences ("the queen is a warrior" -- "khaleesi lajak") [fairly easy] -> Maria
-  * expletive constructions ("there is ..." -- " ... vekha") [fairly easy]
   * adjectives [medium/difficult?] -> Maria 
 
   * relative clauses [difficult?]
@@ -32,3 +31,4 @@ DONE
 * personal pronouns (I/you/he/we/they/it -- anha/yer/me/kisha/yeri/mori)
 * demonstrative pronouns (this/that -- jin/haz/rek)
 * transitive verbs should assign case to their object(s)
+* expletive constructions ("there is ..." -- " ... vekha") [fairly easy]

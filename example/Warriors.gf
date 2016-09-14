@@ -5,6 +5,8 @@ abstract Warriors = {
 	fun
 		Relation : SpecActor -> Action -> SpecActor -> Comment ;
 		
+		Exist : SpecActor -> Comment ;
+		
 		Spec : Detr -> Actor -> SpecActor ;
 
 		The, This, That, These, Those : Detr ;

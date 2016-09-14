@@ -61,6 +61,12 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       = \s,v -> PredVP s (UseV v); --%   
       mkCl : NP -> V2 -> NP -> Cl         -- she loves him
       = \s,v,o -> PredVP s (ComplV2 v o); --%   
+      mkCl : N -> Cl           -- there is a house 
+      = \y -> ExistNP (DetArtSg IndefArt (UseN y)) ; --% 
+      mkCl : CN -> Cl          -- there is an old house 
+      = \y -> ExistNP (DetArtSg IndefArt y) ; --% 
+      mkCl : NP -> Cl          -- there are many houses   --:
+      = ExistNP ; --% 
       } ; 
 
     mkVP = overload { 
@@ -126,6 +132,13 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
     a_Quant   : Quant    -- a  --:
       = IndefArt ; --%
 
+    Art : Type = Quant ; 
+      the_Art : Art = DefArt ;   -- the 
+      a_Art : Art  = IndefArt ;   -- a 
+
+
+    DetArtSg : Art -> CN -> NP = \a -> DetCN (DetQuant a sgNum) ; 
+    DetArtPl : Art -> CN -> NP = \a -> DetCN (DetQuant a plNum) ; 
 
     mkCN = overload { --%
       mkCN : N  -> CN            -- house  --:

@@ -52,5 +52,7 @@ incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
 			mkUtt (mkS futureTense positivePol (mkCl actor action actor2)) ;		
 			mkUtt (mkS futureTense negativePol (mkCl actor action actor2)) 		
 		} ;
+		
+		Exist actor = mkUtt (mkCl actor) ;
 
 }

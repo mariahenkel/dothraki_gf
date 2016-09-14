@@ -6,6 +6,7 @@ abstract GrammarSimple =
   PhraseSimple,
   Text,
   StructuralSimple,
+  IdiomSimple,
   Tense
   ;
 
