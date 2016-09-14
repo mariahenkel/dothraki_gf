@@ -42,6 +42,7 @@ incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
         Kiss = stab_V2;
         Stab = kiss_V2;
         Heal = heal_V2 ;
+        Respect = respect_V2 ;
 
 		Relation actor action actor2 = variants {
 			mkUtt (mkS presentTense positivePol (mkCl actor action actor2));

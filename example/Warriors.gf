@@ -13,7 +13,7 @@ abstract Warriors = {
         
         I, YouSg, YouPol, We, It, YouPl, They : SpecActor ;
 	
-		Stab, Meet, Protect, Kiss, Heal : Action; 
+		Stab, Meet, Protect, Kiss, Heal, Respect : Action; 
 
 
 }

@@ -31,7 +31,10 @@ resource ParadigmsSimpleDot = open
     										-- not sure whether animate nouns can have irregular accusatives)
     } ;
     
-    mkV2 : Str -> V2 ;
+    mkV2 : overload {
+    	mkV2 : Str -> Case -> V2 ;
+    	mkV2 : Str -> V2 ; 					-- convenience method for transitive verbs assigning accusative case
+    } ;
     
     
     -- Implementation
@@ -165,7 +168,10 @@ resource ParadigmsSimpleDot = open
     	riss + "at" => mk2V w (addepenthesis riss) 
     } ;
     
+    mkV2def : Str -> Case -> V2 = \w,objCase -> (mk1V w) ** {objCase = objCase ; lock_V2=<>};
     
-    
-	mkV2 w = (mk1V w) ** {lock_V2=<>};
+	mkV2 = overload {
+		mkV2 : Str -> Case -> V2 = mkV2def ;
+		mkV2 : Str -> V2 = \w -> mkV2def w Acc ; 
+	} ;
 }

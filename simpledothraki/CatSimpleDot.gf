@@ -20,6 +20,7 @@ concrete CatSimpleDot of CatSimple = CommonX ** open ResDot in {
 		S = {s : Str} ;
 		Cl = {s : ResDot.Tense => Anteriority => Polarity => Str} ;
 		
-		V, V2 = Verb ;
-		VP, VPSlash = Verb ** {compl : Str} ;
+		V = Verb ;
+		V2, VPSlash = Verb ** {objCase : Case} ;
+		VP = Verb ** {compl : Str} ;
 }

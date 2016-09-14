@@ -9,7 +9,6 @@ TO DO
 * some ideas:
   * zero copula sentences ("the queen is a warrior" -- "khaleesi lajak") [fairly easy] -> Maria
   * expletive constructions ("there is ..." -- " ... vekha") [fairly easy]
-  * demonstrative pronouns (this/that -- jin/haz/rek) [medium]
   * adjectives [medium/difficult?] -> Maria 
 
   * relative clauses [difficult?]
@@ -18,7 +17,6 @@ TO DO
   * ray (already) for perfect tense
   
 * more test cases for epenthesis
-* transitive verbs should assign case to their object(s)
 
 
 DONE
@@ -32,3 +30,5 @@ DONE
 * tenses
 * Python Vocabulary Script
 * personal pronouns (I/you/he/we/they/it -- anha/yer/me/kisha/yeri/mori)
+* demonstrative pronouns (this/that -- jin/haz/rek)
+* transitive verbs should assign case to their object(s)

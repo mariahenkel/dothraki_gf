@@ -17,4 +17,5 @@ instance LexWarriorsEng of LexWarriors = open SyntaxSimpleEng, ParadigmsSimpleEn
         protect_V2 = mkV2 "protect" ;
         meet_V2 = mkV2 "meet" ;
         heal_V2 = mkV2 "heal" ;
+        respect_V2 = mkV2 "respect" ;
 }

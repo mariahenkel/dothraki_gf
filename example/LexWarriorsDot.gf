@@ -17,5 +17,6 @@ instance LexWarriorsDot of LexWarriors = open SyntaxSimpleDot, ParadigmsSimpleDo
         protect_V2 = mkV2 "vijazerat" ;
         meet_V2 = mkV2 "shillolat" ;
         heal_V2 = mkV2 "akkoalat" ;
+        respect_V2 = mkV2 "chomat" allative ;
 
 }
