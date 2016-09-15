@@ -20,7 +20,7 @@ DONE
 
 * fix bug regarding noun declination (selection of animate nouns depending on vowels)
 * complete noun declination
-* vary verbs (currently only stab_v2 is being used)
+* vary verbs (only stab_v2 was being used)
 * verb declination for both stem-options
 * update English version
 * negative verbs/sentences

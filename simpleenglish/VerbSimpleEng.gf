@@ -15,4 +15,7 @@ concrete VerbSimpleEng of VerbSimple = CatSimpleEng ** open ResSimpleEng, Prelud
       False => insertObj    (\\_ => vp.c2 ++ np.s ! NPAcc) vp
       } ;
 
+--    CompNP np = {s = \\_ => np.s ! NPAcc} ;
+--    UseComp comp = insertObj comp.s (predAux auxBe) ;
+
 }

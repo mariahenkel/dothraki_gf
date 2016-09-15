@@ -9,5 +9,9 @@ abstract VerbSimple = CatSimple ** {
 
     ComplSlash : VPSlash -> NP -> VP ; -- love it
     AdvVP    : VP -> Adv -> VP ;        -- sleep here
+    
+    UseComp  : Comp -> VP ;            -- be warm
+    CompNP   : NP  -> Comp ;            -- (be) the man
+
 
 }
