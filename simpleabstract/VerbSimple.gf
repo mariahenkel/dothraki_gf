@@ -8,5 +8,6 @@ abstract VerbSimple = CatSimple ** {
     SlashV2a : V2        -> VPSlash ;  -- love (it)
 
     ComplSlash : VPSlash -> NP -> VP ; -- love it
+    AdvVP    : VP -> Adv -> VP ;        -- sleep here
 
 }

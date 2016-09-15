@@ -1,9 +1,11 @@
 abstract Warriors = {
 	flags startcat = Comment;
 	cat
-		Comment; Actor; SpecActor ; Action; Detr; 
+		Comment; Actor; SpecActor ; Action; Detr; Location ;
 	fun
 		Relation : SpecActor -> Action -> SpecActor -> Comment ;
+		
+		Locate : SpecActor -> Action -> SpecActor -> Location -> Comment ;
 		
 		Exist : SpecActor -> Comment ;
 		
@@ -17,5 +19,6 @@ abstract Warriors = {
 	
 		Stab, Meet, Protect, Kiss, Heal, Respect : Action; 
 
+		Mountain, Sea, Tree : Location ;
 
 }

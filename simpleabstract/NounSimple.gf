@@ -13,6 +13,7 @@ abstract NounSimple = CatSimple ** {
     DetQuant    : Quant -> Num ->        Det ;  -- these five
 
     UseN : N -> CN ;              -- house
+    AdvCN   : CN -> Adv -> CN ;   -- house on the hill
 
 
 }

@@ -7,6 +7,7 @@ incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
 		SpecActor = NP ;
 		Detr = Det ;
 		Action = V2;
+		Location = Adv ;
 
 
 	lin
@@ -53,6 +54,11 @@ incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
 			mkUtt (mkS futureTense negativePol (mkCl actor action actor2)) 		
 		} ;
 		
+		Locate actor action actor2 location = mkUtt (mkCl actor (mkVP (mkVP action actor2) location)) ;
+
 		Exist actor = mkUtt (mkCl actor) ;
 
+		Mountain = mkAdv on_Prep (mkNP the_Det mountain_N) ;
+		Sea = mkAdv under_Prep (mkNP the_Det sea_N) ;
+		Tree = mkAdv behind_Prep (mkNP that_Det tree_N) ;
 }

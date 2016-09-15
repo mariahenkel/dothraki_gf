@@ -18,4 +18,9 @@ instance LexWarriorsEng of LexWarriors = open SyntaxSimpleEng, ParadigmsSimpleEn
         meet_V2 = mkV2 "meet" ;
         heal_V2 = mkV2 "heal" ;
         respect_V2 = mkV2 "respect" ;
+        
+        mountain_N = mkN "mountain" ;
+        sea_N = mkN "sea" ;
+        tree_N = mkN "tree" ;
+        
 }

@@ -1,9 +1,13 @@
+--# -path=../simpleabstract
+
 concrete VerbSimpleEng of VerbSimple = CatSimpleEng ** open ResSimpleEng, Prelude in {
 
   flags optimize=all_subs ;
 
   lin
     UseV = predV ;
+
+    AdvVP vp adv = insertObj (\\_ => adv.s) vp ;
 
     SlashV2a v = predVc v ;
     ComplSlash vp np = case vp.gapInMiddle of {

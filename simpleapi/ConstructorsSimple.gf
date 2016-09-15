@@ -186,12 +186,18 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       = \y -> ExistNP (DetArtSg IndefArt y) ; --% 
       mkCl : NP -> Cl          -- there are many houses   --:
       = ExistNP ; --% 
+      mkCl : NP -> VP -> Cl   -- she always sleeps   --:
+      = PredVP  ; --%
       } ; 
 
     mkVP = overload { 
       mkVP : V   -> VP                -- sleep --:
       = UseV      ; --% 
-      } ; --% 
+       mkVP : V2  -> NP -> VP          -- love him 
+      = ComplV2   ; --% 
+      mkVP : VP -> Adv -> VP          -- sleep here   --: 
+      = AdvVP     ; --% 
+       } ; --% 
 
     mkNP = overload { 
       mkNP : Det -> CN -> NP      -- the first old man   --:
@@ -262,6 +268,10 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
     mkCN = overload { --%
       mkCN : N  -> CN            -- house  --:
       = UseN     ; --%  
+      mkCN :  N -> Adv -> CN     -- house on the hill 
+      = \x,y -> AdvCN (UseN x) y  ; --% 
+      mkCN : CN -> Adv -> CN     -- big house on the hill 
+      = AdvCN    ; --% 
       } ; --%  
 
     mkAdv = overload { --%
