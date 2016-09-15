@@ -1,13 +1,16 @@
---# -path=.:../simpleapi
+--# -path=.:../simpleapi:../simpleabstract
 
 incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
 	lincat
-		Comment = Utt ;
+		Sentence = S ;
+		Comment = Cl ;
 		Actor = CN ;
 		SpecActor = NP ;
 		Detr = Det ;
 		Action = V2;
 		Location = Adv ;
+		Temp = SyntaxSimple.Temp ;
+		Pol = SyntaxSimple.Pol ;
 
 
 	lin
@@ -45,20 +48,24 @@ incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
         Heal = heal_V2 ;
         Respect = respect_V2 ;
 
-		Relation actor action actor2 = variants {
-			mkUtt (mkS presentTense positivePol (mkCl actor action actor2));
-			mkUtt (mkS presentTense negativePol (mkCl actor action actor2));
-			mkUtt (mkS pastTense positivePol (mkCl actor action actor2)) ;			
-			mkUtt (mkS pastTense negativePol (mkCl actor action actor2)) ;			
-			mkUtt (mkS futureTense positivePol (mkCl actor action actor2)) ;		
-			mkUtt (mkS futureTense negativePol (mkCl actor action actor2)) 		
-		} ;
+		Relation actor action actor2 = mkCl actor action actor2 ;
 		
-		Locate actor action actor2 location = mkUtt (mkCl actor (mkVP (mkVP action actor2) location)) ;
+		Locate actor action actor2 location = mkCl actor (mkVP (mkVP action actor2) location) ;
 
-		Exist actor = mkUtt (mkCl actor) ;
+		Exist actor = mkCl actor ;
 
 		Mountain = mkAdv on_Prep (mkNP the_Det mountain_N) ;
 		Sea = mkAdv under_Prep (mkNP the_Det sea_N) ;
 		Tree = mkAdv behind_Prep (mkNP that_Det tree_N) ;
+		
+		Past = mkTemp pastTense simultaneousAnt ;
+		Pres = mkTemp presentTense simultaneousAnt ;
+		PresPerf = mkTemp presentTense anteriorAnt ;
+		Fut = mkTemp futureTense simultaneousAnt ;
+		
+		Pos = positivePol;
+		Neg = negativePol;
+		
+		Say c p t = mkS t p c ;
+		
 }

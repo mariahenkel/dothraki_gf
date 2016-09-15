@@ -1,7 +1,7 @@
 abstract Warriors = {
-	flags startcat = Comment;
+	flags startcat = Sentence ;
 	cat
-		Comment; Actor; SpecActor ; Action; Detr; Location ;
+		Comment; Actor; SpecActor ; Action; Detr; Location ; Pol ; Temp ; Sentence ;
 	fun
 		Relation : SpecActor -> Action -> SpecActor -> Comment ;
 		
@@ -20,5 +20,10 @@ abstract Warriors = {
 		Stab, Meet, Protect, Kiss, Heal, Respect : Action; 
 
 		Mountain, Sea, Tree : Location ;
+		
+		Pos, Neg : Pol ;
+		Pres, Past, Fut, PresPerf : Temp ;
+		
+		Say : Comment -> Pol -> Temp -> Sentence ;
 
 }
