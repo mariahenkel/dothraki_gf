@@ -6,6 +6,125 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
   
   oper
 
+    mkText = overload {  --%
+      mkText : Phr -> (Punct) -> (Text) -> Text  -- Does she sleep? Yes. --:
+        = \phr,punct,text -> case punct of {  --%
+          PFullStop => TFullStop phr text ;   --%
+          PExclMark => TExclMark phr text ;   --%
+          PQuestMark => TQuestMark phr text   --%
+          } ;  --%
+      mkText : Phr -> Text -> Text  -- But she sleeps. Yes!  --%
+        =    \x,t -> TFullStop x t  ;  --%
+      mkText : Phr -> Punct -> Text   --%
+        = \phr,punct -> case punct of {   --%
+          PFullStop => TFullStop phr TEmpty ;   --%
+          PExclMark => TExclMark phr TEmpty ;   --%
+          PQuestMark => TQuestMark phr TEmpty   --%
+          } ;   --%
+      mkText : Phr -> Text  -- But she sleeps.  --%
+        =    \x -> TFullStop x TEmpty  ;  --%
+
+-- A text can also be directly built from utterances.
+
+      mkText : Utt -> (Punct) -> (Text) -> Text  -- Does she sleep? Yes. --:
+        = \u,punct,text -> let phr = (PhrUtt NoPConj u NoVoc) in case punct of {  --%
+          PFullStop => TFullStop phr text ;   --%
+          PExclMark => TExclMark phr text ;   --%
+          PQuestMark => TQuestMark phr text   --%
+          } ;  --%
+      mkText : Utt -> Text -> Text  -- But she sleeps. Yes!  --%
+        =    \u,t -> TFullStop (PhrUtt NoPConj u NoVoc) t  ;  --%
+      mkText : Utt -> Punct -> Text   --%
+        = \u,punct -> let phr = (PhrUtt NoPConj u NoVoc) in case punct of {   --%
+          PFullStop => TFullStop phr TEmpty ;   --%
+          PExclMark => TExclMark phr TEmpty ;   --%
+          PQuestMark => TQuestMark phr TEmpty   --%
+          } ;   --%
+      mkText : Utt -> Text  -- But she sleeps.  --%
+        =    \u -> TFullStop (PhrUtt NoPConj u NoVoc) TEmpty  ;  --%
+
+-- Utterances in turn can
+-- be directly given as sentences, present-tense clauses, questions, or
+-- positive imperatives. 
+
+      mkText : S   ->  Text    -- She slept. 
+        = \s -> TFullStop (PhrUtt NoPConj (UttS s) NoVoc) TEmpty ; --%  
+      mkText : Cl  ->  Text    -- She sleeps. 
+        = \c -> TFullStop (PhrUtt NoPConj (UttS (TUseCl TPres ASimul PPos c)) NoVoc) TEmpty ; --%  
+
+-- Finally, two texts can be combined into a text.
+
+      mkText : Text -> Text -> Text  -- Where? Here. When? Here. Now! 
+        = \t,u -> {s = t.s ++ u.s ; lock_Text = <>} ; --%
+      } ; --%
+
+-- A text can also be empty.
+
+      emptyText : Text  -- (empty text)  --:
+        = TEmpty ; --%
+
+--3 Punct: punctuation marks 
+
+-- There are three punctuation marks that can separate phrases in a text.
+
+      fullStopPunct  : Punct   -- .   --:
+        = PFullStop ; --%  
+      questMarkPunct : Punct   -- ?   --:
+        = PQuestMark ; --%
+      exclMarkPunct  : Punct   -- !   --:
+        = PExclMark ; --%
+
+-- Internally, they are handled with a parameter type. --%
+
+  param Punct = PFullStop | PExclMark | PQuestMark ;  --%
+
+  oper --%
+
+--3 Phr: phrases in a text 
+
+-- Phrases are built from utterances by adding a phrasal conjunction
+-- and a vocative, both of which are by default empty.
+
+    mkPhr = overload { --%
+      mkPhr : (PConj) -> Utt -> (Voc) -> Phr   -- but sleep, my friend  --: 
+      = PhrUtt ; --%
+      mkPhr : Utt -> Voc -> Phr -- come here John --%
+      = \u,v -> PhrUtt NoPConj u v ; --% 
+      mkPhr : PConj -> Utt -> Phr -- but come here --%
+      = \u,v -> PhrUtt u v NoVoc ; --%
+      mkPhr : Utt -> Phr   -- come here --%
+      = \u -> PhrUtt NoPConj u NoVoc   ;  --%
+
+-- A phrase can also be directly built by a sentence, a present-tense
+-- clause, a question, or a positive singular imperative. 
+
+      mkPhr : S -> Phr   -- she won't sleep
+         = \s -> PhrUtt NoPConj (UttS s) NoVoc ; --%  
+      mkPhr : Cl -> Phr   -- she sleeps
+         = \s -> PhrUtt NoPConj (UttS (TUseCl TPres ASimul PPos s)) NoVoc ; --%  
+      } ; --%
+
+
+--3 PConj, phrasal conjunctions 
+
+-- Any conjunction can be used as a phrasal conjunction.
+-- More phrasal conjunctions are defined in $Structural$.
+
+      noPConj : PConj --: --% 
+        = NoPConj ; --%
+
+
+--3 Voc, vocatives 
+
+-- Any noun phrase can be turned into a vocative.
+-- More vocatives are defined in $Structural$.
+
+    mkVoc : NP -> Voc  -- my friend   --:
+      = VocNP ; --% 
+    noVoc : Voc --% 
+      = NoVoc ; --% 
+
+
     mkUtt = overload { 
       mkUtt : S -> Utt                     -- she slept   --:  
       = UttS ; --%  

@@ -32,3 +32,5 @@ DONE
 * demonstrative pronouns (this/that -- jin/haz/rek)
 * transitive verbs should assign case to their object(s)
 * expletive constructions ("there is ..." -- " ... vekha") [fairly easy]
+* intransitive verbs
+* Phr and Text categories from abstract RGL

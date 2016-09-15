@@ -1,4 +1,6 @@
-resource ResDot = ParamX ** {
+--# -path=.:../common:prelude
+
+resource ResDot = ParamX ** open Prelude in {
 	param
 		Animacy = Anim | Inanim ;
 		Case = Nom | Gen | Acc | All | Abl ;
@@ -150,5 +152,8 @@ resource ResDot = ParamX ** {
 				_ => w + "e"
 			}
 		} ;
+		
+		finalComma : Str = pre {"," | "." => []; "" => SOFT_BIND ++ ","; _ => []} ;
+  		frontComma : Str = SOFT_BIND ++ "," ;
 		
 }
