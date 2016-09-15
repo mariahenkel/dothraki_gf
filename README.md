@@ -13,7 +13,6 @@ TO DO
   * relative clauses [difficult?]
   * prepositions [medium/difficult?]
   * auxiliaries [difficult?]
-  * ray (already) for perfect tense
   
 * more test cases for epenthesis
 
@@ -34,3 +33,4 @@ DONE
 * expletive constructions ("there is ..." -- " ... vekha") [fairly easy]
 * intransitive verbs
 * Phr and Text categories from abstract RGL
+* ray (already) for perfect tense

@@ -2,21 +2,17 @@
 
 concrete SentenceSimpleDot of SentenceSimple = CatSimpleDot ** open ResDot in {
 lin
-	PredVP np vp = {s = table {
-		Pres => \\_ => table {
-			Pos => np.s!Nom ++ vp.s!(APresent Pos (agrToVFormPN np.agr)) ++ vp.compl ;
-			Neg => np.s!Nom ++ "vos" ++ vp.s!(APresent Neg (agrToVFormPN np.agr)) ++ vp.compl
-		} ;
-		Past => \\_ => table {
-			Pos => np.s!Nom ++ vp.s!(APast Pos (extrNum np.agr)) ++ vp.compl ;
-			Neg => np.s!Nom ++ "vos" ++ vp.s!(APast Neg (extrNum np.agr)) ++ vp.compl 
-		} ;
-		Fut => \\_ => table {
-			Pos => np.s!Nom ++ vp.s!(AFuture Pos (agrToVFormPN np.agr)) ++ vp.compl ;
-			Neg => np.s!Nom ++ "vos" ++ vp.s!(AFuture Neg (agrToVFormPN np.agr)) ++ vp.compl
-		} ;
-		Cond => \\a,p => []
-	}
+	PredVP np vp = {s = \\t,a,p => let vf = (tapaToVForm t a p np.agr) in 
+		np.s!Nom ++ 
+		case <t,a> of {
+			<Present,Anter> => "ray" ; 		-- the perfect tense marker
+			_ => []		
+		} ++
+		case p of {
+			Pos => []  ;
+			Neg => "vos" 
+		} ++
+		vp.s!vf ++ vp.compl ;
 	} ;
 
     UseCl temp pol cl = {s = cl.s!temp.t!temp.a!pol.p} ;

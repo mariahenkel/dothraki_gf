@@ -31,6 +31,24 @@ resource ResDot = ParamX ** open Prelude in {
 			Ag _ n => n
 		} ;
 
+		tapaToVForm : Tense -> Anteriority -> Polarity -> Agr -> VForm = \t,ant,p,a -> case t of {
+			Past => APast p (extrNum a) ;
+			Future => AFuture p (agrToVFormPN a) ;
+			Present => case ant of {
+				Simul => APresent p (agrToVFormPN a) ;
+				Anter => APast p (extrNum a)				-- The wiki is unclear on perfect tenses.
+															-- It states that the *past* perfect is formed with
+															-- the auxiliary "ray" and verb in past tense,
+															-- but the example given ("anha ray addriv mahrazhes" -- 
+															-- "I have killed the man") is actually translated as
+															-- *present* perfect in English.
+															-- Since present perfect is a lot more useful to have,
+															-- let's assume that's what they meant.
+			} ;
+			Conditional => APresent p (agrToVFormPN a)		-- conditional tense is not implemented yet,
+															-- so defaults to present tense
+		} ;
+
 		
 		-- the following are convenience methods, implementing the
 		-- "worst case" constructors for nouns. The more sophisticated
