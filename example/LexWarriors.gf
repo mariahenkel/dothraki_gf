@@ -18,6 +18,8 @@ interface LexWarriors = open SyntaxSimple in {
     protect_V2 : V2;
     heal_V2 : V2 ;
     
+    stink_V : V ;
+    
     mountain_N : N ;
     sea_N : N ;
     tree_N : N ;

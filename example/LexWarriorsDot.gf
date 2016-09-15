@@ -18,8 +18,12 @@ instance LexWarriorsDot of LexWarriors = open SyntaxSimpleDot, ParadigmsSimpleDo
         meet_V2 = mkV2 "shillolat" ;
         heal_V2 = mkV2 "akkoalat" ;
         respect_V2 = mkV2 "chomat" allative ;
+        
+        stink_V = mkV "vachrarat" ;
 
         mountain_N = mkN "krazaaj" inanimate ;
         sea_N = mkN "havazh" inanimate ;
         tree_N = mkN "feshith" animate ;
+        
+        
 }

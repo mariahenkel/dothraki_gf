@@ -4,10 +4,11 @@ incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
 	lincat
 		Sentence = S ;
 		Comment = Cl ;
-		Actor = CN ;
+		Actor, RelActor = CN ;
 		SpecActor = NP ;
 		Detr = Det ;
-		Action = V2;
+		Action = VP;
+		TrAction = V2 ;
 		Location = Adv ;
 		Temp = SyntaxSimple.Temp ;
 		Pol = SyntaxSimple.Pol ;
@@ -46,12 +47,18 @@ incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
         Stab = kiss_V2;
         Heal = heal_V2 ;
         Respect = respect_V2 ;
+        
+        Stink = mkVP stink_V ;
 
-		Relation actor action actor2 = mkCl actor action actor2 ;
+		Relation action actor2 = mkVP action actor2 ;
 		
-		Locate actor action actor2 location = mkCl actor (mkVP (mkVP action actor2) location) ;
+		Act actor action = mkCl actor action ;
+		
+		Locate action location = mkVP action location ;
 
 		Exist actor = mkCl actor ;
+		
+		Rel actor action t p = mkCN actor (mkRS t p (mkRCl which_RP action)) ;
 
 		Mountain = mkAdv on_Prep (mkNP the_Det mountain_N) ;
 		Sea = mkAdv under_Prep (mkNP the_Det sea_N) ;
