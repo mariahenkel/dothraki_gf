@@ -19,5 +19,27 @@ lin
   that_Quant = mkQuant "that" "those" ;
   this_Quant = mkQuant "this" "these" ;
 
+  above_Prep = mkPrep "above" ;
+  after_Prep = mkPrep "after" ;
+  before_Prep = mkPrep "before" ;
+  behind_Prep = mkPrep "behind" ;
+  between_Prep = mkPrep "between" ;
+  by8agent_Prep = mkPrep "by" ;
+  by8means_Prep = mkPrep "by" ;
+  during_Prep = mkPrep "during" ;
+  for_Prep = mkPrep "for" ;
+  from_Prep = mkPrep "from" ;
+  in8front_Prep = mkPrep ["in front of"] ;
+  in_Prep = mkPrep "in" ;
+  on_Prep = mkPrep "on" ;
+  part_Prep = mkPrep "of" ;
+  possess_Prep = mkPrep "of" ;
+  through_Prep = mkPrep "through" ;
+  to_Prep = mkPrep "to" ;
+  under_Prep = mkPrep "under" ;
+  without_Prep = mkPrep "without" ;
+  with_Prep = mkPrep "with" ;
+  except_Prep = mkPrep "except" ;
+
 }
 

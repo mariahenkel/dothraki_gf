@@ -1,7 +1,8 @@
 
 abstract GrammarSimple = 
   NounSimple,
-  VerbSimple, 
+  VerbSimple,
+  AdverbSimple,
   SentenceSimple, 
   PhraseSimple,
   Text,

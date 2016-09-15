@@ -11,7 +11,6 @@ TO DO
   * adjectives [medium/difficult?] -> Maria 
 
   * relative clauses [difficult?]
-  * prepositions [medium/difficult?]
   * auxiliaries [difficult?]
   
 * more test cases for epenthesis
@@ -34,3 +33,4 @@ DONE
 * intransitive verbs
 * Phr and Text categories from abstract RGL
 * ray (already) for perfect tense
+* prepositions and Adv (adverbial phrases such as "on the mountain", "behind the house")

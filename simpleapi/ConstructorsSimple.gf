@@ -264,6 +264,12 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       = UseN     ; --%  
       } ; --%  
 
+    mkAdv = overload { --%
+
+      mkAdv : Prep -> NP -> Adv          -- in the house --:   
+      = PrepNP       ; --%   
+
+      } ; --% 
 	  
 	TUseCl  : Tense -> Ant -> Pol ->  Cl ->  S = \t,a -> UseCl  (TTAnt t a) ; 
 	ComplV2 : V2 -> NP -> VP = \v,np -> ComplSlash (SlashV2a v) np ;

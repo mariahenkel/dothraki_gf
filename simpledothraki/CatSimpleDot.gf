@@ -15,7 +15,7 @@ concrete CatSimpleDot of CatSimple = CommonX ** open ResDot in {
 		Quant = ResDot.Quant ;
 		Det = {s : Animacy => Case => Str ; n : Number } ;
 		
-		Prep = {s : Str} ;
+		Prep = {s : Str ; c : Case} ;
 		
 		S = {s : Str} ;
 		Cl = {s : ResDot.Tense => Anteriority => Polarity => Str} ;

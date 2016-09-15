@@ -178,4 +178,6 @@ resource ParadigmsSimpleDot = open
 		mkV2 : Str -> Case -> V2 = mkV2def ;
 		mkV2 : Str -> V2 = \w -> mkV2def w Acc ; 
 	} ;
+	
+	mkPrep : Str -> Case -> Prep = \s,c -> lin Prep {s = s; c = c} ;
 }

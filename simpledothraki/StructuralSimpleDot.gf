@@ -20,4 +20,29 @@ lin
   
   this_Quant = mkQuant "jin" ;
   that_Quant = mkQuant "rek" ;
+  
+  above_Prep = mkPrep "oleth" Gen ;  
+  after_Prep = mkPrep "irge" Gen ;
+  before_Prep = mkPrep "hatif" Gen ;
+  behind_Prep = mkPrep "irge" Gen ;
+  by8agent_Prep = mkPrep "ki" Gen ; -- by (agent) -- ??
+  by8means_Prep = mkPrep "ki" Gen ; -- by (means of) -- ??
+  during_Prep = mkPrep "kash" Gen ; -- ??
+  for_Prep = mkPrep "ha" All ;
+  from_Prep = mkPrep "ha" Abl ;
+  in8front_Prep = mkPrep "hatif" Gen ; -- in front of
+  in_Prep = mkPrep "mra" Nom ;
+  on_Prep = mkPrep "she" Nom ;
+  part_Prep = mkPrep "ki" Gen ;
+  possess_Prep = mkPrep [] Gen ; -- of (possessive)
+  								 -- the preposition "ki" can apparently be used to denote possessorship,
+  								 -- but using genitive case with no explicit preposition seems to be preferable 
+  through_Prep = mkPrep "vi" All ;
+  to_Prep = mkPrep [] All ; -- ?? There does not seem to be an explicit preposition for this
+  							-- The wiki gives the example "Kisha veraki krazaajaan" -- "We are travelling to the mountain"
+  							-- With "krazaaj" -- "the mountain" in allative case to denote "movement towards" 
+  under_Prep = mkPrep "torga" Gen ;
+  with_Prep = mkPrep "ma" Abl ;
+  without_Prep = mkPrep "oma" Abl ;
+  
 }

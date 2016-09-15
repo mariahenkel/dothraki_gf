@@ -3,6 +3,7 @@
 concrete GrammarSimpleEng of GrammarSimple = 
   NounSimpleEng, 
   VerbSimpleEng, 
+  AdverbSimpleEng,
   SentenceSimpleEng,
   PhraseSimpleEng,
   TextX - [Pol,PPos,PNeg],
