@@ -3,7 +3,10 @@ abstract CatSimple = Common ** {
   cat
   
 	S ;
+	RS ;
 	Cl ;
+	RCl ;
+	RP ;
 	CN ;
 	NP ;
 	Pron ;

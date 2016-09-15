@@ -1,3 +1,5 @@
+--# -path=.:../simpleabstract
+
 concrete SentenceSimpleEng of SentenceSimple = CatSimpleEng ** open Prelude, ResSimpleEng in {
 
   flags optimize=all_subs ;
@@ -9,6 +11,10 @@ concrete SentenceSimpleEng of SentenceSimple = CatSimpleEng ** open Prelude, Res
 
     UseCl  t p cl = {
       s = t.s ++ p.s ++ cl.s ! t.t ! t.a ! ctr p.p ! oDir
+    } ;
+    UseRCl t p cl = {
+      s = \\r => t.s ++ p.s ++ cl.s ! t.t ! t.a ! ctr p.p ! r ;
+      c = cl.c
     } ;
 
   oper

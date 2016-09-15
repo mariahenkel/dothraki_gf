@@ -192,6 +192,52 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       = PredVP  ; --%
       } ; 
 
+     mkRS = overload { --%
+
+      mkRS : RCl  -> RS --%
+      = TUseRCl TPres ASimul PPos ; --% 
+      mkRS : Tense -> RCl -> RS --%  
+      = \t -> TUseRCl t ASimul PPos ; --% 
+      mkRS : Ant -> RCl -> RS --%
+      = \a -> TUseRCl TPres a PPos ; --% 
+      mkRS : Pol -> RCl -> RS --%
+      = \p -> TUseRCl TPres ASimul p ; --% 
+      mkRS : Tense -> Ant -> RCl -> RS --% 
+      = \t,a -> TUseRCl t a PPos ; --% 
+      mkRS : Tense -> Pol -> RCl -> RS --%
+      = \t,p -> TUseRCl t ASimul p ; --% 
+      mkRS : Ant -> Pol -> RCl -> RS --%
+      = \a,p -> TUseRCl TPres a p ; --% 
+      mkRS : (Tense) -> (Ant) -> (Pol) -> RCl -> RS -- that wouldn't have slept 
+      = TUseRCl ; --% 
+      mkRS : Temp -> (Pol) -> RCl -> RS -- that wouldn't have slept 
+      = UseRCl ; --% 
+       } ; --% 
+ 
+ 
+    mkRCl = overload { --%
+
+-- Relative clauses are built from relative pronouns in subject or object position.
+-- The former uses a verb phrase; we don't give
+-- shortcuts for verb-argument sequences as we do for clauses.
+-- The latter uses the 'slash' category of objectless clauses (see below); 
+-- we give the common special case with a two-place verb.
+
+      mkRCl : RP -> VP -> RCl        -- that loves she   --:   
+      = RelVP     ; --% 
+
+      mkRCl : RP -> V -> RCl                -- who sleeps   
+      = \s,v -> RelVP s (UseV v); --%   
+      mkRCl : RP -> V2 -> NP -> RCl         -- who loves her
+      = \s,v,o -> RelVP s (ComplV2 v o); --%   
+      } ; --% 
+
+    which_RP : RP                        -- which/who  --:
+      = IdRP ; --% 
+
+
+
+
     mkVP = overload { 
       mkVP : V   -> VP                -- sleep --:
       = UseV      ; --% 
@@ -284,6 +330,7 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       } ; --% 
 	  
 	TUseCl  : Tense -> Ant -> Pol ->  Cl ->  S = \t,a -> UseCl  (TTAnt t a) ; 
+    TUseRCl : Tense -> Ant -> Pol -> RCl -> RS = \t,a -> UseRCl (TTAnt t a) ; 
 	ComplV2 : V2 -> NP -> VP = \v,np -> ComplSlash (SlashV2a v) np ;
 
 }  

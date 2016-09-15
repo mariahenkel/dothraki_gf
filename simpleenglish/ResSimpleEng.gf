@@ -52,6 +52,9 @@ resource ResSimpleEng = ParamX ** open Prelude in {
 oper
     oDir = ODir False ;
 
+param
+    RAgr = RNoAg | RAg Agr ;
+    RCase = RPrep Gender | RC Gender NPCase ;
 
 param
     VVType = VVAux | VVInf | VVPresPart ; -- can do / try to do / start doing

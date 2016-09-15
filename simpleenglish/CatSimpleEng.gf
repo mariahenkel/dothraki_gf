@@ -9,8 +9,14 @@ concrete CatSimpleEng of CatSimple = CommonX - [Pol] ** open ResSimpleEng, Prelu
     Pol = {s : Str ; p : CPolarity} ;
 
     S  = {s : Str} ;
+    RS = {s : Agr => Str ; c : NPCase} ; -- c for it clefts
 
     Cl = {s : ResSimpleEng.Tense => Anteriority => CPolarity => Order => Str} ;
+    RCl = {
+      s : ResSimpleEng.Tense => Anteriority => CPolarity => Agr => Str ; 
+      c : NPCase
+      } ;
+    RP = {s : RCase => Str ; a : RAgr} ;
 
     VP = ResSimpleEng.VP ;
     VPSlash = ResSimpleEng.SlashVP ;
