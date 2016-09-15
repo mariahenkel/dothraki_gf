@@ -6,6 +6,7 @@ concrete GrammarSimpleDot of GrammarSimple =
   AdverbSimpleDot,
   SentenceSimpleDot,
   PhraseSimpleDot,
+  RelativeSimpleDot,
   TextX,
   StructuralSimpleDot,
   IdiomSimpleDot,

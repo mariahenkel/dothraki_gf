@@ -16,5 +16,8 @@ lin
 	} ;
 
     UseCl temp pol cl = {s = cl.s!temp.t!temp.a!pol.p} ;
+    UseRCl t p cl = {
+      s = cl.s ! t.t ! t.a ! p.p 
+    } ;
 	
 }

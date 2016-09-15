@@ -316,6 +316,10 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
     mkCN = overload { --%
       mkCN : N  -> CN            -- house  --:
       = UseN     ; --%  
+      mkCN :  N -> RS  -> CN     -- house that she owns 
+      = \x,y -> RelCN (UseN x) y   ; --% 
+      mkCN : CN -> RS  -> CN     -- big house that she loves --:
+      = RelCN    ; --% 
       mkCN :  N -> Adv -> CN     -- house on the hill 
       = \x,y -> AdvCN (UseN x) y  ; --% 
       mkCN : CN -> Adv -> CN     -- big house on the hill 

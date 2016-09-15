@@ -49,4 +49,10 @@ concrete NounSimpleEng of NounSimple = CatSimpleEng ** open MorphoSimpleEng, Res
 
     UseN n = n ;
     AdvCN cn ad = {s = \\n,c => cn.s ! n ! c ++ ad.s ; g = cn.g} ;
+    
+    RelCN cn rs = {
+      s = \\n,c => cn.s ! n ! c ++ rs.s ! agrgP3 n cn.g ;
+      g = cn.g
+    } ;
+    
 }

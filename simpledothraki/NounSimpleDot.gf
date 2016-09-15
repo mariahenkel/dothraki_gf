@@ -24,5 +24,10 @@ concrete NounSimpleDot of NounSimple = CatSimpleDot ** open MorphoSimpleDot, Res
 		
 		UseN n = n ; 
     	AdvCN cn ad = {s = \\n,c => cn.s ! n ! c ++ ad.s ; a = cn.a ; p = cn.p } ;
+	    RelCN cn rs = {
+	      s = \\n,c => cn.s ! n ! c ++ rs.s ! cn.a ! n ;
+	      a = cn.a ;
+	      p = cn.p ;
+	    } ;
 
 }

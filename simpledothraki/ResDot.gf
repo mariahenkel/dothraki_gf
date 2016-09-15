@@ -30,6 +30,11 @@ resource ResDot = ParamX ** open Prelude in {
 		extrNum : Agr -> Number = \a -> case a of {
 			Ag _ n => n
 		} ;
+		
+		anToQuForm : Animacy -> Number -> QuForm = \a,n -> case a of {
+			Anim => QAnim n ;
+			Inanim => QInanim
+		} ;
 
 		tapaToVForm : Tense -> Anteriority -> Polarity -> Agr -> VForm = \t,ant,p,a -> case t of {
 			Past => APast p (extrNum a) ;

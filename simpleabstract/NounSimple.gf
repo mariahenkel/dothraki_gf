@@ -14,6 +14,7 @@ abstract NounSimple = CatSimple ** {
 
     UseN : N -> CN ;              -- house
     AdvCN   : CN -> Adv -> CN ;   -- house on the hill
+    RelCN   : CN -> RS  -> CN ;   -- house that John bought
 
 
 
