@@ -23,4 +23,6 @@ concrete CatSimpleDot of CatSimple = CommonX ** open ResDot in {
 		V = Verb ;
 		V2, VPSlash = Verb ** {objCase : Case} ;
 		VP = Verb ** {compl : Str} ;
+
+		Comp = {s : Agr => Str} ; 
 }

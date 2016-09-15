@@ -186,6 +186,8 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       = \y -> ExistNP (DetArtSg IndefArt y) ; --% 
       mkCl : NP -> Cl          -- there are many houses   --:
       = ExistNP ; --% 
+ --     mkCl : NP -> NP -> Cl    -- she is the woman   
+ --     = \x,y -> PredVP x (UseComp (CompNP y)) ; --% 
       mkCl : NP -> VP -> Cl   -- she always sleeps   --:
       = PredVP  ; --%
       } ; 

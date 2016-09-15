@@ -16,4 +16,6 @@ abstract NounSimple = CatSimple ** {
     AdvCN   : CN -> Adv -> CN ;   -- house on the hill
 
 
+
+
 }
