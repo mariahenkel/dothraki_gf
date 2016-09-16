@@ -20,5 +20,7 @@ abstract CatSimple = Common ** {
 	V2 ;
 	N ;
 	Comp ;
+	A ;
+	AP ;
 
 }

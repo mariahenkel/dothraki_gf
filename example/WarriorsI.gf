@@ -12,6 +12,7 @@ incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
 		Location = Adv ;
 		Temp = SyntaxSimple.Temp ;
 		Pol = SyntaxSimple.Pol ;
+		Prop = AP ;
 
 
 	lin
@@ -50,6 +51,9 @@ incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
         
         Stink = mkVP stink_V ;
 
+        Hot = mkAP hot_A;
+        Broken = mkAP broken_A ;
+
 		Relation action actor2 = mkVP action actor2 ;
 
 		Zero actor actor2 = mkCl actor actor2 ;
@@ -57,6 +61,8 @@ incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
 		Act actor action = mkCl actor action ;
 		
 		Locate action location = mkVP action location ;
+
+		Describe actor prop = mkCN actor prop ;
 
 		Exist actor = mkCl actor ;
 		

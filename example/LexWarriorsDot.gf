@@ -25,5 +25,6 @@ instance LexWarriorsDot of LexWarriors = open SyntaxSimpleDot, ParadigmsSimpleDo
         sea_N = mkN "havazh" inanimate ;
         tree_N = mkN "feshith" animate ;
         
-        
+        hot_A = mkA "afazh" ;
+        broken_A = mkA "samva" ;
 }

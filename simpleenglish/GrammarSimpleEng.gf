@@ -10,6 +10,7 @@ concrete GrammarSimpleEng of GrammarSimple =
   TextX - [Pol,PPos,PNeg],
   StructuralSimpleEng,
   IdiomSimpleEng,
+  AdjectiveSimpleEng,
   TenseX - [Pol,PPos,PNeg]
   ** open ResSimpleEng, Prelude in {
 

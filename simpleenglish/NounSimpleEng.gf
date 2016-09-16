@@ -55,4 +55,9 @@ concrete NounSimpleEng of NounSimple = CatSimpleEng ** open MorphoSimpleEng, Res
       g = cn.g
     } ;
     
+    AdjCN ap cn = {
+      s = \\n,c => preOrPost ap.isPre (ap.s ! agrgP3 n cn.g) (cn.s ! n ! c) ;
+      g = cn.g
+    } ;
+
 }

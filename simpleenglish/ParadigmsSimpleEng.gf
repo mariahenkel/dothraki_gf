@@ -36,7 +36,7 @@ oper
 -- function.
 
   npNumber : NP -> Number ; -- exctract the number of a noun phrase
-
+  ADeg : Type = A;
 
 --2 Nouns
 
@@ -70,6 +70,24 @@ oper
 
     mkN : Str -> N -> N -- e.g. baby + boom
   } ;
+
+  mkA : overload {
+
+-- For regular adjectives, the adverbial and comparison forms are derived. This holds
+-- even for cases with the variations "happy - happily - happier - happiest",
+-- "free - freely - freer - freest", and "rude - rudest".
+
+    mkA : (happy : Str) -> A ; -- regular adj, incl. happy-happier, rude-ruder
+
+-- However, the duplication of the final consonant cannot be predicted,
+-- but a separate case is used to give the comparative
+
+    mkA : (fat,fatter : Str) -> A ; -- irreg. comparative
+
+-- As many as four forms may be needed.
+
+    mkA : (good,better,best,well : Str) -> A  -- completely irreg.
+    } ;
 
 
   mkV : overload {
@@ -279,6 +297,58 @@ oper
     mkV2  : V -> V2 = dirV2 ;
     mkV2  : Str -> V2 = \s -> dirV2 (regV s) ;
   }; 
+
+  regA : Str -> A ;
+
+    mkA = overload {
+    mkA : Str -> A = regA ;
+    mkA : (fat,fatter : Str) -> A = \fat,fatter -> 
+      mkAdjective fat fatter (init fatter + "st") (adj2adv fat) ;
+    mkA : (good,better,best,well : Str) -> A = \a,b,c,d ->
+      mkAdjective a b c d
+    } ;
+
+  regA a = case a of {
+    _ + ("a" | "e" | "i" | "o" | "u" | "y") + ? + _ + 
+        ("a" | "e" | "i" | "o" | "u" | "y") + ? + _  => 
+         lin A (compoundADeg (regADeg a)) ;
+    _ => lin A (regADeg a)
+    } ;
+
+
+  regADeg : Str -> ADeg ;      -- long, longer, longest
+  regADeg happy = 
+    let
+      happ = init happy ;
+      y    = last happy ;
+      happie = case y of {
+        "y" => happ + "ie" ;
+        "e" => happy ;
+        _   => duplFinal happy + "e"
+        } ;
+    in mkADeg happy (happie + "r") (happie + "st") (adj2adv happy) ;
+    
+  adj2adv : Str -> Str = \happy ->
+    case happy of {
+      _ + "ble" => init happy + "y" ;
+      _ + "y"   => init happy + "ily" ;
+      _ + "ll"  => happy + "y" ;
+      _         => happy + "ly"
+      } ;
+
+  mkADeg : (good,better,best,well : Str) -> ADeg ;
+  mkADeg a b c d = mkAdjective a b c d ;
+
+  compoundADeg : A -> ADeg ; -- -/more/most ridiculous
+
+  duplADeg : Str -> ADeg ;      -- fat, fatter, fattest
+  duplADeg fat = 
+    mkADeg fat 
+    (fat + last fat + "er") (fat + last fat + "est") (adj2adv fat) ;
+
+  compoundADeg a =
+    let ad = (a.s ! AAdj Posit Nom) 
+    in mkADeg ad ("more" ++ ad) ("most" ++ ad) (a.s ! AAdv) ;
 
 
   mkQuant = overload {

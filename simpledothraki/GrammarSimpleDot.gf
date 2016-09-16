@@ -10,6 +10,7 @@ concrete GrammarSimpleDot of GrammarSimple =
   TextX,
   StructuralSimpleDot,
   IdiomSimpleDot,
+  AdjectiveSimpleDot,
   TenseX
   ** open ResDot, Prelude in {
 	flags startcat = Phr ; unlexer = text ; lexer = text ;

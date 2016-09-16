@@ -4,6 +4,7 @@ resource ResDot = ParamX ** open Prelude in {
 	param
 		Animacy = Anim | Inanim ;
 		Case = Nom | Gen | Acc | All | Abl ;
+		ACase = ANom | AOther ;
 		
 		VFormPN = Pers1 Number | Pers2 | Pers3 Number ;
 		

@@ -27,7 +27,8 @@ resource ResSimpleEng = ParamX ** open Prelude in {
   param 
     Gender = Neutr | Masc | Fem ;
 
-
+  param
+      AForm = AAdj Degree Case | AAdv ;
 
   param
     VForm = 
@@ -100,6 +101,17 @@ param
           Gen => mens ;
           _ => men
           }
+        }
+      } ;
+
+
+    mkAdjective : (_,_,_,_ : Str) -> {s : AForm => Str; lock_A : {}} = 
+      \good,better,best,well -> lin A {
+      s = table {
+        AAdj Posit  c => (regGenitiveS good) ! c ;
+        AAdj Compar c => (regGenitiveS better) ! c ;
+        AAdj Superl c => (regGenitiveS best) ! c ;
+        AAdv          => well
         }
       } ;
 

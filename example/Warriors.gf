@@ -1,13 +1,15 @@
 abstract Warriors = {
 	flags startcat = Sentence ;
 	cat
-		Comment; Actor; SpecActor ; Action; TrAction ; Detr; Location ; Pol ; Temp ; Sentence ; RelActor ;
+		Comment; Actor; SpecActor ; Action; Prop ; TrAction ; Detr; Location ; Pol ; Temp ; Sentence ; RelActor ;
 	fun
 		Act : SpecActor -> Action -> Comment ;
 		
 		Relation : TrAction -> SpecActor -> Action ;
 		
 		Locate : Action -> Location -> Action ;
+
+		Describe : Actor -> Prop -> Actor ;
 		
 		Exist : SpecActor -> Comment ;
 		
@@ -24,6 +26,8 @@ abstract Warriors = {
 		Stab, Meet, Protect, Kiss, Heal, Respect : TrAction; 
 		Stink : Action ;
 		Mountain, Sea, Tree : Location ;
+
+		Hot, Broken : Prop ;
 		
 		Pos, Neg : Pol ;
 		Pres, Past, Fut, PresPerf : Temp ;

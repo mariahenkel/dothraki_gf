@@ -24,4 +24,7 @@ instance LexWarriorsEng of LexWarriors = open SyntaxSimpleEng, ParadigmsSimpleEn
         tree_N = mkN "tree" ;
         
         stink_V = mkV "stink" ;
+
+        hot_A = mkA "hot" ;
+        broken_A = mkA "broken" ;
 }

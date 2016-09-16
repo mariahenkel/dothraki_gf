@@ -178,6 +178,32 @@ resource ParadigmsSimpleDot = open
 		mkV2 : Str -> Case -> V2 = mkV2def ;
 		mkV2 : Str -> V2 = \w -> mkV2def w Acc ; 
 	} ;
+
+    mkAnc : Str -> (Number => ACase => Str) = \haj -> table {
+            Sg => table {
+                ANom => haj ;
+                AOther => case haj of {
+                    samv + ("a"|"e"|"i"|"o") => haj ;
+                    _ => haj + "a" 
+                }
+            } ;
+            Pl => case haj of {
+                samv + ("a"|"e"|"i"|"o") => \\_ => haj ;
+                _ => \\_ => (haj + "i") 
+            }
+        } ;
+
+    prefixA : Str -> Str = \haj -> pre {"a"|"e"|"i"|"o" => "as" ; _ => "a"} + haj ;
+    postfixA : Str -> Str = \ahaj -> case ahaj of {
+            ahakeso@(ahakes + ("a"|"e"|"i"|"o")) => ahakeso + "n" ;
+            x => x + "an"
+        } ;
+
+    mkA : Str -> A = \haj -> let {compar = postfixA (prefixA haj)} in lin A { s= table {
+        Posit => mkAnc haj ;
+        Compar => mkAnc compar ;
+        Superl => mkAnc (compar + "az")
+    }} ;
 	
 	mkPrep : Str -> Case -> Prep = \s,c -> lin Prep {s = s; c = c} ;
 }

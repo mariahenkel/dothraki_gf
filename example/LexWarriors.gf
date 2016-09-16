@@ -23,4 +23,7 @@ interface LexWarriors = open SyntaxSimple in {
     mountain_N : N ;
     sea_N : N ;
     tree_N : N ;
+
+    hot_A : A;
+    broken_A : A;
 }

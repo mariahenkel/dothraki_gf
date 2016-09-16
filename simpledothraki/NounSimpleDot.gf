@@ -30,4 +30,13 @@ concrete NounSimpleDot of NounSimple = CatSimpleDot ** open MorphoSimpleDot, Res
 	      p = cn.p ;
 	    } ;
 
+	    AdjCN ap cn = {
+	    	s = \\n => table {
+	    		Nom => cn.s!n!Nom ++ ap.s!n!ANom ;
+	    		x => cn.s!n!x ++ ap.s!n!AOther
+	    	} ;
+	    	a = cn.a ;
+	    	p = cn.p ;
+	    } ;
+
 }

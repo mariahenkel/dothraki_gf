@@ -37,6 +37,9 @@ concrete CatSimpleEng of CatSimple = CommonX - [Pol] ** open ResSimpleEng, Prelu
 
     N = {s : Number => Case => Str ; g : Gender} ;
 
+    A = {s : AForm => Str} ;
+    AP = {s : Agr => Str ; isPre : Bool} ; 
+
     Comp = {s : Agr => Str} ; 
 
   lindef

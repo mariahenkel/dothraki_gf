@@ -310,6 +310,15 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       a_Art : Art  = IndefArt ;   -- a 
 
 
+    mkAP = overload { --%
+
+-- Adjectival phrases can be formed from atomic adjectives by using the positive form or
+-- the comparative with a complement
+
+      mkAP : A -> AP           -- warm   --:
+      = PositA   ; --%   
+};
+
     DetArtSg : Art -> CN -> NP = \a -> DetCN (DetQuant a sgNum) ; 
     DetArtPl : Art -> CN -> NP = \a -> DetCN (DetQuant a plNum) ; 
 
@@ -324,8 +333,20 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       = \x,y -> AdvCN (UseN x) y  ; --% 
       mkCN : CN -> Adv -> CN     -- big house on the hill 
       = AdvCN    ; --% 
-      } ; --%  
-
+       
+      mkCN :  A ->  N  -> CN     -- big house  
+      = \x,y -> AdjCN (PositA x) (UseN y); --%  
+      mkCN :  A -> CN  -> CN     -- big blue house  
+      = \x,y -> AdjCN (PositA x) y; --%  
+      mkCN : AP ->  N  -> CN     -- very big house  
+      = \x,y -> AdjCN x (UseN y) ; --%  
+      mkCN : AP -> CN  -> CN     -- very big blue house  
+      = AdjCN    ; --%  
+      mkCN : CN -> AP  -> CN     -- very big blue house --: --%
+      = \x,y -> AdjCN y x    ; --% 
+      mkCN :  N -> AP  -> CN     -- very big house --%
+      = \x,y -> AdjCN y (UseN x)    ; --% 
+      } ; --% 
     mkAdv = overload { --%
 
       mkAdv : Prep -> NP -> Adv          -- in the house --:   
