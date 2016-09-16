@@ -5,15 +5,15 @@ Dothraki Nouns : text2mindmap.com/B7b25jR *updated*
 
 TO DO
 
-
-* some ideas:
-  * zero copula sentences ("the queen is a warrior" -- "khaleesi lajak") [fairly easy] -> Maria
-  * adjectives [medium/difficult?] -> Maria 
-
-  * relative clauses [difficult?]
-  * auxiliaries [difficult?]
-  
+* auxiliaries [maybe]
+* relativising objects 
 * more test cases for epenthesis
+* mkN str -> str -> animacy -> N
+* the warrior is hot
+* python script: 3 files - dictdot, dicteng, dictionary
+* python script: leerzeichen ersetzen
+* vtr, vin, v ausgabe blah
+* DOKUMENTATION
 
 
 DONE
@@ -34,3 +34,6 @@ DONE
 * Phr and Text categories from abstract RGL
 * ray (already) for perfect tense
 * prepositions and Adv (adverbial phrases such as "on the mountain", "behind the house")
+* zero copula sentences ("the queen is a warrior" -- "khaleesi lajak") [fairly easy] 
+* adjectives [medium/difficult?] 
+* relative clauses [difficult?]
