@@ -37,6 +37,8 @@ concrete CatSimpleEng of CatSimple = CommonX - [Pol] ** open ResSimpleEng, Prelu
 
     N = {s : Number => Case => Str ; g : Gender} ;
 
+    Comp = {s : Agr => Str} ; 
+
   lindef
 
     VP = \s -> predV {s = \\_ => s; p = ""; isRefl = False} ;

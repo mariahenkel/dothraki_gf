@@ -15,6 +15,8 @@ abstract Warriors = {
 		
 		Rel : Actor -> Action -> Temp -> Pol -> Actor ;
 
+		Zero : SpecActor -> SpecActor -> Comment ;
+
 
 		The, This, That, These, Those : Detr ;
         Warrior, Queen, Woman, Rider, Goat, Turtle, Mom, Rabbit, Cheese : Actor ;   -- should the cheese be an actor? :D

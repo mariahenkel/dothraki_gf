@@ -13,10 +13,10 @@ type_lexicon = [
     ('adj.', 'A'),
     ('ni.', 'N'),
     ('na.', 'N'),
-    ('v.', 'V'),
-    ('vtr.', 'V2'),
-    ('vin.', 'COMP'),
-    ('pn.', 'PN')]
+    ('v.', 'V'), # beides! V, V2 
+    ('vtr.', 'V2'), # beides: V2, V3
+    ('vin.', 'V'),
+    ('pn.', 'PN')] 
 
 orig_str = '{trans}_{w_type} = mk{w_type} "{word}" {gram_info}{anim};'
 trans_str = '{trans}_{w_type} = mk{w_type} "{trans}";'

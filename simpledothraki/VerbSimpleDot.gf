@@ -9,8 +9,12 @@ lin
 	
     ComplSlash vpSlash np = vpSlash ** {compl = np.s!vpSlash.objCase} ;
 
-  --  CompNP np = {s = \\_ => np.s ! Acc} ;   -- check if this is really acc, i dont think so (think: nom-pres, past and future all and abl)
-  --  UseComp comp = ???
-  --  UseComp comp = insertObj comp.s (predAux auxBe) ;
+    CompNP np = {s = table {
+    	APast _ _ => np.s!Abl ;
+    	APresent _ _ => np.s!Nom ;
+    	AFuture _ _ => np.s!All 
+    }} ;   
+    UseComp comp = {s = comp.s; compl = []; inf=[]; part=[]} ;
+    
 	
 }

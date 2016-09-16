@@ -51,6 +51,8 @@ incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
         Stink = mkVP stink_V ;
 
 		Relation action actor2 = mkVP action actor2 ;
+
+		Zero actor actor2 = mkCl actor actor2 ;
 		
 		Act actor action = mkCl actor action ;
 		
