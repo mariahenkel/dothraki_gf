@@ -10,9 +10,6 @@ TO DO
 * more test cases for epenthesis
 * mkN str -> str -> animacy -> N
 * the warrior is hot
-* python script: 3 files - dictdot, dicteng, dictionary
-* python script: leerzeichen ersetzen
-* vtr, vin, v ausgabe blah
 * DOKUMENTATION
 
 
@@ -37,3 +34,6 @@ DONE
 * zero copula sentences ("the queen is a warrior" -- "khaleesi lajak") [fairly easy] 
 * adjectives [medium/difficult?] 
 * relative clauses [difficult?]
+* python script: 3 files - dictdot, dicteng, dictionary
+* python script: replace spaces in variable names
+* vtr to V2 and V3, v to V and V2
