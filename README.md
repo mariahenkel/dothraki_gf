@@ -10,6 +10,7 @@ TO DO
 * more test cases for epenthesis
 * mkN str -> str -> animacy -> N
 * the warrior is hot
+* translate vocabulary
 * DOKUMENTATION
 
 
