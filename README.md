@@ -11,6 +11,8 @@ TO DO
 * mkN str -> str -> animacy -> N
 * the warrior is hot
 * translate vocabulary
+* PN: proper nouns 
+* idiomatic dothraki application grammar
 * DOKUMENTATION
 
 
