@@ -13,11 +13,25 @@ This paper aims to serve as a short documentation and explanation of our project
 
 ### 2 The Project
 
-As mentioned before, the aim of this project is to create a resource grammar for the Dothraki language and add it to the GF Resource Grammar Library, so that other Dothraki fans and/or GF enthusiasts may use it. While there are currently a few Dothraki language learning apps or online translators avaialable (e.g. Cognitus Apps, 2016; Fun Translations, 2016), they are still very limited and lack the quality and range to actually learn the language or supply an accurate translation. By the means of an open-source Dothraki resource grammar, better tools like these or even other projects could be created. 
+As mentioned before, the aim of this project is to create a resource grammar for the Dothraki language and add it to the GF Resource Grammar Library, so that other Dothraki fans and/or GF enthusiasts may use it. While there are currently a few Dothraki language learning apps and online translators avaialable (e.g. Cognitus Apps, 2016; Fun Translations, 2016), they are still very limited and lack the quality and range to actually learn the language or provide an accurate translation. By the means of an open-source Dothraki resource grammar, better tools like these or even different projects could be created more easily. 
 
 #### 2.1 About Resource Grammars and the Standard Library
-The GF Resource Grammar Library 
-Here, the idea is to predefine "program details, which require expert knowledge, and make them available for non-expert application programmers" (Ranta, 2009). 
+The GF Resource Grammar Library covers the morphology and basic syntax of several languages. Here, the idea is to predefine "program details, which require expert knowledge, and make them available for non-expert application programmers" (Ranta, 2009). This way the library users need not have the "specialized linguistic expertise" (Ranta, 2009) to write an application grammar in GF. Considerable work has been and is being done by the GF developers and resource grammar programmers to make this possible:
+
+The idea of using a grammar as a software library is, to our knowledge,
+new in GF. It has required a considerable effort in the design and implementa-
+tion of the GF programming language: a type system, a module system, com-
+pilation  techniques,  and  optimizations. [...] The  effort
+made in this work is supplemented by a substantial effort in the library itself.
+The code included in the library is more than twice in size compared to the
+implementation of GF. (Ranta, 2009)
+
+The provision of the GF resource grammar library as an easy-to-use tool may, one the one hand, be more time consuming, but, on the other hand, enables more people to use it - even without the expert knowledge. 
+
+Stats: Wie viele Funktionen in einer Resource Grammar, wie lange dauert sowas? (Buch)
+As the workload of building a full resource grammar exeeds the time frame for this term paper, the goal and first milestone of our project is to create a mini resource grammar, similar to ..., to lay the foundation for a full resource grammar.    
+
+
 #### 2.2 Aim, Scope and ....
 #### 2.3 Program Structure and Functions
 #### 2.4 Examples
