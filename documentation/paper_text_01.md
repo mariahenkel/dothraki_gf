@@ -40,7 +40,16 @@ Just like the GF repositories (Détrez & Camilleri, 2016), our full project is h
 
 Aufbau des Projekts (Ordnerstruktur, vorher noch umbenennen?)
 
+Erklärung Ordnerstruktur
+
+With the current ... we are able to ... 
+
+Functions
+
+Vocabulary Extractor Erklärung (1644 words in use)
+
 #### 2.4 Examples
+GF + Dothraki Grammar
 
 ### 3 Discussion
 #### 3.1 Limitations
