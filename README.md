@@ -5,6 +5,7 @@ Dothraki Nouns : text2mindmap.com/B7b25jR *updated*
 
 TO DO
 
+* rename files, restructure (resource grammar style)
 * auxiliaries [maybe]
 * relativising objects 
 * more test cases for epenthesis
@@ -13,7 +14,7 @@ TO DO
 * translate vocabulary
 * PN: proper nouns 
 * idiomatic dothraki application grammar
-* DOKUMENTATION
+* DOCUMENTATION
 
 
 DONE
