@@ -10,6 +10,7 @@ concrete NounSimpleEng of NounSimple = CatSimpleEng ** open MorphoSimpleEng, Res
       a = agrgP3 det.n cn.g
       } ;
     UsePron p = p ;
+    UsePN pn = {s = \\c => pn.s ! npcase2case c ; a = agrgP3 Sg pn.g} ;
 
 	  
     DetQuant quant num = {

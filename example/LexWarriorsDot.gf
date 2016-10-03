@@ -11,6 +11,8 @@ instance LexWarriorsDot of LexWarriors = open SyntaxSimpleDot, ParadigmsSimpleDo
         mom_N = mkN "mai" animate ;
         rabbit_N = mkN "mawizzi" inanimate ;
         cheese_N = mkN "jelli" "jel" ;
+        
+        Drogo_PN = mkPN (mkN "Khal" animate) "Drogo" ;
 
         stab_V2 = mkV2 "vindelat" ;
         kiss_V2 = mkV2 "zoqwat" ;

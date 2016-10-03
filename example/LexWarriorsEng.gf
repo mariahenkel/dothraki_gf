@@ -11,6 +11,8 @@ instance LexWarriorsEng of LexWarriors = open SyntaxSimpleEng, ParadigmsSimpleEn
 	mom_N = mkN "mom" ;
 	rabbit_N = mkN "rabbit" ;
 	cheese_N = mkN "cheese" ;
+	
+	Drogo_PN = mkPN ("Khal" ++ "Drogo") ;
 
 	stab_V2 = mkV2 "stab" ;
         kiss_V2 = mkV2 "kiss" ;

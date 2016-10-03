@@ -10,7 +10,6 @@ TO DO
 * more test cases for epenthesis
 * the warrior is hot
 * translate vocabulary
-* PN: proper nouns 
 * idiomatic dothraki application grammar
 * DOCUMENTATION
 
@@ -39,3 +38,6 @@ DONE
 * python script: 3 files - dictdot, dicteng, dictionary
 * python script: replace spaces in variable names
 * vtr to V2 and V3, v to V and V2
+* relativizing objects
+* mkN : Str -> Str -> Animacy -> N
+* PN: proper names 

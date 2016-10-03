@@ -23,5 +23,6 @@ abstract CatSimple = Common ** {
 	Comp ;
 	A ;
 	AP ;
+    PN ;
 
 }

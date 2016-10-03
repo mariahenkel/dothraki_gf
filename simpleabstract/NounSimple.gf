@@ -3,6 +3,7 @@ abstract NounSimple = CatSimple ** {
   fun
     DetCN   : Det -> CN -> NP ;   -- the man
     UsePron : Pron -> NP ;        -- he
+    UsePN   : PN -> NP ;          -- John
 
     IndefArt   : Quant ;
     DefArt     : Quant ;

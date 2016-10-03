@@ -5,6 +5,7 @@ concrete CatSimpleDot of CatSimple = CommonX ** open ResDot in {
 		N = Noun ;
 		CN = Noun ;
 		NP = {s : Case => Str ; agr : Agr } ;
+    	PN = {s : Case => Str } ;
 		
 		Pron = {s : Case => Str ; agr : Agr } ;
 		

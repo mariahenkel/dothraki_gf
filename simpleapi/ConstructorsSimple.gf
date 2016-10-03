@@ -256,6 +256,8 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
           =  DetCN    ; --%   
       mkNP : Det -> N -> NP       -- the first man   
           =  \d,n -> DetCN d (UseN n)   ; --%   
+      mkNP : PN -> NP             -- John  --:
+      	  = UsePN    ; --%  
       mkNP : Pron -> NP           -- he  --:
       	  = UsePron  ; --%  
       } ; --% 

@@ -34,6 +34,8 @@ incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
         They = they_NP ;
         YouPol = youPol_NP ;
         
+        Drogo = mkNP Drogo_PN ;
+        
         Spec det a = mkNP det a ;
            
 		The = the_Det ;

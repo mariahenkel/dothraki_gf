@@ -8,6 +8,7 @@ concrete NounSimpleDot of NounSimple = CatSimpleDot ** open MorphoSimpleDot, Res
 			{s = \\c => det.s!noun.a!c ++ noun.s!det.n!c ; agr = Ag noun.p det.n } ;
 			
 		UsePron pron = pron ;
+   		UsePN pn = {s = pn.s ; agr = Ag P3 Sg} ;
 			
 		IndefArt, DefArt = {s = \\_,_ => []} ;
 		

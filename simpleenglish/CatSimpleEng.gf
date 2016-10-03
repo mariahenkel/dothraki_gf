@@ -27,6 +27,7 @@ concrete CatSimpleEng of CatSimple = CommonX - [Pol] ** open ResSimpleEng, Prelu
 
     CN = {s : Number => Case => Str ; g : Gender} ;
     NP = {s : NPCase => Str ; a : Agr} ;
+    PN = {s : Case => Str ; g : Gender} ;
 
     Pron = {s : NPCase => Str ; sp : Case => Str ; a : Agr} ;
 

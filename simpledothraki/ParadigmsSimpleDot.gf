@@ -31,6 +31,11 @@ resource ParadigmsSimpleDot = open
     										-- not sure whether animate nouns can have irregular accusatives)
     } ;
     
+    mkPN : overload {
+    	mkPN : Str -> PN ; 					-- Drogo
+        mkPN : Str -> Str -> PN				-- Khal Drogo
+    } ;
+    
     mkV : Str -> V ;
     
     mkV2 : overload {
@@ -93,6 +98,18 @@ resource ParadigmsSimpleDot = open
     	mkN : Str -> Str -> Animacy -> N = mk2N ;
     	mkN : Str -> Str -> N = mk2Ni
     } ;
+    
+    mkPN = overload {
+    	mkPN : Str -> PN = regPN ;			-- Drogo
+        mkPN : N -> Str -> PN = titlePN		-- Khal Drogo
+    } ;
+
+
+    regPN : Str -> PN = \n -> lin PN {s = \\c => n} ;
+    titlePN : N -> Str -> PN = \title,name -> lin PN {
+    	s = \\c => title.s!Sg!c ++ name
+    } ;
+    
     
     
     -- Finds the stem of a verb based on the infinitive and sg past.

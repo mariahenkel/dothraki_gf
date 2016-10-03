@@ -70,6 +70,18 @@ oper
 
     mkN : Str -> N -> N -- e.g. baby + boom
   } ;
+  
+  
+
+  mkPN : overload {
+
+    mkPN : Str -> PN ;
+
+-- Sometimes a common noun can be reused as a proper name, e.g. "Bank"
+
+    mkPN : N -> PN --%
+  } ;
+
 
   mkA : overload {
 
@@ -193,6 +205,23 @@ oper
 
   mk4N = \man,men,man's,men's -> 
     lin N (mkNoun man man's men men's ** {g = Neutr}) ;
+
+  mkPN = overload {
+    mkPN : Str -> PN = regPN ;
+    mkPN : N -> PN = nounPN
+  } ;
+
+  regPN    : Str -> PN ;          
+  regGenPN : Str -> Gender -> PN ;     -- John, John's
+
+-- Sometimes you can reuse a common noun as a proper name, e.g. "Bank".
+
+  nounPN : N -> PN ;
+
+
+  regPN n = regGenPN n human ;
+  regGenPN n g = lin PN {s = table {Gen => n + "'s" ; _ => n} ; g = g} ;
+  nounPN n = lin PN {s = n.s ! singular ; g = n.g} ;
 
   genderN g man = lin N {s = man.s ; g = g} ;
 
