@@ -19,6 +19,12 @@ concrete RelativeSimpleEng of RelativeSimple = CatSimpleEng ** open ResSimpleEng
       c = npNom
       } ;
 
+    RelSlash rp slash = {
+      s = \\t,a,p,agr => 
+          slash.c2 ++ rp.s ! RPrep (fromAgr agr).g ++ slash.s ! t ! a ! p ! oDir ;
+      c = NPAcc
+      } ;
+
     IdRP = 
      { s = table {
         RC _ (NCase Gen) | RC _ NPNomPoss => "whose" ; 

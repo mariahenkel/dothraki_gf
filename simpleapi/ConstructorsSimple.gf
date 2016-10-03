@@ -223,13 +223,17 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
 -- The latter uses the 'slash' category of objectless clauses (see below); 
 -- we give the common special case with a two-place verb.
 
-      mkRCl : RP -> VP -> RCl        -- that loves she   --:   
+      mkRCl : RP -> VP -> RCl        -- who loves her   --:   
       = RelVP     ; --% 
 
       mkRCl : RP -> V -> RCl                -- who sleeps   
       = \s,v -> RelVP s (UseV v); --%   
       mkRCl : RP -> V2 -> NP -> RCl         -- who loves her
       = \s,v,o -> RelVP s (ComplV2 v o); --%   
+      mkRCl : RP -> NP -> V2 -> RCl        -- whom she loves 
+      = \ip,np,v -> RelSlash ip (SlashVP np (SlashV2a v)) ; --%
+      mkRCl : RP -> ClSlash -> RCl         -- whom she loves today   --:   
+      = RelSlash   ; --% 
       } ; --% 
 
     which_RP : RP                        -- which/who  --:

@@ -44,8 +44,8 @@ incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
 
         Protect = protect_V2;
         Meet = meet_V2; 
-        Kiss = stab_V2;
-        Stab = kiss_V2;
+        Kiss = kiss_V2;
+        Stab = stab_V2;
         Heal = heal_V2 ;
         Respect = respect_V2 ;
         
@@ -67,6 +67,8 @@ incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
 		Exist actor = mkCl actor ;
 		
 		Rel actor action t p = mkCN actor (mkRS t p (mkRCl which_RP action)) ;
+
+		RelObj actor traction t p a = mkCN actor (mkRS t p (mkRCl which_RP a traction)) ;
 
 		Mountain = mkAdv on_Prep (mkNP the_Det mountain_N) ;
 		Sea = mkAdv under_Prep (mkNP the_Det sea_N) ;

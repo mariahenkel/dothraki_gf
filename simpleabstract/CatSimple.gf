@@ -7,6 +7,7 @@ abstract CatSimple = Common ** {
 	Cl ;
 	RCl ;
 	RP ;
+	ClSlash ;
 	CN ;
 	NP ;
 	Pron ;

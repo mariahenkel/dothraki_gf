@@ -8,6 +8,8 @@ concrete SentenceSimpleEng of SentenceSimple = CatSimpleEng ** open Prelude, Res
 
     PredVP np vp = mkClause (np.s ! npNom) np.a vp ;
 
+    SlashVP np vp = 
+      mkClause (np.s ! npNom) np.a vp ** {c2 = vp.c2} ;
 
     UseCl  t p cl = {
       s = t.s ++ p.s ++ cl.s ! t.t ! t.a ! ctr p.p ! oDir

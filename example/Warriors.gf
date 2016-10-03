@@ -17,6 +17,8 @@ abstract Warriors = {
 		
 		Rel : Actor -> Action -> Temp -> Pol -> Actor ;
 
+		RelObj : Actor -> TrAction -> Temp -> Pol -> SpecActor -> Actor;
+
 		Zero : SpecActor -> SpecActor -> Comment ;
 
 

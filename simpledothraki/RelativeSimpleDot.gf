@@ -19,6 +19,10 @@ concrete RelativeSimpleDot of RelativeSimple = CatSimpleDot ** open ResDot in {
 		} ++
 		vp.s!vf ++ vp.compl ;
     } ;
+    
+    RelSlash rp clsl = {
+    	s = \\t,a,p,anim,n => rp.s!(anToQuForm anim n)!clsl.objCase ++ clsl.s!t!a!p ++ clsl.subj
+    } ;
 
     IdRP = { s = table {
 		QAnim Sg => table {

@@ -14,6 +14,20 @@ lin
 		} ++
 		vp.s!vf ++ vp.compl ;
 	} ;
+	
+	SlashVP np vpsl = {s = \\t,a,p => let vf = (tapaToVForm t a p np.agr) in 
+		case <t,a> of {
+			<Present,Anter> => "ray" ; 		-- the perfect tense marker
+			_ => []		
+		} ++
+		case p of {
+			Pos => []  ;
+			Neg => "vos" 
+		} ++
+		vpsl.s!vf ;
+		subj = np.s!Nom ;
+		objCase = vpsl.objCase
+	} ;
 
     UseCl temp pol cl = {s = cl.s!temp.t!temp.a!pol.p} ;
     UseRCl t p cl = {

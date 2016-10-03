@@ -11,6 +11,8 @@ abstract RelativeSimple = CatSimple ** {
 
     RelVP    : RP -> VP -> RCl ;      -- who loves John
 
+    RelSlash : RP -> ClSlash -> RCl ; -- whom John loves
+
 -- Relative pronouns are formed from an 'identity element' by prefixing
 -- or suffixing (depending on language) prepositional phrases or genitives.
 

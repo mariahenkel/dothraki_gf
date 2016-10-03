@@ -6,4 +6,7 @@ abstract SentenceSimple = CatSimple ** {
   fun
     UseCl    : Temp -> Pol -> Cl  -> S ;
     UseRCl   : Temp -> Pol -> RCl -> RS ;
+
+
+    SlashVP   : NP -> VPSlash -> ClSlash ;      -- (whom) he sees
 }
