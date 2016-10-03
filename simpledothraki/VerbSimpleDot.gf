@@ -4,6 +4,8 @@ concrete VerbSimpleDot of VerbSimple = CatSimpleDot ** open ResDot in {
 lin
     UseV v = v ** {compl = []; subjpost = []} ;
     
+    ComplVV vv vp = vp ** {subjpost = vv.s ++ vp.subjpost} ;
+    
     AdvVP vp adv = vp ** {compl = vp.compl ++ adv.s} ;
     SlashV2a v = v ** {subjpost = []} ;
     

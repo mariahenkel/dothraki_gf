@@ -44,5 +44,8 @@ lin
   under_Prep = mkPrep "torga" Gen ;
   with_Prep = mkPrep "ma" Abl ;
   without_Prep = mkPrep "oma" Abl ;
+
+  can8know_VV, can_VV = {s = "laz"} ;
+  must_VV = {s = "eth"} ;
   
 }

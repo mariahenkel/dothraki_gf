@@ -5,6 +5,7 @@ abstract VerbSimple = CatSimple ** {
   data
     UseV     : V   -> VP ;        -- sleep
 	
+    ComplVV  : VV  -> VP -> VP ;  	-- want to run
     SlashV2a : V2        -> VPSlash ;  -- love (it)
 
     ComplSlash : VPSlash -> NP -> VP ; -- love it

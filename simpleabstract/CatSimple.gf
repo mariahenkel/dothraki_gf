@@ -19,6 +19,7 @@ abstract CatSimple = Common ** {
 	VPSlash ;
 	V ;
 	V2 ;
+    VV ;
 	N ;
 	Comp ;
 	A ;

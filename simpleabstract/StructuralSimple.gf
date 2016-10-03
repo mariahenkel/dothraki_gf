@@ -33,5 +33,9 @@ fun
   under_Prep : Prep ;
   with_Prep : Prep ;
   without_Prep : Prep ;
+
+  can8know_VV : VV ; -- can (capacity)
+  can_VV : VV ;      -- can (possibility)
+  must_VV : VV ;
   
 }

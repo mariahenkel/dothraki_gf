@@ -7,6 +7,8 @@ concrete VerbSimpleEng of VerbSimple = CatSimpleEng ** open ResSimpleEng, Prelud
   lin
     UseV = predV ;
 
+    ComplVV v vp = insertObj (\\a => infVP v.typ vp Simul CPos a) (predVV v) ;
+
     AdvVP vp adv = insertObj (\\_ => adv.s) vp ;
 
     PassV2 v = insertObj (\\_ => v.s ! VPPart ++ v.p) (predAux auxBe) ;

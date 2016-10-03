@@ -180,6 +180,8 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       = \s,v -> PredVP s (UseV v); --%   
       mkCl : NP -> V2 -> NP -> Cl         -- she loves him
       = \s,v,o -> PredVP s (ComplV2 v o); --%   
+      mkCl : NP  -> VV -> VP -> Cl        -- she wants to sleep
+        = \s,v,vp -> PredVP s (ComplVV v vp) ; --% 
       mkCl : N -> Cl           -- there is a house 
       = \y -> ExistNP (DetArtSg IndefArt (UseN y)) ; --% 
       mkCl : CN -> Cl          -- there is an old house 
@@ -247,6 +249,8 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       = UseV      ; --% 
        mkVP : V2  -> NP -> VP          -- love him 
       = ComplV2   ; --% 
+      mkVP : VV  -> VP -> VP          -- want to sleep  --:
+      = ComplVV   ; --% 
       mkVP : VP -> Adv -> VP          -- sleep here   --: 
       = AdvVP     ; --% 
        } ; --% 

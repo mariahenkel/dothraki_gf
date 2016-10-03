@@ -39,6 +39,7 @@ concrete CatSimpleEng of CatSimple = CommonX - [Pol] ** open ResSimpleEng, Prelu
 
     V = Verb ; -- = {s : VForm => Str} ;
     V2 = Verb ** {c2 : Str} ;
+    VV = {s : VVForm => Str ; p : Str ; typ : VVType} ;
 
     N = {s : Number => Case => Str ; g : Gender} ;
 

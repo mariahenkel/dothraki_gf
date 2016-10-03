@@ -1,7 +1,7 @@
 abstract Warriors = {
 	flags startcat = Sentence ;
 	cat
-		Comment; Actor; SpecActor ; Action; Prop ; TrAction ; Detr; Location ; Pol ; Temp ; Sentence ; RelActor ;
+		Comment; Actor; SpecActor ; Action; Prop ; TrAction ; Detr; Location ; Pol ; Temp ; Sentence ; RelActor ; Mode ;
 	fun
 		Act : SpecActor -> Action -> Comment ;
 		
@@ -23,6 +23,8 @@ abstract Warriors = {
 		RelObj : Actor -> TrAction -> Temp -> Pol -> SpecActor -> Actor;
 
 		Zero : SpecActor -> SpecActor -> Comment ;
+		
+		Aux : Mode -> Action -> Action ; 
 
 
 		The, This, That, These, Those : Detr ;
@@ -32,6 +34,7 @@ abstract Warriors = {
 		Stab, Meet, Protect, Kiss, Heal, Respect : TrAction; 
 		Stink : Action ;
 		Mountain, Sea, Tree : Location ;
+		Can, Must : Mode ;
 
 		Hot, Broken : Prop ;
 		

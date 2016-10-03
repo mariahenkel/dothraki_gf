@@ -145,6 +145,9 @@ oper
     mkV2  : V -> V2 ;         -- transitive, e.g. hit
   };
 
+  mkVV  : V -> VV ; -- e.g. want (to VP)
+
+
   mkPrep : Str -> Prep ; -- e.g. "in front of"
   mkPost : Str -> Prep ; -- e.g. "ago"
   noPrep : Prep ;  -- no preposition
@@ -319,6 +322,13 @@ oper
 
   prepV2 v p = lin V2 {s = v.s ; p = v.p ; s1 = v.s1 ; c2 = p.s ; isRefl = v.isRefl} ;
   dirV2 v = prepV2 v noPrep ;
+
+  mkVV  v = lin VV {
+    s = table {VVF vf => v.s ! vf ; _ => v.s ! VInf} ;
+    p = v.p ; 
+    typ = VVInf
+    } ;
+
 
   prefixV : Str -> V -> V = \p,v -> lin V { s = \\vform => p + v.s ! vform; p = v.p ; isRefl = v.isRefl } ;
 

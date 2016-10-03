@@ -8,7 +8,8 @@ concrete RelativeSimpleDot of RelativeSimple = CatSimpleDot ** open ResDot in {
 
     RelVP rp vp = {
     	s = \\t,a,p,anim,n => let vf = (tapaToVForm t a p (Ag P3 n)) in 
-		rp.s!(anToQuForm anim n)!Nom ++ 
+		rp.s!(anToQuForm anim n)!Nom ++
+		vp.subjpost ++
 		case <t,a> of {
 			<Present,Anter> => "ray" ; 		-- the perfect tense marker
 			_ => []		

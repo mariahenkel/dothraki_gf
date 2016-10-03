@@ -41,5 +41,47 @@ lin
   with_Prep = mkPrep "with" ;
   except_Prep = mkPrep "except" ;
 
+
+  can8know_VV, can_VV = {
+    s = table {
+      VVF VInf => ["be able to"] ;
+      VVF VPres => "can" ;
+      VVF VPPart => ["been able to"] ;
+      VVF VPresPart => ["being able to"] ;
+      VVF VPast => "could" ;      --# notpresent
+      VVPastNeg => "couldn't" ;   --# notpresent
+      VVPresNeg => "can't" -- | "cannot"     ---- shouldn't be a variant, but replace "can not"
+      } ;
+    p = [] ;
+    typ = VVAux
+    } |
+ {
+    s = table { 
+      VVF VInf => ["be able to"] ;
+      VVF VPres => "can" ;
+      VVF VPPart => ["been able to"] ;
+      VVF VPresPart => ["being able to"] ;
+      VVF VPast => "could" ;      --# notpresent
+      VVPastNeg => "couldn't" ;   --# notpresent
+      VVPresNeg => "cannot"     ---- shouldn't be a variant, but replace "can not"
+      } ;
+    p = [] ;
+    typ = VVAux
+    } ;
+    
+  must_VV = {
+    s = table {
+      VVF VInf => ["have to"] ;
+      VVF VPres => "must" ;
+      VVF VPPart => ["had to"] ;
+      VVF VPresPart => ["having to"] ;
+      VVF VPast => ["had to"] ;      --# notpresent
+      VVPastNeg => ["hadn't to"] ;      --# notpresent
+      VVPresNeg => "mustn't"
+      } ;
+    p = [] ;
+    typ = VVAux
+    } ;
+
 }
 

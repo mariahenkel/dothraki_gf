@@ -13,6 +13,7 @@ incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
 		Temp = SyntaxSimple.Temp ;
 		Pol = SyntaxSimple.Pol ;
 		Prop = AP ;
+		Mode = VV ;
 
 
 	lin
@@ -74,10 +75,15 @@ incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
 		Rel actor action t p = mkCN actor (mkRS t p (mkRCl which_RP action)) ;
 
 		RelObj actor traction t p a = mkCN actor (mkRS t p (mkRCl which_RP a traction)) ;
+		
+		Aux mode action = mkVP mode action ;
 
 		Mountain = mkAdv on_Prep (mkNP the_Det mountain_N) ;
 		Sea = mkAdv under_Prep (mkNP the_Det sea_N) ;
 		Tree = mkAdv behind_Prep (mkNP that_Det tree_N) ;
+		
+		Can = can_VV ;
+		Must = must_VV ;
 		
 		Past = mkTemp pastTense simultaneousAnt ;
 		Pres = mkTemp presentTense simultaneousAnt ;

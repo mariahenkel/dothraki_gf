@@ -42,6 +42,18 @@ concrete CatSimpleDot of CatSimple = CommonX ** open ResDot in {
 		
 		V = Verb ;
 		V2 = Verb ** {objCase : Case} ;
+		
+		-- We currently use the category VV (verbs with a verb phrase complement) only for constructions
+		-- that use auxiliaries in English (can, must, should). These are rendered as non-inflecting
+		-- particles in Dothraki, so for this purpose, it is sufficient to define it as below.
+		-- Obviously, this should be considered a temporary solution.
+		-- Not all VV verbs (want to do sth, start to do sth, bother to do sth, decide to do sth etc) can be 
+		-- rendered just as particles in Dothraki, but so far, information on how such constructions work
+		-- in Dothraki is very scarce (they seem to be rendered as subordinate clauses, i.e.
+		-- "The Khaleesi wants to eat something different" -- "Khaleesi zala meme adakha esinakh" --
+		-- literally "The Khaleesi wants that she eats something different"). 
+		VV = {s : Str} ;
+		
 		VPSlash = Verb ** {objCase : Case ; subjpost : Str} ;
 		VP = Verb ** {compl : Str; subjpost : Str} ;
 
