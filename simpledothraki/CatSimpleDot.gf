@@ -41,8 +41,9 @@ concrete CatSimpleDot of CatSimple = CommonX ** open ResDot in {
 		AP = {s : Number => ACase => Str} ;
 		
 		V = Verb ;
-		V2, VPSlash = Verb ** {objCase : Case} ;
-		VP = Verb ** {compl : Str} ;
+		V2 = Verb ** {objCase : Case} ;
+		VPSlash = Verb ** {objCase : Case ; subjpost : Str} ;
+		VP = Verb ** {compl : Str; subjpost : Str} ;
 
 		Comp = {s : VForm => Str} ; 
 }
