@@ -222,11 +222,17 @@ resource ParadigmsSimpleDot = open
             x => x + "an"
         } ;
 
-    mkA : Str -> A = \haj -> let {compar = postfixA (prefixA haj)} in lin A { s= table {
-        Posit => mkAnc haj ;
-        Compar => mkAnc compar ;
-        Superl => mkAnc (compar + "az")
-    }} ;
+    mkA : Str -> A = \haj -> let {compar = postfixA (prefixA haj)} in lin A { 
+    	s = table {
+        	Posit => mkAnc haj ;
+        	Compar => mkAnc compar ;
+        	Superl => mkAnc (compar + "az")
+    	} ;
+    	v = mkV (case haj of {
+    		samva@(samv + ("a"|"e"|"i"|"o")) => samva + "lat" ;
+    		_ => haj + "at"
+    	}) ;
+    } ;
 	
 	mkPrep : Str -> Case -> Prep = \s,c -> lin Prep {s = s; c = c} ;
 }

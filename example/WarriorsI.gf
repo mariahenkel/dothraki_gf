@@ -56,6 +56,8 @@ incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
 
         Hot = mkAP hot_A;
         Broken = mkAP broken_A ;
+        
+        Is actor prop = mkCl actor prop ;
 
 		Relation action actor2 = mkVP action actor2 ;
 

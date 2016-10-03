@@ -24,7 +24,9 @@ abstract Warriors = {
 
 		Zero : SpecActor -> SpecActor -> Comment ;
 		
-		Aux : Mode -> Action -> Action ; 
+		Aux : Mode -> Action -> Action ;
+		
+		Is : SpecActor -> Prop -> Comment ; 
 
 
 		The, This, That, These, Those : Detr ;

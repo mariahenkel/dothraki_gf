@@ -37,8 +37,13 @@ concrete CatSimpleDot of CatSimple = CommonX ** open ResDot in {
 		RCl = {s : ResDot.Tense => Anteriority => Polarity => Animacy => Number => Str } ;
 		RS = {s : Animacy => Number => Str } ;
 
-		A = {s : Degree => Number => ACase => Str} ;
-		AP = {s : Number => ACase => Str} ;
+		-- Sentences like "the food is hot" have to be expressed in Dothraki, by deriving 
+		-- a verb "afazhat" ("to be hot") from the adjective "afazh" ("hot"). Therefore,
+		-- in order to be able to implement a function like mkCl : NP -> AP -> Cl, we need
+		-- to derive all the corresponding verb forms as part of the A category. 
+		A = {s : Degree => Number => ACase => Str ; v : Verb } ;
+		
+		AP = {s : Number => ACase => Str ; v : Verb } ;
 		
 		V = Verb ;
 		V2 = Verb ** {objCase : Case} ;

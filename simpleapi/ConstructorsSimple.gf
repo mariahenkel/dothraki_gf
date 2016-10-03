@@ -192,6 +192,10 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       = \x,y -> PredVP x (UseComp (CompNP y)) ; --% 
       mkCl : NP -> VP -> Cl   -- she always sleeps   --:
       = PredVP  ; --%
+      mkCl : NP -> A  -> Cl    -- she is old
+        = \x,y -> PredVP x (UseComp (CompAP (PositA y))) ; --%   
+      mkCl : NP -> AP -> Cl    -- she is very old 
+		= \x,y -> PredVP x (UseComp (CompAP y)) ; --% 
       } ; 
 
      mkRS = overload { --%
@@ -236,6 +240,12 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       = \ip,np,v -> RelSlash ip (SlashVP np (SlashV2a v)) ; --%
       mkRCl : RP -> ClSlash -> RCl         -- whom she loves today   --:   
       = RelSlash   ; --% 
+      mkRCl : RP -> A  -> RCl    -- who is old
+        = \x,y -> RelVP x (UseComp (CompAP (PositA y))) ; --%   
+      mkRCl : RP -> AP -> RCl    -- who is very old 
+		= \x,y -> RelVP x (UseComp (CompAP y)) ; --% 
+      mkRCl : RP -> NP -> RCl    -- who is the man   
+        = \x,y -> RelVP x (UseComp (CompNP y)) ; --%   
       } ; --% 
 
     which_RP : RP                        -- which/who  --:
@@ -253,6 +263,10 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       = ComplVV   ; --% 
       mkVP : VP -> Adv -> VP          -- sleep here   --: 
       = AdvVP     ; --% 
+      mkVP : A -> VP               -- be warm 
+      = \a -> UseComp (CompAP (PositA a)) ; --% 
+      mkVP : AP -> VP              -- be warm 
+      = \a -> UseComp (CompAP a)   ; --% 
        } ; --% 
 
     passiveVP = overload { --%
@@ -263,6 +277,13 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       -- passiveVP : VPSlash -> VP --: --%
 
       } ; --% 
+
+   mkComp = overload { --%
+     mkComp : AP -> Comp -- very old --:
+     = CompAP ; --%
+     mkComp : NP -> Comp -- this man --:
+     = CompNP ; --%
+     } ; --%
 
 
     mkNP = overload { 

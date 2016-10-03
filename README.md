@@ -6,7 +6,6 @@ Dothraki Nouns : text2mindmap.com/B7b25jR *updated*
 TO DO
 
 * rename files, restructure (resource grammar style)
-* auxiliaries [maybe]
 * more test cases for epenthesis
 * the warrior is hot
 * translate vocabulary
@@ -42,3 +41,4 @@ DONE
 * mkN : Str -> Str -> Animacy -> N
 * PN: proper names
 * passive voice 
+* "can" and "must"

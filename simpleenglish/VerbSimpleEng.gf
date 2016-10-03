@@ -20,6 +20,7 @@ concrete VerbSimpleEng of VerbSimple = CatSimpleEng ** open ResSimpleEng, Prelud
       } ;
 
     CompNP np = {s = \\_ => np.s ! NPAcc} ;
+    CompAP ap = ap ;
     UseComp comp = insertObj comp.s (predAux auxBe) ;
 
 }
