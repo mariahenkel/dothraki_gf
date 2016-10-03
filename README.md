@@ -7,9 +7,7 @@ TO DO
 
 * rename files, restructure (resource grammar style)
 * auxiliaries [maybe]
-* relativising objects 
 * more test cases for epenthesis
-* mkN str -> str -> animacy -> N
 * the warrior is hot
 * translate vocabulary
 * PN: proper nouns 

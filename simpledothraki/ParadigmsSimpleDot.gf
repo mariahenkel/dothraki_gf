@@ -82,9 +82,15 @@ resource ParadigmsSimpleDot = open
 			os => (mk3Ni os os (os + "i"))
 		}
 	} ;
+	
+	mk2N : Str -> Str -> Animacy -> N = \nom,acc,a -> case a of {
+		Anim => mk1N nom Anim ;
+		Inanim => mk2Ni nom acc
+	} ;
 
     mkN = overload {
     	mkN : Str -> Animacy -> N = mk1N ;
+    	mkN : Str -> Str -> Animacy -> N = mk2N ;
     	mkN : Str -> Str -> N = mk2Ni
     } ;
     
