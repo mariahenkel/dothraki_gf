@@ -13,6 +13,9 @@ abstract Warriors = {
 		
 		Exist : SpecActor -> Comment ;
 		
+		Passive : TrAction -> Action ;
+		PassiveBy : TrAction -> SpecActor -> Action ;
+		
 		Spec : Detr -> Actor -> SpecActor ;
 		
 		Rel : Actor -> Action -> Temp -> Pol -> Actor ;

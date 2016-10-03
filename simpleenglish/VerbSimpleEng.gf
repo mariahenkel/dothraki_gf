@@ -9,6 +9,8 @@ concrete VerbSimpleEng of VerbSimple = CatSimpleEng ** open ResSimpleEng, Prelud
 
     AdvVP vp adv = insertObj (\\_ => adv.s) vp ;
 
+    PassV2 v = insertObj (\\_ => v.s ! VPPart ++ v.p) (predAux auxBe) ;
+
     SlashV2a v = predVc v ;
     ComplSlash vp np = case vp.gapInMiddle of {
       True  => insertObjPre (\\_ => vp.c2 ++ np.s ! NPAcc) vp ;

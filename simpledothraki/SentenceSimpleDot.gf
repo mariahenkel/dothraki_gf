@@ -3,7 +3,8 @@
 concrete SentenceSimpleDot of SentenceSimple = CatSimpleDot ** open ResDot in {
 lin
 	PredVP np vp = {s = \\t,a,p => let vf = (tapaToVForm t a p np.agr) in 
-		np.s!Nom ++ 
+		np.s!Nom ++
+		vp.subjpost ++ 
 		case <t,a> of {
 			<Present,Anter> => "ray" ; 		-- the perfect tense marker
 			_ => []		
@@ -25,7 +26,7 @@ lin
 			Neg => "vos" 
 		} ++
 		vpsl.s!vf ;
-		subj = np.s!Nom ;
+		subj = np.s!Nom ++ vpsl.subjpost;
 		objCase = vpsl.objCase
 	} ;
 

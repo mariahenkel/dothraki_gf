@@ -40,4 +40,5 @@ DONE
 * vtr to V2 and V3, v to V and V2
 * relativizing objects
 * mkN : Str -> Str -> Animacy -> N
-* PN: proper names 
+* PN: proper names
+* passive voice 

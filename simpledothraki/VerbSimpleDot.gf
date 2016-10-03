@@ -6,6 +6,8 @@ lin
     
     AdvVP vp adv = vp ** {compl = vp.compl ++ adv.s} ;
     SlashV2a v = v ** {subjpost = []} ;
+    
+    PassV2 v = v ** {compl = []; subjpost = "nem"} ;
 	
     ComplSlash vpSlash np = vpSlash ** {compl = np.s!vpSlash.objCase} ;
 

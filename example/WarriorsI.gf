@@ -68,6 +68,9 @@ incomplete concrete WarriorsI of Warriors = open SyntaxSimple, LexWarriors in {
 
 		Exist actor = mkCl actor ;
 		
+		Passive traction = passiveVP traction ;
+		PassiveBy traction byActor = passiveVP traction byActor ;
+		
 		Rel actor action t p = mkCN actor (mkRS t p (mkRCl which_RP action)) ;
 
 		RelObj actor traction t p a = mkCN actor (mkRS t p (mkRCl which_RP a traction)) ;

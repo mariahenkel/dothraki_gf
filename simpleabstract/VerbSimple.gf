@@ -13,5 +13,6 @@ abstract VerbSimple = CatSimple ** {
     UseComp  : Comp -> VP ;            -- be warm
     CompNP   : NP  -> Comp ;            -- (be) the man
 
+    PassV2   : V2 -> VP ;               -- be loved
 
 }

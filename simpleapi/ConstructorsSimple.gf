@@ -251,6 +251,16 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       = AdvVP     ; --% 
        } ; --% 
 
+    passiveVP = overload { --%
+      passiveVP : V2 ->       VP   -- be loved
+      = PassV2 ; --%  
+      passiveVP : V2 -> NP -> VP   -- be loved by her 
+      = \v,np -> (AdvVP (PassV2 v) (PrepNP by8agent_Prep np)) ; --%
+      -- passiveVP : VPSlash -> VP --: --%
+
+      } ; --% 
+
+
     mkNP = overload { 
       mkNP : Det -> CN -> NP      -- the first old man   --:
           =  DetCN    ; --%   
