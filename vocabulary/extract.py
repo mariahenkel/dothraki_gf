@@ -81,7 +81,7 @@ for datum in data:
             output_prep("V2", gram_info, word, anim, trans)
         elif w_type == "V2":
             output_prep("V2", gram_info, word, anim, trans)
-            output_prep("V3", gram_info, word, anim, trans)
+            # output_prep("V3", gram_info, word, anim, trans)
         else:
             output_prep(w_type, gram_info, word, anim, trans)
 
