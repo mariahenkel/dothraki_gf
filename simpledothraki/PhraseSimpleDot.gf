@@ -8,6 +8,6 @@ concrete PhraseSimpleDot of PhraseSimple = CatSimpleDot ** open Prelude, ResDot 
     NoPConj = {s = []} ;
 
     NoVoc = {s = []} ;
-    VocNP np = {s = frontComma ++ np.s ! Nom} ;
+    VocNP np = {s = frontComma ++ "zhey" ++ np.s ! Nom} ;
 
 }
