@@ -462,7 +462,7 @@
 *'''avvemolat''' [avvemoˈlat] <span id="avvemolat"></span>
 :''v.'' to kneel (something)
 :{{Vsup|avvemo}}
-*'''avvirsalat''' [avviɾsaˈlat] <span id="avvirsalat></span>
+*'''avvirsalat''' [avviɾsaˈlat] <span id="avvirsalat"></span>
 :''vtr.'' to burn something
 :{{Vsup|avvirsa}}
 *'''avvitisherat''' [avvitiʃeˈɾat] <span id="avvitisherat"></span>
@@ -593,7 +593,7 @@
 :{{Vsup|chil}}
 *'''chilay''' [t͡ʃiˈlaj] <span id="chilay"></span>
 :''adj.'' lying, supine
-*'''chilolat''' [t͡ʃiloˈlat] <span id="chilolat"></span
+*'''chilolat''' [t͡ʃiloˈlat] <span id="chilolat"></span>
 :''v.'' to lie (sexual meaning)
 :{{Vsup|chilo}}
 :{{Quote|Anha vos ochilok ma shafkoa vosecchi.|I will not lie with you.}}
@@ -1818,7 +1818,7 @@
 :''na.'' princess, daughter of a khal
 *'''khalasar''' [xalaˈsar] <span id="khalasar"></span>
 :''na.'' a horde loyal to a single khal
-*'''khaleeni''' [ˈxaleeni] <span id="khaleeni></span>
+*'''khaleeni''' [ˈxaleeni] <span id="khaleeni"></span>
 :''na.'' khal's widow
 *'''khaleesi''' [ˈxaleesi] <span id="khaleesi"></span>
 :''na.'' queen, wife of a khal
@@ -1843,7 +1843,7 @@
 *'''khiro''' [ˈxiɾo] <span id="khiro"></span>
 :''ni.'' flag
 :{{Nsup|khir}}
-*'''khirrof''' [xiˈrof] <span id="khirrof''></span>
+*'''khirrof''' [xiˈrof] <span id="khirrof"></span>
 :''ni.'' dangler
 :''ni.'' penis, dick (jocular)
 :{{Quote|Shafka laz addiwee khirrof anni.|You can suck my dick.}}

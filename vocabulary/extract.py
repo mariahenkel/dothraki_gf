@@ -61,7 +61,7 @@ for datum in data:
         trans = trans.replace('to ','', 1)
     
     for type_lex in type_lexicon:
-        if type_lex[0] in w_type:
+        if type_lex[0] == w_type.strip():
             if type_lex[0] == 'na.':
                 anim = 'animate'
             elif type_lex[0] == 'ni.':
