@@ -44,9 +44,9 @@ Erklärung Ordnerstruktur
 
 With the current ... we are able to ... 
 
-Functions
+Functions (Vollst. Liste und Bild)
 
-Vocabulary Extractor Erklärung (1644 words in use)
+The vocabulary extractor, a supporting python script, was written to add a relatively large number of words to our dictionary in a short amount of time. It takes the source code of the Dothraki vocabulary site (Ice and Fire Wiki, 2016) as input, extracts words and their translations from it and transforms them into the right format, needed for the resource library. For example, the entry "ador [aˈdor], ni. chair" will create the three output strings "ador_N = mkN "ador" inanimate;", "chair_N = mkN "chair";" and "ador_N = chair_N;" -- one entry for the Dothraki linearization, one entry for the English linearization and one entry for the dictionary. This way, we were able to add 1644 words to our dictionary, and will be able to add more while the resource grammar is expanding.
 
 #### 2.4 Examples
 GF + Dothraki Grammar
