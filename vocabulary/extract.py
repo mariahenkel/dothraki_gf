@@ -16,8 +16,7 @@ type_lexicon = [
     ('na.', 'N'),
     ('v.', 'V'), # beides: V, V2 
     ('vtr.', 'V2'), # beides: V2, V3
-    ('vin.', 'V'),
-    ('pn.', 'PN')] 
+    ('vin.', 'V')] 
 
 def output_prep(w_type, gram_info, word, anim, trans):
     output_org.append(orig_str.format(w_type=w_type,
