@@ -30,7 +30,10 @@ lin
 		objCase = vpsl.objCase
 	} ;
 
-    UseCl temp pol cl = {s = cl.s!temp.t!temp.a!pol.p} ;
+    UseCl temp pol cl = {s = temp.s ++ pol.s ++ cl.s!temp.t!temp.a!pol.p} ;
+    UseQCl temp pol cl = {
+      s = "hash" ++ temp.s ++ pol.s ++ cl.s ! temp.t ! temp.a ! pol.p
+    } ;
     UseRCl t p cl = {
       s = cl.s ! t.t ! t.a ! p.p 
     } ;

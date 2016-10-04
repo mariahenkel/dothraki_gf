@@ -14,6 +14,9 @@ concrete SentenceSimpleEng of SentenceSimple = CatSimpleEng ** open Prelude, Res
     UseCl  t p cl = {
       s = t.s ++ p.s ++ cl.s ! t.t ! t.a ! ctr p.p ! oDir
     } ;
+    UseQCl t p cl = {
+      s = \\q => t.s ++ p.s ++ cl.s ! t.t ! t.a ! ctr p.p ! q
+    } ;
     UseRCl t p cl = {
       s = \\r => t.s ++ p.s ++ cl.s ! t.t ! t.a ! ctr p.p ! r ;
       c = cl.c

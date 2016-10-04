@@ -18,8 +18,8 @@ concrete CatSimpleDot of CatSimple = CommonX ** open ResDot in {
 		
 		Prep = {s : Str ; c : Case} ;
 		
-		S = {s : Str} ;
-		Cl = {s : ResDot.Tense => Anteriority => Polarity => Str} ;
+		S, QS = {s : Str} ;
+		Cl, QCl = {s : ResDot.Tense => Anteriority => Polarity => Str} ;
 		
 		-- ClSlash (clause with a missing object) is used in relative sentences 
 		-- ("the goat whom the warrior kisses") and questions ("Whom does the warrior kiss?")

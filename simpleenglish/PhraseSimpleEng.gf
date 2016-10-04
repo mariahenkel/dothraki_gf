@@ -5,6 +5,7 @@ concrete PhraseSimpleEng of PhraseSimple = CatSimpleEng ** open Prelude, ResSimp
   lin
     PhrUtt pconj utt voc = {s = pconj.s ++ utt.s ++ voc.s} ;
     UttS s = s ;
+    UttQS qs = {s = qs.s ! QDir} ;
     
     NoPConj = {s = []} ;
 

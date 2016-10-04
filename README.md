@@ -7,7 +7,6 @@ TO DO
 
 * rename files, restructure (resource grammar style)
 * more test cases for epenthesis
-* the warrior is hot
 * translate vocabulary
 * idiomatic dothraki application grammar
 * DOCUMENTATION
@@ -42,3 +41,4 @@ DONE
 * PN: proper names
 * passive voice 
 * "can" and "must"
+* the warrior is hot

@@ -9,6 +9,7 @@ concrete CatSimpleEng of CatSimple = CommonX - [Pol] ** open ResSimpleEng, Prelu
     Pol = {s : Str ; p : CPolarity} ;
 
     S  = {s : Str} ;
+    QS = {s : QForm => Str} ;
     RS = {s : Agr => Str ; c : NPCase} ; -- c for it clefts
 
     Cl = {s : ResSimpleEng.Tense => Anteriority => CPolarity => Order => Str} ;
@@ -16,6 +17,9 @@ concrete CatSimpleEng of CatSimple = CommonX - [Pol] ** open ResSimpleEng, Prelu
       s : ResSimpleEng.Tense => Anteriority => CPolarity => Order => Str ;
       c2 : Str
       } ;
+
+    QCl = {s : ResSimpleEng.Tense => Anteriority => CPolarity => QForm => Str} ;
+
     RCl = {
       s : ResSimpleEng.Tense => Anteriority => CPolarity => Agr => Str ; 
       c : NPCase

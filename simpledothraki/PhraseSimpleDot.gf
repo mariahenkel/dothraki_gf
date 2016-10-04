@@ -4,6 +4,7 @@ concrete PhraseSimpleDot of PhraseSimple = CatSimpleDot ** open Prelude, ResDot 
 	lin
     PhrUtt pconj utt voc = {s = pconj.s ++ utt.s ++ voc.s} ;
     UttS s = s ;
+    UttQS s = s ;
     
     NoPConj = {s = []} ;
 

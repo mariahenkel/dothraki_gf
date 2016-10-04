@@ -5,6 +5,7 @@ abstract GrammarSimple =
   AdverbSimple,
   SentenceSimple, 
   PhraseSimple,
+  QuestionSimple,
   RelativeSimple,
   Text,
   StructuralSimple,

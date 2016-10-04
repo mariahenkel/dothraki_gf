@@ -5,6 +5,8 @@ abstract CatSimple = Common ** {
 	S ;
 	RS ;
 	Cl ;
+	QCl ;
+	QS ;
 	RCl ;
 	RP ;
 	ClSlash ;

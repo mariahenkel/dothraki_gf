@@ -128,6 +128,8 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
     mkUtt = overload { 
       mkUtt : S -> Utt                     -- she slept   --:  
       = UttS ; --%  
+      mkUtt : QS -> Utt                    -- who didn't sleep   --:
+      = UttQS   ; --%  
       mkUtt : Cl -> Utt                    -- she sleeps  
       = \c -> UttS (TUseCl TPres ASimul PPos c) ; --%  
     } ; --%
@@ -388,6 +390,7 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       mkCN :  N -> AP  -> CN     -- very big house --%
       = \x,y -> AdjCN y (UseN x)    ; --% 
       } ; --% 
+      
     mkAdv = overload { --%
 
       mkAdv : Prep -> NP -> Adv          -- in the house --:   
@@ -395,7 +398,51 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
 
       } ; --% 
 	  
+	  
+    mkQS = overload { --%
+
+-- Just like a sentence $S$ is built from a clause $Cl$, 
+-- a question sentence $QS$ is built from
+-- a question clause $QCl$ by fixing tense, anteriority and polarity. 
+-- Any of these arguments can be omitted, which results in the 
+-- default (present, simultaneous, and positive, respectively).
+
+      mkQS : QCl  -> QS  --%
+      = TUseQCl TPres ASimul PPos ; --%  
+      mkQS : Tense -> QCl -> QS  --%  
+      =  \t -> TUseQCl t ASimul PPos ; --% 
+      mkQS : Ant -> QCl -> QS  --%
+      = \a -> TUseQCl TPres a PPos ; --% 
+      mkQS : Pol -> QCl -> QS  --%
+      = \p -> TUseQCl TPres ASimul p ; --%  
+      mkQS : Tense -> Ant -> QCl -> QS --%
+      = \t,a -> TUseQCl t a PPos ; --% 
+      mkQS : Tense -> Pol -> QCl -> QS --%
+      = \t,p -> TUseQCl t ASimul p ; --% 
+      mkQS : Ant -> Pol -> QCl -> QS --%
+      = \a,p -> TUseQCl TPres a p ; --% 
+      mkQS : (Tense) -> (Ant) -> (Pol) -> QCl -> QS -- who wouldn't have slept 
+      = TUseQCl ; --%
+
+-- Since 'yes-no' question clauses can be built from clauses (see below), 
+-- we give a shortcut
+-- for building a question sentence directly from a clause, using the defaults
+-- present, simultaneous, and positive.
+
+      mkQS : Cl -> QS                    
+      = \x -> TUseQCl TPres ASimul PPos (QuestCl x) ; --%  
+      } ; --% 
+
+	  
+     mkQCl = overload { --%
+
+      mkQCl : Cl -> QCl -- does she sleep  --:  
+      = QuestCl ; --%  
+
+	 } ; --%
+	  
 	TUseCl  : Tense -> Ant -> Pol ->  Cl ->  S = \t,a -> UseCl  (TTAnt t a) ; 
+    TUseQCl : Tense -> Ant -> Pol -> QCl -> QS = \t,a -> UseQCl (TTAnt t a) ; 
     TUseRCl : Tense -> Ant -> Pol -> RCl -> RS = \t,a -> UseRCl (TTAnt t a) ; 
 	ComplV2 : V2 -> NP -> VP = \v,np -> ComplSlash (SlashV2a v) np ;
 
