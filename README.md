@@ -8,8 +8,9 @@ TO DO
 * rename files, restructure (resource grammar style)
 * more test cases for epenthesis
 * translate vocabulary
-* idiomatic dothraki application grammar
+* idiomatic dothraki application grammar -> ask lecturers about this
 * DOCUMENTATION
+* get rid of s.o./s.b. in dictionary etc.
 
 
 DONE
