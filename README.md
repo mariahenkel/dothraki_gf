@@ -2,7 +2,9 @@
 Building a resource grammar for Dothraki. Please note that this project is still under construction.
 
 More information about Grammatical Framework: [http://www.grammaticalframework.org/](http://www.grammaticalframework.org/)
+
 Documentation of this project: [https://github.com/mahen2/dothraki_gf/tree/master/documentation](https://github.com/mahen2/dothraki_gf/tree/master/documentation)
+
 Dothraki Nouns Mindmap: [text2mindmap.com/B7b25jR](text2mindmap.com/B7b25jR)
 
 ### TO DO
