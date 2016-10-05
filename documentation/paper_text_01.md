@@ -1,4 +1,4 @@
-### 1 Introduction
+﻿### 1 Introduction
 Grammatical Framework (GF) is a functional programming language, created in 1998 (Ranta, 2011) and designed to write (natural) language grammars. As GF is “working from a language-independent representation of meaning” (Wikipedia, 2016) it can be used to generate or parse text in different languages at the same time. One of its functions is to translate between languages. 
 Since GF uses a symbolic approach to process and translate language, in most cases its translations are more precise than those of statistical tools we use in everyday life (Brown & Frederking, 1995). For example, the “Google Translate” service (Google, 2016) will produce ungrammatical sentences as soon as the input is too complicated while the GF translator (Grammatical Framework, 2016a) has no problems producing a correct translation (see Table 1) in many cases. 
 
@@ -27,29 +27,27 @@ made in this work is supplemented by a substantial effort in the library itself.
 The code included in the library is more than twice in size compared to the
 implementation of GF. (Ranta, 2009)
 
-The provision of the GF resource grammar library as an easy-to-use tool may, one the one hand, be more time consuming, but, on the other hand, enables more people to use it - even without the expert knowledge. 
+The provision of the GF resource grammar library as an easy-to-use tool may, on the one hand, be more time consuming, but, on the other hand, enables more people to use it - even without the expert knowledge. Ranta (2011, p. 200) also recommends to add new languages to the library, instead of directly writing an application grammar for them, as they can “serve an unlimited number of applications” and because “the existing library specification will help to identify the linguistic issues and avoid pitfalls.” He estimates, that an interval of three to six months of full-time work is needed for an experienced GF programmer to implement a new resource grammar (p. 222).
+As the workload of building a full resource grammar exceeds the time frame for this term paper, the first big milestone of our project is to create a mini resource grammar, similar to the Italian mini resource grammar, an example of Ranta's book (2011, pp. 237-245). This first milestone is to lay the foundation for a full resource grammar. Other than in Ranta's example, we already use the categories and structure of a full resource grammar (see Figure 1) to make a later expansion easier. 
 
-Stats: Wie viele Funktionen in einer Resource Grammar, wie lange dauert sowas? (Buch)
-
-As the workload of building a full resource grammar exeeds the time frame for this term paper, the first big milestone of our project is to create a mini resource grammar, similar to the Italian mini resource grammar, an example in chapter 9 of Ranta's book ("Chapter Title", 2011), to lay the foundation for a full resource grammar. Other than in Ranta's example, we use the categories and structure of a full resource grammar (see Figure 1) to make a later expansion easier. 
-
-Figure 1   
+Figure 1
 
 #### 2.3 Program Structure and Functions
 Just like the GF repositories (Détrez & Camilleri, 2016), our full project is hosted on GitHub (Henkel & Kuckuck, 2016) so that others may see, use and contribute to it. It consists of the following parts:
 
-Aufbau des Projekts (Ordnerstruktur, vorher noch umbenennen?)
+* Aufbau des Projekts (Ordnerstruktur, vorher noch umbenennen?)
 
-Erklärung Ordnerstruktur
+* Erklärung Ordnerstruktur
 
 With the current ... we are able to ... 
 
-Functions (Vollst. Liste und Bild)
+* Functions (Vollst. Liste und Bild)
 
 The vocabulary extractor, a supporting python script, was written to add a relatively large number of words to our dictionary in a short amount of time. It takes the source code of the Dothraki vocabulary site (Ice and Fire Wiki, 2016) as input, extracts words and their translations from it and transforms them into the right format, needed for the resource library. For example, the entry "ador [aˈdor], ni. chair" will create the three output strings "ador_N = mkN "ador" inanimate;", "chair_N = mkN "chair";" and "ador_N = chair_N;" -- one entry for the Dothraki linearization, one entry for the English linearization and one entry for the dictionary. This way, we were able to add 1644 words to our dictionary, and will be able to add more while the resource grammar is expanding.
 
 #### 2.4 Examples
-GF + Dothraki Grammar
+GF + Dothraki Grammar + Output Examples (+ Idiomatic Application Grammar?)
+
 
 ### 3 Discussion
 #### 3.1 Limitations
