@@ -7,6 +7,7 @@ abstract PhraseSimple = CatSimple ** {
     UttQS     : QS  -> Utt ;                -- is it good
     
     NoPConj   : PConj ;                      
+    PConjConj : Conj -> PConj ;             -- and
 
 -- The vocative is optional. Any noun phrase can be made into vocative,
 -- which may be overgenerating (e.g. "I").

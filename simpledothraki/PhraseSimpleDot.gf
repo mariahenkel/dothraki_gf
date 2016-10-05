@@ -7,7 +7,9 @@ concrete PhraseSimpleDot of PhraseSimple = CatSimpleDot ** open Prelude, ResDot 
     UttQS s = s ;
     
     NoPConj = {s = []} ;
-
+    PConjConj conj = {s = conj.p} ;
+    
+    
     NoVoc = {s = []} ;
     VocNP np = {s = frontComma ++ "zhey" ++ np.s ! Nom} ;
 

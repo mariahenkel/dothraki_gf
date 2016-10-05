@@ -110,6 +110,8 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
 -- Any conjunction can be used as a phrasal conjunction.
 -- More phrasal conjunctions are defined in $Structural$.
 
+      mkPConj : Conj -> PConj   -- and   --:
+        = PConjConj ; --%
       noPConj : PConj --: --% 
         = NoPConj ; --%
 
@@ -297,6 +299,10 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       	  = UsePN    ; --%  
       mkNP : Pron -> NP           -- he  --:
       	  = UsePron  ; --%  
+      mkNP : Conj -> NP -> NP -> NP 
+      = \c,x,y -> ConjNP c (BaseNP x y) ; --% 
+      mkNP : Conj -> ListNP -> NP --: 
+      = \c,xy -> ConjNP c xy ; --% 
       } ; --% 
 
       i_NP : NP          -- I

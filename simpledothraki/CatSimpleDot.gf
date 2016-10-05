@@ -69,5 +69,5 @@ concrete CatSimpleDot of CatSimple = CommonX - [IAdv] ** open ResDot in {
 		                            -- Finne me remeka? -- Where does he sleep?
 		                            -- Anha nesok rekke remeka me. -- I don't know where he sleeps.
 		                            
-		Conj = {s: Str; p: Str} ;   -- Some conjuctions change when used as phrasal conjuctions (ma/majin)
+		Conj = {s1: Str; s2: Str; p: Str; n : Number} ;   -- Some conjuctions change when used as phrasal conjuctions (ma/majin)
 }

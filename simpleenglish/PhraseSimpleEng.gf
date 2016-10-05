@@ -8,6 +8,7 @@ concrete PhraseSimpleEng of PhraseSimple = CatSimpleEng ** open Prelude, ResSimp
     UttQS qs = {s = qs.s ! QDir} ;
     
     NoPConj = {s = []} ;
+    PConjConj conj = {s = conj.s2} ; ---
 
     NoVoc = {s = []} ;
     VocNP np = {s = frontComma ++ np.s ! npNom} ;

@@ -8,6 +8,7 @@ concrete GrammarSimpleEng of GrammarSimple =
   PhraseSimpleEng,
   QuestionSimpleEng,
   RelativeSimpleEng,
+  ConjunctionSimpleEng,
   TextX - [Pol,PPos,PNeg],
   StructuralSimpleEng,
   IdiomSimpleEng,
