@@ -177,6 +177,10 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       = \t,a -> TUseCl t a ;   --%  
       mkS : Temp -> Pol -> Cl -> S -- she wouldn't have slept  --:
       = UseCl ; --%
+      mkS : Conj -> S -> S -> S   -- she sleeps and I run    
+      = \c,x,y -> ConjS c (BaseS x y) ; --% 
+      mkS : Conj -> ListS  -> S   -- she sleeps, I run and you walk  --:
+      = \c,xy -> ConjS c xy ; --% 
       } ;
 
     mkCl = overload { 
@@ -222,6 +226,10 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       = TUseRCl ; --% 
       mkRS : Temp -> (Pol) -> RCl -> RS -- that wouldn't have slept 
       = UseRCl ; --% 
+      mkRS : Conj -> RS -> RS -> RS -- who sleeps and whose mother runsx
+      = \c,x,y -> ConjRS c (BaseRS x y) ; --% 
+      mkRS : Conj -> ListRS -> RS -- who sleeps, whom I see and who sleeps --:
+      = \c,xy -> ConjRS c xy ; --% 
        } ; --% 
  
  

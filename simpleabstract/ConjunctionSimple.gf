@@ -17,8 +17,8 @@ abstract ConjunctionSimple = CatSimple ** {
 --2 Rules
 
   fun
-    -- ConjS    : Conj -> [S] -> S ;       -- "he walks and she runs"
-    -- ConjRS   : Conj -> [RS] -> RS ;     -- "who walks and whose mother runs"
+    ConjS    : Conj -> [S] -> S ;       -- "he walks and she runs"
+    ConjRS   : Conj -> [RS] -> RS ;     -- "who walks and whose mother runs"
     -- ConjAP   : Conj -> [AP] -> AP ;     -- "cold and warm"
     ConjNP   : Conj -> [NP] -> NP ;     -- "she or we"
     -- ConjAdv  : Conj -> [Adv] -> Adv ;   -- "here or there"
@@ -32,8 +32,8 @@ abstract ConjunctionSimple = CatSimple ** {
 -- These categories are only used in this module.
 
   cat
-    --[S]{2} ; 
-    --[RS]{2} ; 
+    [S]{2} ; 
+    [RS]{2} ; 
     --[Adv]{2} ;
     --[AdV]{2} ;
     [NP]{2} ; 

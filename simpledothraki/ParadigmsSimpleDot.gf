@@ -258,9 +258,9 @@ resource ParadigmsSimpleDot = open
     mkPConj : Str -> PConj = \s -> lin PConj (ss s);
     
     mkConj = overload {
-    	mkConj : Str -> Conj = \s -> lin Conj {s1,s2 = s; p = s; n = Pl};
-    	mkConj : Str -> Number -> Conj = \s,n -> lin Conj {s1,s2 = s; p = s; n = n};
-    	mkConj : Str -> Str -> Conj = \s,p -> lin Conj {s1,s2 = s; p = p; n = Pl} ;
+    	mkConj : Str -> Conj = \s -> lin Conj {s = s; p = s; n = Pl};
+    	mkConj : Str -> Number -> Conj = \s,n -> lin Conj {s = s; p = s; n = n};
+    	mkConj : Str -> Str -> Conj = \s,p -> lin Conj {s = s; p = p; n = Pl} ;
     } ;
     
     mkIAdv : Str -> Str -> IAdv = \s,small -> lin IAdv {s = s; small = small};
