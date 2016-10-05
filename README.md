@@ -5,7 +5,7 @@ More information about Grammatical Framework: [http://www.grammaticalframework.o
 
 Documentation of this project: [https://github.com/mahen2/dothraki_gf/tree/master/documentation](https://github.com/mahen2/dothraki_gf/tree/master/documentation)
 
-Dothraki Nouns Mindmap: [text2mindmap.com/B7b25jR](text2mindmap.com/B7b25jR)
+Dothraki Nouns Mindmap: [http://text2mindmap.com/B7b25jR](http://text2mindmap.com/B7b25jR)
 
 ### TO DO
 
