@@ -307,6 +307,10 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       	  = UsePN    ; --%  
       mkNP : Pron -> NP           -- he  --:
       	  = UsePron  ; --%  
+      mkNP : Pron -> CN -> NP   -- my old man
+          = \p,n -> DetCN (DetQuant (PossPron p) NumSg) n ; --% 
+      mkNP : Pron -> N  -> NP   -- my man
+          = \p,n -> DetCN (DetQuant (PossPron p) NumSg) (UseN n) ; --% 
       mkNP : Conj -> NP -> NP -> NP 
       = \c,x,y -> ConjNP c (BaseNP x y) ; --% 
       mkNP : Conj -> ListNP -> NP --: 
@@ -332,6 +336,15 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       they_NP : NP       -- they
       = mkNP they_Pron ;
 
+    mkDet = overload { --%
+
+      mkDet : Quant ->  Det       -- this  
+        = \q -> DetQuant q NumSg  ; --%  
+      mkDet : Pron -> Det     -- my
+        = \p -> DetQuant (PossPron p) NumSg ; --% 
+
+      } ; --% 
+
       the_Det   : Det -- the (house)
         = theSg_Det ; --% 
       a_Det     : Det -- a (house)
@@ -356,6 +369,11 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
 
     sgNum : Num = NumSg ;  
     plNum : Num = NumPl ;  
+
+    mkQuant = overload { --%
+      mkQuant : Pron -> Quant   -- my  --:
+      = PossPron ; --% 
+      } ; --% 
 
     the_Quant : Quant    -- the --:
       = DefArt ; --% 

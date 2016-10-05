@@ -133,7 +133,7 @@ lin
   } ;
 
 
-  every_Det = {s = \\_,_ => "ei" ; n = Pl} ;  -- "ei" does not seem to inflect at all.
+  every_Det = {s = \\_,_ => "ei" ; n = Pl ; post = []} ;  -- "ei" does not seem to inflect at all.
   											  -- Number agreement seems to be inconsistent in the corpus.
   											  -- Both "Ei zhavvorsa drivi" ("All the dragons are dead" with "drivi" showing plural agreement),
   											  -- and "Ei khal okke sen dothrakhqoy" ("Every khal chose three bloodriders" with both
@@ -149,7 +149,7 @@ lin
   	Gen => "loyi" ;
   	All => "loyaan" ;
   	Abl => "loyoon"
-  } ; n = Sg} ;
+  } ; n = Sg ; post = []} ;
                                                          
                                                          
   -- "san" is weird. It behaves like a determiner but supposedly "assigns genitive
@@ -160,7 +160,7 @@ lin
   	Gen => "sani" ;
   	All => "sanaan" ;
   	Abl => "sanoon"
-  } ; n = Pl} ;
+  } ; n = Pl ; post = []} ;
   
 
 

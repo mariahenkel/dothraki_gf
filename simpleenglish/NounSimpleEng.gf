@@ -23,6 +23,11 @@ concrete NounSimpleEng of NounSimple = CatSimpleEng ** open MorphoSimpleEng, Res
       hasNum = num.hasCard
       } ;
 
+    PossPron p = {
+      s = \\_,_ => p.s ! NCase Gen ;
+      sp = \\_,_,c => p.sp ! npcase2case c
+      } ;
+
     NumSg = {s = \\c => []; n = Sg ; hasCard = False} ;
     NumPl = {s = \\c => []; n = Pl ; hasCard = False} ;
 

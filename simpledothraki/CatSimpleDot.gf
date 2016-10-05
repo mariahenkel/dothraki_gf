@@ -14,7 +14,7 @@ concrete CatSimpleDot of CatSimple = CommonX - [IAdv] ** open ResDot in {
 								-- So, for now, the "numeral part" is only used to determine the number agreement
 								-- of the Quant part of Det. 
 		Quant = ResDot.Quant ;
-		Det = {s : Animacy => Case => Str ; n : Number } ;
+		Det = {s : Animacy => Case => Str ; n : Number ; post : Str } ;
 		
 		Prep = {s : Str ; c : Case} ;
 		

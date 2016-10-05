@@ -11,6 +11,7 @@ abstract NounSimple = CatSimple ** {
     NumSg   : Num ;
     NumPl   : Num ;
 	
+    PossPron : Pron -> Quant ;    -- my (house)
     DetQuant    : Quant -> Num ->        Det ;  -- these five
 
     UseN : N -> CN ;              -- house

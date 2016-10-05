@@ -17,9 +17,15 @@ resource ResDot = ParamX ** open Prelude in {
 	oper
 		Noun : Type = {s : Number => Case => Str ; a : Animacy ; p : Person } ;
 		
-		Verb : Type = {s : VForm => Str ; inf : Str ; part : Str} ;
+		Verb : Type = {s : VForm => Str ; inf : Str ; part : Str } ;
 		
-		Quant : Type = {s : QuForm => Case => Str } ;
+		-- In Dothraki, some determiners go before the subject ("jinak adra" -- "this turtle"),
+		-- others come after ("adra anni" -- "my turtle"). Conceivably (though examples of this
+		-- usage do not yet seem to exist), the determiner could consist of two parts, one
+		-- before, one after the noun ("akat adrasi anni"?? -- "my two turtles"), hence
+		-- the two fields here (from what we know, the postposition part does not seem to 
+		-- inflect, so for now it is simply a Str here; this might have to be changed later).
+		Quant : Type = {s : QuForm => Case => Str ; post : Str } ;
 				
 				
 		agrToVFormPN : Agr -> VFormPN = \a -> case a of {
@@ -135,7 +141,8 @@ resource ResDot = ParamX ** open Prelude in {
 					All => jin + "akea" ;
 					Abl => jin + "akoa"
 				}
-			}
+			} ;
+			post = []
 		} ;
 		
 		-- The rules for epenthetic -e in Dothraki are a little complex:
