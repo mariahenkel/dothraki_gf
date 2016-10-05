@@ -2,5 +2,5 @@ abstract LangSimple =
   GrammarSimple, 
   LexiconSimple
   ** {
-  flags startcat=Phr ;
+  flags startcat=Text ;
   } ;

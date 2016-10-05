@@ -14,14 +14,14 @@ concrete ConjunctionSimpleDot of ConjunctionSimple =
   lin
 
     ConjNP conj ss = conjunctDistrTable Case conj ss ** {
-      agr = Ag P3 Pl -- FIX
+      agr = conjAgr (Ag P3 conj.n) ss.agr
     } ;
 
 
 -- These fun's are generated from the list cat's.
 
-    BaseNP x y = twoTable Case x y ** {agr = Ag P3 Pl} ;
-    ConsNP xs x = consrTable Case comma xs x ** {agr = Ag P3 Pl} ;
+    BaseNP x y = twoTable Case x y ** {agr = conjAgr x.agr y.agr} ;
+    ConsNP xs x = consrTable Case comma xs x ** {agr = conjAgr xs.agr x.agr} ;
 
   lincat
     [NP] = {s1,s2 : Case => Str ; agr : Agr} ;

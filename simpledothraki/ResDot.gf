@@ -179,5 +179,14 @@ resource ResDot = ParamX ** open Prelude in {
 		
 		finalComma : Str = pre {"," | "." => []; "" => SOFT_BIND ++ ","; _ => []} ;
   		frontComma : Str = SOFT_BIND ++ "," ;
+  		
+  	conjAgr : Agr -> Agr -> Agr = \a0,b0 -> 
+  	  case a0 of {
+  	  	Ag p1 n1 => case b0 of {
+  	  		Ag p2 n2 => Ag (conjPerson p1 p2) (conjNumber n1 n2)
+  	  	}
+  	  } ;
+  		
+  		
 		
 }
