@@ -43,6 +43,19 @@ resource ParadigmsSimpleDot = open
     	mkV2 : Str -> V2 ; 					-- convenience method for transitive verbs assigning accusative case
     } ;
     
+    mkAdv : Str -> Adv ;
+    mkAdV : Str -> AdV ;
+    mkAdA : Str -> AdA ; 
+    mkAdN : Str -> AdN ;
+    
+    mkPConj : Str -> PConj ;
+    
+    mkConj : overload {
+    	mkConj : Str -> Conj ;
+    	mkConj : Str -> Str -> Conj ;
+    } ;
+    mkIAdv : Str -> Str -> IAdv ;
+    
     
     -- Implementation
     
@@ -235,4 +248,19 @@ resource ParadigmsSimpleDot = open
     } ;
 	
 	mkPrep : Str -> Case -> Prep = \s,c -> lin Prep {s = s; c = c} ;
+	
+	mkAdv : Str -> Adv = \s -> lin Adv (ss s);
+    mkAdV : Str -> AdV = \s -> lin AdV (ss s);
+    mkAdA : Str -> AdA = \s -> lin AdA (ss s);
+    mkAdN : Str -> AdN = \s -> lin AdN (ss s);
+
+    mkPConj : Str -> PConj = \s -> lin PConj (ss s);
+    
+    mkConj = overload {
+    	mkConj : Str -> Conj = \s -> lin Conj {s = s; p = s};
+    	mkConj : Str -> Str -> Conj = \s,p -> lin Conj {s = s; p = p} ;
+    } ;
+    
+    mkIAdv : Str -> Str -> IAdv = \s,small -> lin IAdv {s = s; small = small};
+    	
 }

@@ -1374,8 +1374,8 @@
 :''adv.'' one day (in the future)
 :{{Quote|Hash me vallayafa yera tihat mora hezhahhe?|Would you like to see them one day?}}
 *'''hilelat''' [hileˈlat] <span id="hilelat"></span>
-:''vtr.''' to dig
-:''vtr.''' to have sex, "to hit"
+:''vtr.'' to dig
+:''vtr.'' to have sex, "to hit"
 :{{Vsup|hile}}
 *'''himat''' [hiˈmat] <span id="himat"></span>
 :''vin.'' to clench

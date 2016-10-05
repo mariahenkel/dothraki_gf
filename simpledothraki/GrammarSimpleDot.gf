@@ -8,11 +8,11 @@ concrete GrammarSimpleDot of GrammarSimple =
   PhraseSimpleDot,
   QuestionSimpleDot,
   RelativeSimpleDot,
-  TextX,
+  TextX - [IAdv],
   StructuralSimpleDot,
   IdiomSimpleDot,
   AdjectiveSimpleDot,
-  TenseX
+  TenseX - [IAdv]
   ** open ResDot, Prelude in {
 	flags startcat = Phr ; unlexer = text ; lexer = text ;
 }

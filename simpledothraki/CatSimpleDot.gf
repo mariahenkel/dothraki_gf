@@ -1,6 +1,6 @@
 --# -path=.:../simpleabstract:../common
 
-concrete CatSimpleDot of CatSimple = CommonX ** open ResDot in {
+concrete CatSimpleDot of CatSimple = CommonX - [IAdv] ** open ResDot in {
 	lincat
 		N = Noun ;
 		CN = Noun ;
@@ -63,4 +63,11 @@ concrete CatSimpleDot of CatSimple = CommonX ** open ResDot in {
 		VP = Verb ** {compl : Str; subjpost : Str} ;
 
 		Comp = {s : VForm => Str} ; 
+		
+		IAdv = {s, small : Str} ;   -- interrogative adverbs seem to have two forms in Dothraki
+		                            -- depending on use:
+		                            -- Finne me remeka? -- Where does he sleep?
+		                            -- Anha nesok rekke remeka me. -- I don't know where he sleeps.
+		                            
+		Conj = {s: Str; p: Str} ;   -- Some conjuctions change when used as phrasal conjuctions (ma/majin)
 }

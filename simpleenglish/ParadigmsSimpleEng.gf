@@ -148,11 +148,23 @@ oper
   mkVV  : V -> VV ; -- e.g. want (to VP)
 
 
+  mkAdv : Str -> Adv ; -- e.g. today
+  mkAdV : Str -> AdV ; -- e.g. always
+  mkAdA : Str -> AdA ; -- e.g. quite
+  mkAdN : Str -> AdN ; -- e.g. approximately
+
   mkPrep : Str -> Prep ; -- e.g. "in front of"
   mkPost : Str -> Prep ; -- e.g. "ago"
   noPrep : Prep ;  -- no preposition
   prepV2 : V -> Prep -> V2 ;
   dirV2 : V -> V2 ;
+
+  mkConj : overload {
+    mkConj : Str -> Conj ;                  -- and (plural agreement) --%
+    mkConj : Str -> Number -> Conj ;        -- or (agrement number given as argument) --%
+    mkConj : Str -> Str -> Conj ;           -- both ... and (plural) --%
+    mkConj : Str -> Str -> Number -> Conj ; -- either ... or (agrement number given as argument) --%
+  } ;
 
   mkQuant : overload {
     mkQuant : (this, these : Str) -> Quant ; --%
@@ -336,6 +348,21 @@ oper
     mkV2  : V -> V2 = dirV2 ;
     mkV2  : Str -> V2 = \s -> dirV2 (regV s) ;
   }; 
+
+  mkConj = overload {
+    mkConj : Str -> Conj = \y -> mk2Conj [] y plural ;
+    mkConj : Str -> Number -> Conj = \y,n -> mk2Conj [] y n ;
+    mkConj : Str -> Str -> Conj = \x,y -> mk2Conj x y plural ;
+    mkConj : Str -> Str -> Number -> Conj = mk2Conj ;
+  } ;
+
+  mk2Conj : Str -> Str -> Number -> Conj = \x,y,n -> 
+    lin Conj (sd2 x y ** {n = n}) ;
+
+  mkAdv x = lin Adv (ss x) ;
+  mkAdV x = lin AdV (ss x) ;
+  mkAdA x = lin AdA (ss x) ;
+  mkAdN x = lin AdN (ss x) ;
 
   regA : Str -> A ;
 

@@ -27,5 +27,6 @@ abstract CatSimple = Common ** {
 	A ;
 	AP ;
     PN ;
+    Conj ;
 
 }

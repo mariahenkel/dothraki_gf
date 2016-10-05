@@ -39,6 +39,7 @@ concrete CatSimpleEng of CatSimple = CommonX - [Pol] ** open ResSimpleEng, Prelu
     Num  = {s : Case => Str ; n : Number ; hasCard : Bool} ;
     Quant = {s : Bool => Number => Str ; sp : Bool => Number => NPCase => Str} ;
 	
+    Conj = {s1,s2 : Str ; n : Number} ;
     Prep = {s : Str; isPre : Bool} ;
 
     V = Verb ; -- = {s : VForm => Str} ;

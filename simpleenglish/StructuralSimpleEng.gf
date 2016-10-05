@@ -83,5 +83,58 @@ lin
     typ = VVAux
     } ;
 
+
+  everywhere_Adv = mkAdv "everywhere" ;
+  here_Adv = mkAdv "here" ;
+  here7to_Adv = mkAdv ["to here"] ;
+  here7from_Adv = mkAdv ["from here"] ;
+  quite_Adv = mkAdv "quite" ;
+  somewhere_Adv = mkAdv "somewhere" ;
+  there_Adv = mkAdv "there" ;
+  there7to_Adv = mkAdv "there" ;
+  there7from_Adv = mkAdv ["from there"] ;
+
+  almost_AdA = mkAdA "almost" ;
+  almost_AdN = mkAdN "almost" ;
+  always_AdV = mkAdV "always" ;
+  how_IAdv = ss "how" ;
+  how8much_IAdv = ss "how much" ;
+  less_CAdv = C.mkCAdv "less" "than" ;
+  more_CAdv = C.mkCAdv "more" "than" ;
+  so_AdA = mkAdA "so" ;
+  too_AdA = mkAdA "too" ;
+  very_AdA = mkAdA "very" ;
+  when_IAdv = ss "when" ;
+  where_IAdv = ss "where" ;
+  why_IAdv = ss "why" ;
+  at_least_AdN = mkAdN "at least" ;
+  at_most_AdN = mkAdN "at most" ;
+  as_CAdv = C.mkCAdv "as" "as" ;
+
+  and_Conj = mkConj "and" ;
+  both7and_DConj = mkConj "both" "and";
+  or_Conj = mkConj "or" singular ;
+  if_then_Conj = mkConj "if" "then" singular ;
+  either7or_DConj = mkConj "either" "or" singular ;
+
+  but_PConj = ss "but" ;
+  otherwise_PConj = ss "otherwise" ;
+  therefore_PConj = ss "therefore" ;
+
+  everybody_NP = regNP "everybody" singular ;
+  everything_NP = regNP "everything" singular ;
+  somebody_NP = regNP "somebody" singular ;
+  something_NP = regNP "something" singular ;
+  nobody_NP = regNP "nobody" singular ;
+  nothing_NP = regNP "nothing" singular ;
+  
+  every_Det = mkDeterminerSpec singular "every" "everyone" False ;
+  few_Det = mkDeterminer plural "few" ;
+  many_Det = mkDeterminer plural "many" ;
+  much_Det = mkDeterminer singular "much" ;
+  someSg_Det = mkDeterminer singular "some" ;
+  somePl_Det = mkDeterminer plural "some" ;
+  
+
 }
 
