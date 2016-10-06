@@ -1,7 +1,7 @@
 --# -path=.:../simpleabstract
 
 
-concrete NounSimpleDot of NounSimple = CatSimpleDot ** open MorphoSimpleDot, ResDot, Prelude in {
+concrete NounSimpleDot of NounSimple = CatSimpleDot ** open MorphoSimpleDot, ResDot, ParamX, Prelude in {
 	
 	lin
 		DetCN det noun =
@@ -12,8 +12,8 @@ concrete NounSimpleDot of NounSimple = CatSimpleDot ** open MorphoSimpleDot, Res
 			
 		IndefArt, DefArt = {s = \\_,_ => []; post = []} ;
 		
-		NumSg = {n = Sg} ;
-		NumPl = {n = Pl} ;
+		NumSg = {s = [] ; n = Sg} ;
+		NumPl = {s = [] ; n = Pl} ;
 		
 		PossPron p = {
 			s = \\_,_ => [] ;
@@ -22,9 +22,13 @@ concrete NounSimpleDot of NounSimple = CatSimpleDot ** open MorphoSimpleDot, Res
 
 		DetQuant q num = {
 			s = table {
-				Anim => q.s!(QAnim num.n) ;
-				Inanim => q.s!QInanim 
+				Anim => \\c => q.s!(QAnim num.n)!c ++ num.s;
+				Inanim => \\c => q.s!QInanim!c ++ num.s
 			} ;
+			--s = \\_,_ => case num.n of {
+			--	Sg => "s";
+			--	Pl => "p"
+			--} ++ num.s;
 			n = num.n ;
 			post = q.post 
 		} ;

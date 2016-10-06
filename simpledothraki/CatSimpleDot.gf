@@ -9,7 +9,7 @@ concrete CatSimpleDot of CatSimple = CommonX - [IAdv] ** open ResDot in {
 		
 		Pron = {s : Case => Str ; agr : Agr } ;
 		
-		Num = {n : Number} ; 	-- this is a dummy. 
+		Num = {s: Str ; n : Number} ; 	-- this is a dummy. 
 								-- We don't actually implement numerals in determiners ("these five") so far.
 								-- So, for now, the "numeral part" is only used to determine the number agreement
 								-- of the Quant part of Det. 

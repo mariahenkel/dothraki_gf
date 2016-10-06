@@ -12,7 +12,7 @@ abstract NounSimple = CatSimple ** {
     NumPl   : Num ;
 	
     PossPron : Pron -> Quant ;    -- my (house)
-    DetQuant    : Quant -> Num ->        Det ;  -- these five
+    DetQuant    : Quant -> Num -> Det ;  -- these five
 
     UseN : N -> CN ;              -- house
     AdvCN   : CN -> Adv -> CN ;   -- house on the hill
