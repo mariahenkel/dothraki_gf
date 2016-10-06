@@ -182,7 +182,13 @@ resource ParadigmsSimpleDot = open
     			APresent pol pn => presForm fati pol pn ; 
     			
     			AFuture Pos pn => presForm (pre {"a"|"e"|"i"|"o" => "v" ; _ => "a"} + fati) Pos pn ;
-    			AFuture Neg pn => presForm (pre {"a"|"e"|"i"|"o" => "v" ; _ => "o"} + fati) Neg pn
+    			AFuture Neg pn => presForm (pre {"a"|"e"|"i"|"o" => "v" ; _ => "o"} + fati) Neg pn ;
+    			
+    			ImpFormal Pos => stem ;
+    			ImpFormal Neg => fat + "o" ;
+    			
+    			ImpInformal Pos => fati + "s" ;
+    			ImpInformal Neg => fat + "os"
     		} ;
     		em => table {
     			APast Pos Sg => zal ;
@@ -193,7 +199,13 @@ resource ParadigmsSimpleDot = open
     			APresent pol pn => presForm em pol pn ;
     			
     			AFuture Pos pn => presForm (pre {"a"|"e"|"i"|"o" => "v" ; _ => "a"} + em) Pos pn ;
-    			AFuture Neg pn => presForm (pre {"a"|"e"|"i"|"o" => "v" ; _ => "o"} + em) Neg pn
+    			AFuture Neg pn => presForm (pre {"a"|"e"|"i"|"o" => "v" ; _ => "o"} + em) Neg pn ;
+    			
+    			ImpFormal Pos => em + "i" ;
+    			ImpFormal Neg => em + "o" ;
+    			
+    			ImpInformal Pos => em + "as" ;
+    			ImpInformal Neg => em + "os"
     		} 
     	} ;
     	part = case stem of {

@@ -102,6 +102,9 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
          = \s -> PhrUtt NoPConj (UttS s) NoVoc ; --%  
       mkPhr : Cl -> Phr   -- she sleeps
          = \s -> PhrUtt NoPConj (UttS (TUseCl TPres ASimul PPos s)) NoVoc ; --%  
+
+      mkPhr : Imp -> Phr  -- sleep
+         =  \s -> PhrUtt NoPConj (UttImpSg PPos s) NoVoc --%   
       } ; --%
 
 
@@ -134,6 +137,14 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
       = UttQS   ; --%  
       mkUtt : Cl -> Utt                    -- she sleeps  
       = \c -> UttS (TUseCl TPres ASimul PPos c) ; --%  
+      mkUtt : (ImpForm) -> (Pol) -> Imp -> Utt  -- don't be men   --: 
+      = mkUttImp  ; --%
+      mkUtt : ImpForm -> Imp -> Utt -- be men --% 
+      = \f -> mkUttImp f PPos ; --% 
+      mkUtt : Pol -> Imp -> Utt  -- don't be men --% 
+      = UttImpSg  ;  --%
+      mkUtt : Imp -> Utt  -- love yourself --%  
+      = UttImpSg PPos  ;  --%
     } ; --%
 
       positivePol : Pol   -- she sleeps [default]   --: 
@@ -157,6 +168,26 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
 
       mkTemp : Tense -> Ant -> Temp -- e.g. past + anterior
         = TTAnt ; --%
+
+      singularImpForm : ImpForm   -- be a man [default]   --:
+      = IFSg ;  --%
+      pluralImpForm   : ImpForm   -- be men  --:
+      = IFPl ;  --%
+      politeImpForm   : ImpForm   -- be a man [polite singular]  --:
+      = IFPol ;  --%
+
+-- This is how imperatives are implemented internally. --%
+
+  param ImpForm = IFSg | IFPl | IFPol ; --%
+
+  oper --%
+  mkUttImp : ImpForm -> Pol -> Imp -> Utt --%
+  = \f,p,i -> case f of { --%
+      IFSg  => UttImpSg p i ; --%
+      IFPl  => UttImpPl p i ; --%
+      IFPol => UttImpPol p i --%
+      } ; --%
+
 
     mkS = overload {  --%
       mkS : Cl  -> S  --%  
@@ -296,6 +327,16 @@ incomplete resource ConstructorsSimple = open GrammarSimple in {  --%
      mkComp : NP -> Comp -- this man --:
      = CompNP ; --%
      } ; --%
+
+
+    mkImp = overload {  --%
+      mkImp : VP -> Imp                -- come to my house
+      = ImpVP      ;  --%
+      mkImp : V  -> Imp                -- come
+      = \v -> ImpVP (UseV v)  ;   --%
+      mkImp : V2 -> NP -> Imp          -- buy it
+      = \v,np -> ImpVP (ComplV2 v np) ; --%
+      } ;  --%
 
 
     mkNP = overload { 

@@ -17,8 +17,13 @@ lin
     CompNP np = {s = table {
     	APast _ _ => np.s!Abl ;
     	APresent _ _ => np.s!Nom ;
-    	AFuture _ _ => np.s!All 
-    }} ;   
+    	AFuture _ _ => np.s!All ;
+    	
+    	ImpFormal _ => [] ;     -- Currently there is no information available on 
+    	ImpInformal _ => []     -- how an imperative like "Be the warrior!" would be
+    	                        -- expressed in Dothraki
+    }} ;
+    
     UseComp comp = {s = comp.s; compl = []; inf=[]; part=[] ; subjpost = []} ;
     
 	

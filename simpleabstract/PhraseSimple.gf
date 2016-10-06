@@ -5,6 +5,9 @@ abstract PhraseSimple = CatSimple ** {
     PhrUtt   : PConj -> Utt -> Voc -> Phr ; -- but come here, my friend
     UttS      : S   -> Utt ;                -- John walks
     UttQS     : QS  -> Utt ;                -- is it good
+    UttImpSg  : Pol -> Imp -> Utt;          -- (don't) love yourself
+    UttImpPl  : Pol -> Imp -> Utt;          -- (don't) love yourselves
+    UttImpPol : Pol -> Imp -> Utt ;         -- (don't) sleep (polite)
     
     NoPConj   : PConj ;                      
     PConjConj : Conj -> PConj ;             -- and

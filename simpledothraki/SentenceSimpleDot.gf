@@ -1,6 +1,6 @@
 --# -path=.:../simpleabstract
 
-concrete SentenceSimpleDot of SentenceSimple = CatSimpleDot ** open ResDot in {
+concrete SentenceSimpleDot of SentenceSimple = CatSimpleDot ** open ResDot, Prelude in {
 lin
 	PredVP np vp = {s = \\t,a,p => let vf = (tapaToVForm t a p np.agr) in 
 		np.s!Nom ++
@@ -16,6 +16,15 @@ lin
 		vp.s!vf ++ vp.compl ;
 	} ;
 	
+    ImpVP vp = {
+      s = \\pol => let vos = case pol of {Pos => [] ; Neg => "vos"} in
+        table {
+        	ImpF _ True => vos ++ vp.s!ImpFormal pol ++ vp.compl;
+        	ImpF _ False => vos ++ vp.s!ImpInformal pol ++ vp.compl
+        }
+    } ;
+
+
 	SlashVP np vpsl = {s = \\t,a,p => let vf = (tapaToVForm t a p np.agr) in 
 		case <t,a> of {
 			<Present,Anter> => "ray" ; 		-- the perfect tense marker

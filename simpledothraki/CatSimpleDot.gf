@@ -33,6 +33,9 @@ concrete CatSimpleDot of CatSimple = CommonX - [IAdv] ** open ResDot in {
 		-- of sticking it in the s (as we do in Cl).
 		ClSlash = {s : ResDot.Tense => Anteriority => Polarity => Str; subj: Str ; objCase : Case} ;
 		
+        Imp = {s : Polarity => ImpForm => Str} ;
+
+
 		RP = {s : QuForm => Case => Str } ;
 		RCl = {s : ResDot.Tense => Anteriority => Polarity => Animacy => Number => Str } ;
 		RS = {s : Animacy => Number => Str } ;

@@ -10,14 +10,18 @@ resource ResDot = ParamX ** open Prelude in {
 		
 		Agr = Ag Person Number ;
 		
-		VForm = APast Polarity Number | APresent Polarity VFormPN | AFuture Polarity VFormPN ;
+		VForm = APast Polarity Number | APresent Polarity VFormPN | AFuture Polarity VFormPN | ImpFormal Polarity | ImpInformal Polarity ;
 		
 		QuForm = QAnim Number | QInanim ;
 		
 	oper
 		Noun : Type = {s : Number => Case => Str ; a : Animacy ; p : Person } ;
 		
-		Verb : Type = {s : VForm => Str ; inf : Str ; part : Str } ;
+		Verb : Type = {
+			s : VForm => Str ; 
+			inf : Str ; 
+			part : Str
+		} ;
 		
 		-- In Dothraki, some determiners go before the subject ("jinak adra" -- "this turtle"),
 		-- others come after ("adra anni" -- "my turtle"). Conceivably (though examples of this

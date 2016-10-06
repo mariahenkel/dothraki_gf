@@ -17,6 +17,7 @@ concrete CatSimpleEng of CatSimple = CommonX - [Pol] ** open ResSimpleEng, Prelu
       s : ResSimpleEng.Tense => Anteriority => CPolarity => Order => Str ;
       c2 : Str
       } ;
+    Imp = {s : CPolarity => ImpForm => Str} ;
 
     QCl = {s : ResSimpleEng.Tense => Anteriority => CPolarity => QForm => Str} ;
 
