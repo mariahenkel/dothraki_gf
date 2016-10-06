@@ -28,25 +28,44 @@ The code included in the library is more than twice in size compared to the
 implementation of GF. (Ranta, 2009)
 
 The provision of the GF resource grammar library as an easy-to-use tool may, on the one hand, be more time consuming, but, on the other hand, enables more people to use it - even without the expert knowledge. Ranta (2011, p. 200) also recommends to add new languages to the library, instead of directly writing an application grammar for them, as they can “serve an unlimited number of applications” and because “the existing library specification will help to identify the linguistic issues and avoid pitfalls.” He estimates, that an interval of three to six months of full-time work is needed for an experienced GF programmer to implement a new resource grammar (p. 222).
+
+Figure 1: Mini Resource Grammar 
+
 As the workload of building a full resource grammar exceeds the time frame for this term paper, the first big milestone of our project is to create a mini resource grammar, similar to the Italian mini resource grammar, an example of Ranta's book (2011, pp. 237-245). This first milestone is to lay the foundation for a full resource grammar. Other than in Ranta's example, we already use the categories and structure of a full resource grammar (see Figure 1) to make a later expansion easier. 
 
-Figure 1
+Figure 2: Resource Grammar Structure
 
-#### 2.3 Program Structure and Functions
-Just like the GF repositories (Détrez & Camilleri, 2016), our full project is hosted on GitHub (Henkel & Kuckuck, 2016) so that others may see, use and contribute to it. It consists of the following parts:
+#### 2.2 Project Structure and implemented Categories
 
-* Aufbau des Projekts (Ordnerstruktur, vorher noch umbenennen?)
+Just like the GF repositories (Détrez & Camilleri, 2016), our full project is hosted on GitHub (Henkel & Kuckuck, 2016) so that others may see, use and contribute to it. It consists of the following folders:
 
-* Erklärung Ordnerstruktur
+* simpleapi
+* simpleabstract
+* simpledothraki
+* simpleenglish
+* common
 
-With the current ... we are able to ... 
+* example
 
-* Functions (Vollst. Liste und Bild)
+* documentation 
+* vocabulary
 
-The vocabulary extractor, a supporting python script, was written to add a relatively large number of words to our dictionary in a short amount of time. It takes the source code of the Dothraki vocabulary site (Ice and Fire Wiki, 2016) as input, extracts words and their translations from it and transforms them into the right format, needed for the resource library. For example, the entry "ador [aˈdor], ni. chair" will create the three output strings "ador_N = mkN "ador" inanimate;", "chair_N = mkN "chair";" and "ador_N = chair_N;" -- one entry for the Dothraki linearization, one entry for the English linearization and one entry for the dictionary. This way, we were able to add 1644 words to our dictionary, and will be able to add more while the resource grammar is expanding.
+The “simpleapi” folder (like the “api” folder in the full resource grammar library) contains the outward facing part of the library – the types and functions available to application grammar developers. Those are implemented in terms of more basic functions, which are declared in the abstract grammar(s) contained in the “simpleabstract” folder. For each language, in our case just English and Dothraki, there is one folder (here: “simpledothraki” and “simpleenglish”) which contains the concrete implementations of these abstract grammars. Some of these parts, those shared by all languages, are implemented in the “common” folder. We are planning to remove the “simple” from all folder- and filenames as soon as the resource grammar is complete. Since we already use the structure of a full resource grammar, it should work accordingly. More detailed information regarding the structure of the resource grammar library can be found …. 
+The mini resource grammar can already be used for application grammars. The “example” folder contains application grammar rules to show how the resource grammar can be applied.
+There are two more folders: The “documentation” folder is holding two versions of our documentation, one markdown file for readers on GitHub and one print version. Finally, the “vocabulary” folder contains the vocabulary extractor, a supporting python script, written by us to add a relatively large number of words to our dictionary in a short amount of time. It takes the source code of the Dothraki vocabulary site (Ice and Fire Wiki, 2016) as input, extracts words and their translations from it and transforms them into the right format, needed for the resource library. For example, the entry "ador [aˈdor], ni. chair" on the website will create the three output strings "ador_N = mkN "ador" inanimate;", "chair_N = mkN "chair";" and "ador_N = chair_N;" – one entry for the Dothraki linearization, one entry for the English linearization and one entry for the dictionary. This way, we were able to add more than 1644 words to our dictionary, and will be able to add more while the resource grammar is expanding.
 
-#### 2.4 Examples
-GF + Dothraki Grammar + Output Examples (+ Idiomatic Application Grammar?)
+Text about implemented Categories...
+
+Figure 3: GF resource Grammar Library Categories
+
+Beispieltext....
+
+#### 2.3 Operating Instructions and Examples
+Anleitung... + Output Examples...
+
+#### 2.4 Specifics
+
+Besonderheiten + Dothraki Grammar Explanation...
 
 
 ### 3 Discussion
