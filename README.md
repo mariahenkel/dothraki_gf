@@ -1,9 +1,13 @@
 # dothraki_gf
 Building a resource grammar for Dothraki. Please note that this project is still under construction.
 
-Dothraki Nouns : text2mindmap.com/B7b25jR *updated*
+More information about Grammatical Framework: [http://www.grammaticalframework.org/](http://www.grammaticalframework.org/)
 
-TO DO
+Documentation of this project: [https://github.com/mahen2/dothraki_gf/tree/master/documentation](https://github.com/mahen2/dothraki_gf/tree/master/documentation)
+
+Dothraki Nouns Mindmap: [http://text2mindmap.com/B7b25jR](http://text2mindmap.com/B7b25jR)
+
+### TO DO
 
 * rename files, restructure (resource grammar style)
 * more test cases for epenthesis
@@ -13,7 +17,7 @@ TO DO
 * get rid of s.o./s.b. in dictionary etc.
 
 
-DONE
+### DONE
 
 * fix bug regarding noun declination (selection of animate nouns depending on vowels)
 * complete noun declination
