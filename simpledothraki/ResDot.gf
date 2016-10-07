@@ -6,16 +6,20 @@ resource ResDot = ParamX ** open Prelude in {
 		Case = Nom | Gen | Acc | All | Abl ;
 		ACase = ANom | AOther ;
 		
-		VFormPN = Pers1 Number | Pers2 | Pers3 Number ;
-		
 		Agr = Ag Person Number ;
 		
-		VForm = APast Polarity Number | APresent Polarity VFormPN | AFuture Polarity VFormPN | ImpFormal Polarity | ImpInformal Polarity ;
+		VFormPN = Pers1 Number | Pers2 | Pers3 Number ;
+		VForm = 
+			APast Polarity Number 
+		  | APresent Polarity VFormPN 
+		  | AFuture Polarity VFormPN 
+		  | ImpFormal Polarity 
+		  | ImpInformal Polarity ;
 		
 		QuForm = QAnim Number | QInanim ;
 		
 	oper
-		Noun : Type = {s : Number => Case => Str ; a : Animacy ; p : Person } ;
+		Noun : Type = {s : Number => Case => Str ; a : Animacy } ;
 		
 		Verb : Type = {
 			s : VForm => Str ; 
@@ -23,13 +27,7 @@ resource ResDot = ParamX ** open Prelude in {
 			part : Str
 		} ;
 		
-		-- In Dothraki, some determiners go before the subject ("jinak adra" -- "this turtle"),
-		-- others come after ("adra anni" -- "my turtle"). Conceivably (though examples of this
-		-- usage do not yet seem to exist), the determiner could consist of two parts, one
-		-- before, one after the noun ("akat adrasi anni"?? -- "my two turtles"), hence
-		-- the two fields here (from what we know, the postposition part does not seem to 
-		-- inflect, so for now it is simply a Str here; this might have to be changed later).
-		Quant : Type = {s : QuForm => Case => Str ; post : Str } ;
+		Quant : Type = {s : QuForm => Case => Str ; s2 : Str} ;
 				
 				
 		agrToVFormPN : Agr -> VFormPN = \a -> case a of {
@@ -146,7 +144,7 @@ resource ResDot = ParamX ** open Prelude in {
 					Abl => jin + "akoa"
 				}
 			} ;
-			post = []
+			s2 = []
 		} ;
 		
 		-- The rules for epenthetic -e in Dothraki are a little complex:

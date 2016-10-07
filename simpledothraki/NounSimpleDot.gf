@@ -5,32 +5,28 @@ concrete NounSimpleDot of NounSimple = CatSimpleDot ** open MorphoSimpleDot, Res
 	
 	lin
 		DetCN det noun =
-			{s = \\c => det.s!noun.a!c ++ noun.s!det.n!c ++ det.post; agr = Ag noun.p det.n } ;
+			{s = \\c => det.s!noun.a!c ++ noun.s!det.n!c ++ det.s2; agr = Ag P3 det.n } ;
 			
 		UsePron pron = pron ;
    		UsePN pn = {s = pn.s ; agr = Ag P3 Sg} ;
 			
-		IndefArt, DefArt = {s = \\_,_ => []; post = []} ;
+		IndefArt, DefArt = {s = \\_,_ => []; s2 = []} ;
 		
 		NumSg = {s = [] ; n = Sg} ;
 		NumPl = {s = [] ; n = Pl} ;
 		
 		PossPron p = {
 			s = \\_,_ => [] ;
-      		post = p.s!Gen
+      		s2 = p.s!Gen
       	} ;
 
 		DetQuant q num = {
-			s = table {
-				Anim => \\c => q.s!(QAnim num.n)!c ++ num.s;
-				Inanim => \\c => q.s!QInanim!c ++ num.s
-			} ;
-			--s = \\_,_ => case num.n of {
-			--	Sg => "s";
-			--	Pl => "p"
-			--} ++ num.s;
+			s = \\a,c => case a of {
+				Anim => q.s!(QAnim num.n)!c ;
+				Inanim => q.s!QInanim!c
+			} ++ num.s ;
 			n = num.n ;
-			post = q.post 
+			s2 = q.s2
 		} ;
 		
 		UseN n = n ; 

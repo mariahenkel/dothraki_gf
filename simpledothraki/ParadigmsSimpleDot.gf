@@ -254,10 +254,10 @@ resource ParadigmsSimpleDot = open
         	Compar => mkAnc compar ;
         	Superl => mkAnc (compar + "az")
     	} ;
-    	v = mkV (case haj of {
+    	pred = (mkV (case haj of {
     		samva@(samv + ("a"|"e"|"i"|"o")) => samva + "lat" ;
     		_ => haj + "at"
-    	}) ;
+    	})).s ;
     } ;
 	
 	mkPrep : Str -> Case -> Prep = \s,c -> lin Prep {s = s; c = c} ;

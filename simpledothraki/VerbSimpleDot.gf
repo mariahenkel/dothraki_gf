@@ -13,7 +13,7 @@ lin
 	
     ComplSlash vpSlash np = vpSlash ** {compl = np.s!vpSlash.objCase} ;
 
-    CompAP ap = ap.v ;
+    CompAP ap = {s = ap.pred} ;
     CompNP np = {s = table {
     	APast _ _ => np.s!Abl ;
     	APresent _ _ => np.s!Nom ;

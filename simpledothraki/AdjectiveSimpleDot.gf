@@ -6,7 +6,7 @@ concrete AdjectiveSimpleDot of AdjectiveSimple = CatSimpleDot ** open ResDot, Pr
 
     PositA  a = {
       s = a.s!Posit ;
-      v = a.v
+      pred = a.pred
       } ;
   
 }

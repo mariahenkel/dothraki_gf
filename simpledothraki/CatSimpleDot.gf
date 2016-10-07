@@ -14,7 +14,14 @@ concrete CatSimpleDot of CatSimple = CommonX - [IAdv] ** open ResDot in {
 								-- So, for now, the "numeral part" is only used to determine the number agreement
 								-- of the Quant part of Det. 
 		Quant = ResDot.Quant ;
-		Det = {s : Animacy => Case => Str ; n : Number ; post : Str } ;
+
+		-- In Dothraki, some determiners go before the subject ("jinak adra" -- "this turtle"),
+		-- others come after ("adra anni" -- "my turtle"). Conceivably (though examples of this
+		-- usage do not yet seem to exist), the determiner could consist of two parts, one
+		-- before, one after the noun ("akat adrasi anni"?? -- "my two turtles"), hence
+		-- the two fields here (from what we know, the postposition part does not seem to 
+		-- inflect, so for now it is simply a Str here; this might have to be changed later).
+		Det = {s : Animacy => Case => Str ; n : Number ; s2 : Str } ;
 		
 		Prep = {s : Str ; c : Case} ;
 		
@@ -31,7 +38,7 @@ concrete CatSimpleDot of CatSimple = CommonX - [IAdv] ** open ResDot in {
 		-- questions use the regular SVO word order ("Fin lajak zoqwa?"). Therefore, in order to
 		-- keep word order open in ClSlash, we need to remember the subject separately here, instead
 		-- of sticking it in the s (as we do in Cl).
-		ClSlash = {s : ResDot.Tense => Anteriority => Polarity => Str; subj: Str ; objCase : Case} ;
+		ClSlash = {s : ResDot.Tense => Anteriority => Polarity => Str; subj: Str ; objCase : Case } ;
 		
         Imp = {s : Polarity => ImpForm => Str} ;
 
@@ -44,9 +51,9 @@ concrete CatSimpleDot of CatSimple = CommonX - [IAdv] ** open ResDot in {
 		-- a verb "afazhat" ("to be hot") from the adjective "afazh" ("hot"). Therefore,
 		-- in order to be able to implement a function like mkCl : NP -> AP -> Cl, we need
 		-- to derive all the corresponding verb forms as part of the A category. 
-		A = {s : Degree => Number => ACase => Str ; v : Verb } ;
+		A = {s : Degree => Number => ACase => Str ; pred : VForm => Str } ;
 		
-		AP = {s : Number => ACase => Str ; v : Verb } ;
+		AP = {s : Number => ACase => Str ; pred : VForm => Str } ;
 		
 		V = Verb ;
 		V2 = Verb ** {objCase : Case} ;
