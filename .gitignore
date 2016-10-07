@@ -1,3 +1,4 @@
 .gfbuild
 *.gfo
+*.tmp
 .project
