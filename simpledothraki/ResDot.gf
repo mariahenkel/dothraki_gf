@@ -199,5 +199,14 @@ resource ResDot = ParamX ** open Prelude in {
   	  } ;
   		
   		
-		
+	verbStr : Verb -> Tense -> Anteriority -> Polarity -> Agr -> Str = \v,t,a,p,agr -> let vf = (tapaToVForm t a p agr) in 
+		case <t,a> of {
+			<Present,Anter> => "ray" ; 		-- the perfect tense marker
+			_ => []		
+		} ++
+		case p of {
+			Pos => []  ;
+			Neg => "vos" 
+		} ++
+		v.s!vf ;
 }

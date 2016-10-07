@@ -2,18 +2,11 @@
 
 concrete SentenceSimpleDot of SentenceSimple = CatSimpleDot ** open ResDot, Prelude in {
 lin
-	PredVP np vp = {s = \\t,a,p => let vf = (tapaToVForm t a p np.agr) in 
-		np.s!Nom ++
-		vp.subjpost ++ 
-		case <t,a> of {
-			<Present,Anter> => "ray" ; 		-- the perfect tense marker
-			_ => []		
-		} ++
-		case p of {
-			Pos => []  ;
-			Neg => "vos" 
-		} ++
-		vp.s!vf ++ vp.compl ;
+	PredVP np vp = {s = \\t,a,p =>
+		np.s!Nom
+		++ vp.subjpost 
+		++ verbStr vp t a p np.agr
+		++ vp.compl ;
 	} ;
 	
     ImpVP vp = {
@@ -25,16 +18,8 @@ lin
     } ;
 
 
-	SlashVP np vpsl = {s = \\t,a,p => let vf = (tapaToVForm t a p np.agr) in 
-		case <t,a> of {
-			<Present,Anter> => "ray" ; 		-- the perfect tense marker
-			_ => []		
-		} ++
-		case p of {
-			Pos => []  ;
-			Neg => "vos" 
-		} ++
-		vpsl.s!vf ;
+	SlashVP np vpsl = {
+		s = \\t,a,p => verbStr vpsl t a p np.agr ;
 		subj = np.s!Nom ++ vpsl.subjpost;
 		objCase = vpsl.objCase
 	} ;
