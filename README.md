@@ -9,12 +9,12 @@ Dothraki Nouns Mindmap: [http://text2mindmap.com/B7b25jR](http://text2mindmap.co
 
 ### TO DO
 
-* rename files, restructure (resource grammar style)
+* ~~rename files, restructure~~ not yet
 * more test cases for epenthesis
-* translate vocabulary
-* idiomatic dothraki application grammar -> ask lecturers about this
+
+* ~~idiomatic dothraki application grammar~~
 * DOCUMENTATION
-* get rid of s.o./s.b. in dictionary etc.
+* check dictionary with EngDict of resource grammar library
 
 
 ### DONE
@@ -47,3 +47,4 @@ Dothraki Nouns Mindmap: [http://text2mindmap.com/B7b25jR](http://text2mindmap.co
 * passive voice 
 * "can" and "must"
 * the warrior is hot
+* translate vocabulary
