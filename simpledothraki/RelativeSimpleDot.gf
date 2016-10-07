@@ -7,18 +7,11 @@ concrete RelativeSimpleDot of RelativeSimple = CatSimpleDot ** open ResDot in {
   lin
 
     RelVP rp vp = {
-    	s = \\t,a,p,anim,n => let vf = (tapaToVForm t a p (Ag P3 n)) in 
-		rp.s!(anToQuForm anim n)!Nom ++
-		vp.subjpost ++
-		case <t,a> of {
-			<Present,Anter> => "ray" ; 		-- the perfect tense marker
-			_ => []		
-		} ++
-		case p of {
-			Pos => []  ;
-			Neg => "vos" 
-		} ++
-		vp.s!vf ++ vp.compl ;
+    	s = \\t,a,p,anim,n =>
+		rp.s!(anToQuForm anim n)!Nom
+		++ vp.subjpost
+		++ (verbStr vp t a p (Ag P3 n))
+		++ vp.compl ;
     } ;
     
     RelSlash rp clsl = {
