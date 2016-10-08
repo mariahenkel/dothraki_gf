@@ -219,23 +219,41 @@ Anleitung...
 
 ## References 
 Brown, R., & Frederking, R. (1995). Applying statistical English language modeling to symbolic machine translation. In Proceedings of the sixth international conference on theoretical and methodological issues in machine translation (TMI-95) (pp. 221-239).
+
 Cognitus Apps (2016). Flamingo Dothraki. Retrieved from https://play.google.com/store/apps/details?id=com.cognitusapps.flamingo.dothraki&hl=de
+
 Fun Translations (2016). Dothraki translator. Retrieved from http://funtranslations.com/dothraki
+
 Détrez, G. & Camilleri, J. J. (2016). Grammatical Framework. GitHub.com. Retrieved from https://github.com/GrammaticalFramework
+
 Google (2016). Google Translate. Retrieved from https://translate.google.com/
+
 Google Groups (2016). Problem with strange metavariables in parsing. Retrieved from https://groups.google.com/d/msg/gf-dev/aRjt_2JfvA0/iTcZbTu5AAAJ)
+
 Grammatical Framework (2016a). Translation with GF: Powered by multilingual grammars. Retrieved from http://www.grammaticalframework.org/demos/translation.html
+
 Grammatical Framework (2016b). GF Resource Grammar Library: Synopsis. Retrieved from http://www.grammaticalframework.org/lib/doc/synopsis.html
+
 Martin, G. R. R. (2016). Bibliography. Retrieved from http://www.georgerrmartin.com/bibliography/
+
 Henkel, M. & Kuckuck, B. (2016). Building a resource grammar for Dothraki. GitHub.com. Retrieved from https://github.com/mahen2/dothraki_gf
+
 Peterson, D. J. (2014). Living Language Dothraki: A Conversational Language Course Based on the Hit Original HBO Series Game of Thrones. New York: Living Language.
+
 Peterson, D. J. (2016a). The Art of Language Invention. Retrieved from http://www.artoflanguageinvention.com/
+
 Peterson, D. J. (2016b). About Dothraki. Retrieved from http://www.dothraki.com/about-dothraki/
+
 Ranta, A. (2009). The GF Resource Grammar Library. Linguistic Issues in Language Technology, 2(2), pp. 1-63.
+
 Ranta, A. (2011a). Grammatical Framework: Programming with Multilingual Grammars. Stanford: CSLI Publications.
+
 Ranta, A. (2011b). Grammatical Framework: Programming with Multilingual Grammars. Slides for the GF book. Retrieved from http://www.grammaticalframework.org/gf-book/gf-book-slides.pdf
+
 Ranta, A. (2015). The Status of the GF Resource Grammar Library. Grammatical Framework. Retrieved from http://www.grammaticalframework.org/lib/doc/status.html
+
 Tongues of Ice and Fire Wiki (2016). Vocabulary. Retrieved from http://wiki.dothraki.org/Vocabulary
+
 Wikipedia (2016). Grammatical Framework. Retrieved from https://en.wikipedia.org/wiki/Grammatical_Framework
 
 
