@@ -1,4 +1,4 @@
-### 1 Introduction
+## 1 Introduction
 Grammatical Framework (GF) is a functional programming language, created in 1998 (Ranta, 2011) and designed to write (natural) language grammars. As GF is “working from a language-independent representation of meaning” (Wikipedia, 2016) it can be used to generate or parse text in different languages at the same time. One of its functions is to translate between languages. 
 Since GF uses a symbolic approach to process and translate language, in most cases its translations are more precise than those of statistical tools we use in everyday life (Brown & Frederking, 1995). For example, the “Google Translate” service (Google, 2016) will produce ungrammatical sentences as soon as the input is too complicated while the GF translator (Grammatical Framework, 2016a) has no problems producing a correct translation (see Table 1) in many cases. 
 
@@ -11,11 +11,11 @@ Dothraki is a constructed language, developed by the language creator and writer
 This paper aims to serve as a short documentation and explanation of our project. It will cover the project aim and scope, general information regarding the project as well as its structure and explanations of sample functions and the corresponding Dothraki grammar rules (Chapter 2). We will also discuss problems and limitations and briefly describe future plans before we summarize and evaluate the project in its current state and our experience while working on it (Chapter 3).
 
 
-### 2 The Project
+## 2 The Project
 
 As mentioned before, the aim of this project is to create a resource grammar for the Dothraki language and add it to the GF Resource Grammar Library, so that other Dothraki fans and/or GF enthusiasts may use it. While there are currently a few Dothraki language learning apps and online translators avaialable (e.g. Cognitus Apps, 2016; Fun Translations, 2016), they are still very limited and lack the quality and range to actually learn the language or provide an accurate translation. By the means of an open-source Dothraki resource grammar, better tools like these or even different projects could be created more easily. 
 
-#### 2.1 About Resource Grammars and the Standard Library
+### 2.1 About Resource Grammars and the Standard Library
 
 The GF Resource Grammar Library covers the morphology and basic syntax of several languages. Here, the idea is to predefine "program details, which require expert knowledge, and make them available for non-expert application programmers" (Ranta, 2009). This way the library users need not have the "specialized linguistic expertise" (Ranta, 2009) to write an application grammar in GF. Considerable work has been and is being done by the GF developers and resource grammar programmers to make this possible:
 
@@ -35,7 +35,7 @@ As the workload of building a full resource grammar exceeds the time frame for t
 
 Figure 2: Resource Grammar Structure
 
-#### 2.2 Project Structure
+### 2.2 Project Structure
 
 Just like the GF repositories (Détrez & Camilleri, 2016), our full project is hosted on GitHub (Henkel & Kuckuck, 2016) so that others may see, use and contribute to it. It consists of the following folders:
 
@@ -54,11 +54,11 @@ The “simpleapi” folder (like the “api” folder in the full resource gramm
 The mini resource grammar can already be used for application grammars. The “example” folder contains application grammar rules to show how the resource grammar can be applied.
 There are two more folders: The “documentation” folder is holding two versions of our documentation, one markdown file for readers on GitHub and one print version. Finally, the “vocabulary” folder contains the vocabulary extractor, a supporting python script, written by us to add a relatively large number of words to our dictionary automatically. It takes the source code of the Dothraki vocabulary site (Ice and Fire Wiki, 2016) as input, extracts words and their translations from it and transforms them into the right format, needed for the resource library. For example, the entry "ador [aˈdor], ni. chair" on the website will create the three output strings: "ador_N = mkN "ador" inanimate;", "chair_N = mkN "chair";" and "ador_N = chair_N;" – one entry for the Dothraki linearization, one entry for the English linearization and one entry for the dictionary. This way, we were able to add more than 1644 words to our dictionary, and will be able to add even more as soon as the resource grammar is expanding.
 
-#### 2.3 Implementation of grammatical categories in Dothraki
+### 2.3 Implementation of Grammatical Categories in Dothraki
 
 In this section we will go into some of the design decisions involved in the implementation of the Dothraki resource grammar.  In order to get a high-level overview, we will first take a look at the linearizations of some of the categories defined in the API part of the abstract resource grammar library, showing how Dothraki grammar can be fit into the GF scheme.
 
-##### 2.3.1 Nouns and Noun Phrases
+#### 2.3.1 Nouns and Noun Phrases
 
 The relevant categories here are 'N' (nouns), 'CN' (common nouns), 'NP' (noun phrases), 'Pron' (pronouns) and 'PN' (proper names), which are realized as follows:<sup>1</sup>
 
@@ -99,7 +99,7 @@ Unlike a 'Quant', a 'Det' has a fixed number.
 
 An interesting feature of determiners in Dothraki is that they can appear either before the noun ("jinak adra" -- "this turtle") or after (such as determiners built from possessive pronouns: "adra anni" -- "my turtle"). Conceivably (though we cannot currently say for certain, due to lack of examples and documentation on Dothraki determiner structure), a determiner could even be split into two parts ("my two turtles" -- "akat adrasi anni"?). In anticipation of this, 'Det' has two 'Str' components, 's' and 's2'. Since possessive pronouns are the only examples of postposed determiners we know so far, and these happen not to inflect with animacy or case, the 's2' part is simply a 'Str', whereas the 's' part is a table of inflected forms.
 
-##### 2.3.2 Verbs and Verb Phrases
+#### 2.3.2 Verbs and Verb Phrases
 
 The relevant categories here are 'V' (intransitive verbs), 'V2' (transitive verbs with an 'NP' complement) and 'VP' (verb phrases), whose lincats are as follows:
 
@@ -138,7 +138,7 @@ In order to implement verbal auxiliaries such as "can" and "must", which are rep
 
 Since "can", "must" etc. are simply uninflected particles in Dothraki, this is enough to represent those. This should of course not be considered a final design, since it is unlikely that all verbs with verb phrase complement can be realized like this in Dothraki. However, there is currently very little documentation available on how other 'VV' verbs are realized, so this dummy implementation will have to do for now.
 
-##### 2.3.3 (Relative) Clauses and Sentences
+#### 2.3.3 (Relative) Clauses and Sentences
 
 There are no big surprises in the lincats of 'Cl' and 'QCl' (clauses and question clauses, respectively) or 'S' and 'QS' (sentences an question sentences):
 
@@ -160,7 +160,7 @@ Relative pronouns in Dothraki inflect according to the animacy and number of the
 
 There is one more important difference between 'Cl' and 'ClSlash'. When a clause is constructed from a verb phrase and subject via 'PredVP : NP -> VP -> Cl', the noun phrase is just prepended to the verb phrase. We cannot do this when constructing a 'ClSlash' via 'SlashVP : NP -> VPSlash -> ClSlash', because of a quirk in Dothraki word order: Whereas regular main clauses and questions follow SVO word order, relative clauses have VSO word order. So depending on whether a 'ClSlash' is eventually turned into a relative sentence (via 'RelSlash : RP -> ClSlash -> RCl') or a question (via 'QuestSlash : IP -> ClSlash -> QCl'), we have to choose the word order accordingly ("dorvi fin vindee lajak" -- "the goat which the warrior stabs" vs "Fin lajak vindee?" -- "What does the warrior stab?"). Therefore, 'ClSlash' contains the (linearized) subject in a field, 'subj'.
 
-##### 2.3.4 Adjectives
+#### 2.3.4 Adjectives
 
 The relevant categories here are 'A' (adjectives), 'AP' (adjectival phrases) and 'Comp' ("complement of a copula", though see below):
 
@@ -208,15 +208,15 @@ With the current implementation status, it is already possible to parse and tran
 
 Beispieltext....
 
-#### 2.4 Operating Instructions 
+### 2.4 Operating Instructions 
 Anleitung... 
 
 
-### 3 Discussion
-#### 3.1 Limitations
-#### 3.2 Outlook
-#### 3.3 Conclusion
+## 3 Discussion
+### 3.1 Limitations
+### 3.2 Outlook
+### 3.3 Conclusion
 
-### References 
+## References 
 (add *new* references here)
 
