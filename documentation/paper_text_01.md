@@ -200,8 +200,6 @@ As a result the category `Comp` (i.e. "strong" in "the warrior is strong" and "a
 
 
 
-Text about implemented Categories...
-
 Figure 3 shows the main categories of the GF Resource Grammar Library and the current status of our implementation. The yellow categories have been fully or at least partially implemented in our resource grammar. For the first milestone, we do not aim to implement every single instance of every category. Instead, we want to first implement the most important categories in a proper way, to make later expansion easier. For example, there are 32 different instances of the “mkCl” function for the clause category “Cl” (Grammatical Framework, 2016b). We did not implement all of them in the current version of our resource grammar, but since there are already some “mkCl” functions included, it is easier to add more functions of the same type later on. 
 
 Figure 3: GF resource Grammar Library Categories
@@ -210,12 +208,8 @@ With the current implementation status, it is already possible to parse and tran
 
 Beispieltext....
 
-#### 2.4 Operating Instructions and Examples
-Anleitung... + Output Examples...
-
-#### 2.5 Specifics
-
-Besonderheiten + Dothraki Grammar Explanation...
+#### 2.4 Operating Instructions 
+Anleitung... 
 
 
 ### 3 Discussion
