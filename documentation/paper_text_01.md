@@ -213,6 +213,9 @@ Anleitung...
 
 
 ## 3 Discussion
+
+To conclude our project documentation, we will now discuss problems and limitations as well as briefly describe future plans before we summarize the project in its current state and our experience while working on it.
+ 
 ### 3.1 Limitations
 (Warum nicht alles auf einmal? Zu viel Arbeit, alles gleichzeitig, keine Möglichkeit zu testen, ….)
 
