@@ -1592,7 +1592,7 @@
 :''ni.'' dog
 :{{Nsup|jan}}
 *'''jaqqa''' [ˈd͡ʒaqqɑ] <span id="jaqqa"></span>
-:''ni.'' [[Idioms_and_Phrases#Specific_uses_for_words|"executioner" , person responsible for someones death]]
+:''ni.'' executioner , person responsible for someones death
 :{{Nsup|jaqqe}}
 *'''jaqqa rhan''' [ˈd͡ʒaqqɑ rhan] <span id="jaqqa rhan"></span>
 :''ni.'' mercy men (literally: merciful executioner)
@@ -2468,7 +2468,7 @@
 *'''os''' [os] <span id="os"></span>
 :''ni.'' path, road
 :{{Quote|Ave anni ezzo anhaan os lajataan.|My father taught me how to fight.}}
-*'''osavvirsak''' [osavviɾsak] <span id="osavvirsak></span>
+*'''osavvirsak''' [osavviɾsak] <span id="osavvirsak"></span>
 :''na.'' the Unburnt
 *'''osfir''' [osˈfir] <span id="osfir"></span>
 :''ni.'' round road, "roundabout"
@@ -2984,7 +2984,7 @@
 :''ni.'' yogurt made from mare’s milk
 :{{Nsup|thagwe}}
 *'''thagwash''' [θagˈwaʃ]  <span id="thagwash"></span>
-:''ni.'' a dessert made from '''[[Vocabulary#thagwa|thagwa]]''' and eaten with dried fruit
+:''ni.'' a dessert made from thagwa and eaten with dried fruit
 *'''thash''' [θaʃ] <span id="thash"></span>
 :''adj.'' soft
 *'''thelis''' [θeˈlis] <span id="thelis"></span>
@@ -3370,7 +3370,7 @@
 :''vtr.'' to collect, to gather
 :''vtr.&rarr;abl.'' to gather (some)
 :{{Vsup|yanqo}}
-*'''yanqosor''' [janqɔˈsor] <span id="yanqosor></span>
+*'''yanqosor''' [janqɔˈsor] <span id="yanqosor"></span>
 :''na.'' tribe, people
 :{{Quote|Torga yeri, Dothraki yanqosoraan zhikwi.|Under you, the Dothraki will be a small people.}}
 *'''yarat''' [jaˈrat] <span id="yarat"></span>
