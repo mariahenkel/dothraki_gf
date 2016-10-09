@@ -13,6 +13,11 @@ concrete PhraseSimpleEng of PhraseSimple = CatSimpleEng ** open Prelude, ResSimp
     NoPConj = {s = []} ;
     PConjConj conj = {s = conj.s2} ; ---
 
+    UttNP np = {s = np.s ! npNom} ;
+    UttAdv adv = adv ;
+    UttCN n = {s = n.s ! Sg ! Nom} ;
+    UttAP ap = {s = ap.s ! agrP3 Sg} ;
+
     NoVoc = {s = []} ;
     VocNP np = {s = frontComma ++ np.s ! npNom} ;
 

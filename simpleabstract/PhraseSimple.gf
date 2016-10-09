@@ -12,6 +12,11 @@ abstract PhraseSimple = CatSimple ** {
     NoPConj   : PConj ;                      
     PConjConj : Conj -> PConj ;             -- and
 
+    UttNP     : NP   -> Utt ;               -- this man
+    UttAdv    : Adv  -> Utt ;               -- here
+    UttCN     : CN   -> Utt ;               -- house
+    UttAP     : AP   -> Utt ;               -- fine
+
 -- The vocative is optional. Any noun phrase can be made into vocative,
 -- which may be overgenerating (e.g. "I").
 

@@ -17,6 +17,8 @@ lin
         }
     } ;
 
+    AdvS a s = {s = a.s ++ s.s} ;
+    ExtAdvS a s = {s = a.s ++ frontComma ++ s.s} ;
 
 	SlashVP np vpsl = {
 		s = \\t,a,p => verbStr vpsl t a p np.agr ;

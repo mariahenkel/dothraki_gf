@@ -5,6 +5,7 @@ lin
     UseV v = v ** {compl = []; subjpost = []} ;
     
     ComplVV vv vp = vp ** {subjpost = vv.s ++ vp.subjpost} ;
+    SlashVV vv slvp = slvp ** {subjpost = vv.s ++ slvp.subjpost} ;
     
     AdvVP vp adv = vp ** {compl = vp.compl ++ adv.s} ;
     SlashV2a v = v ** {subjpost = []} ;
@@ -23,6 +24,7 @@ lin
     	ImpInformal _ => []     -- how an imperative like "Be the warrior!" would be
     	                        -- expressed in Dothraki
     }} ;
+    CompAdv a = {s = \\_ => a.s} ;
     
     UseComp comp = {s = comp.s; compl = []; inf=[]; part=[] ; subjpost = []} ;
     

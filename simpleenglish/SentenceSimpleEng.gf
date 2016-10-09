@@ -22,6 +22,9 @@ concrete SentenceSimpleEng of SentenceSimple = CatSimpleEng ** open Prelude, Res
         dont ++ verb
     } ;
 
+    AdvS a s = {s = a.s ++ s.s} ;
+    ExtAdvS a s = {s = a.s ++ frontComma ++ s.s} ;
+
     SlashVP np vp = 
       mkClause (np.s ! npNom) np.a vp ** {c2 = vp.c2} ;
 
