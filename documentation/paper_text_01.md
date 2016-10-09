@@ -219,9 +219,6 @@ Figure 3 shows the main categories of the GF Resource Grammar Library and the cu
 
 Figure 3: GF resource Grammar Library Categories
 
-With the current implementation status, it is already possible to parse and translate a wide range of phrases. The following example text is fully supported by the current version of the Dothraki resource grammar:
-
-Beispieltext....
 
 ### 2.4 Implementation of syntactical functions in Dothraki
 
@@ -407,6 +404,9 @@ This is for creating sentences such as "Lajaki vekha" -- "There is a warrior". U
 
 ### 2.5 Examples
 
+With the current implementation status, it is already possible to parse and translate a wide range of phrases. The following example text is fully supported by the current version of the Dothraki resource grammar:
+
+Beispieltext....
 
 
 ## 3 Discussion
