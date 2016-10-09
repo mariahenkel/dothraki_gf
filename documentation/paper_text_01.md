@@ -60,13 +60,13 @@ In this section we will go into some of the design decisions involved in the imp
 
 #### 2.3.1 Nouns and Noun Phrases
 
-The relevant categories here are 'N' (nouns), 'CN' (common nouns), 'NP' (noun phrases), 'Pron' (pronouns) and 'PN' (proper names), which are realized as follows:<sup>1</sup>
+The relevant categories here are `N` (nouns), `CN` (common nouns), `NP` (noun phrases), `Pron` (pronouns) and `PN` (proper names), which are realized as follows:<sup>1</sup>
 
 		N, CN = {s : Number => Case => Str ; a : Animacy } ;
 		NP, Pron = {s : Case => Str ; agr : Agr } ;	
     	PN = {s : Case => Str } ;
 
-<sup>1</sup>In the actual code, some parts of this are defined in the 'ResDot' module instead of 'CatDot', for easier reusability.
+<sup>1</sup>In the actual code, some parts of this are defined in the `ResDot` module instead of `CatDot`, for easier reusability.
 
 These implementations follow in a fairly straightforward fashion from the basic features of nouns in the Dothraki language: 
 
@@ -75,33 +75,33 @@ In Dothraki, every noun falls into one of two classes, *animate* and *inanimate*
 		Animacy = Anim | Inanim ;
 		Case = Nom | Gen | Acc | All | Abl ;
 
-Noun phrases, as well as pronouns, have a fixed number and person, which is stored in the 'agr' field of type 'Agr', simply defined as follows:
+Noun phrases, as well as pronouns, have a fixed number and person, which is stored in the `agr` field of type `Agr`, simply defined as follows:
 
 		Agr = Ag Person Number ;
 
-There does not currently seem to be a need to store animacy in the agreement record. This is unlike English, where the 'NP's gender can affect the verb phrase ("The boy loves himself" but "The girl loves herself") and thus needs to be stored in the 'NP'.
+There does not currently seem to be a need to store animacy in the agreement record. This is unlike English, where the `NP`s gender can affect the verb phrase ("The boy loves himself" but "The girl loves herself") and thus needs to be stored in the `NP`.
 
-Finally, proper names are (so far as we can tell) always animate and third person singular, so none of that information needs to be stored in 'PN'.
+Finally, proper names are (so far as we can tell) always animate and third person singular, so none of that information needs to be stored in `PN`.
 
-In order to turn a common noun into a noun phrase, we usually need a determiner. The relevant categories here are 'Num' (numerals), 'Quant' (quantifiers), 'Predet' (predeterminers) and 'Det' (determiners, roughly composed of optional predeterminers, a quantifier and a numeral). Numerals in the proper sense, as well as predeterminers, are not yet implemented in our resource grammar (there is a lack of good information on determiner structure in Dothraki), but since the 'Num' category is used in the GF Resource Grammar Library not just for representing numerals but also to determine the number of the determiner, we have a dummy implementation in our resource grammar:
+In order to turn a common noun into a noun phrase, we usually need a determiner. The relevant categories here are `Num` (numerals), `Quant` (quantifiers), `Predet` (predeterminers) and `Det` (determiners, roughly composed of optional predeterminers, a quantifier and a numeral). Numerals in the proper sense, as well as predeterminers, are not yet implemented in our resource grammar (there is a lack of good information on determiner structure in Dothraki), but since the `Num` category is used in the GF Resource Grammar Library not just for representing numerals but also to determine the number of the determiner, we have a dummy implementation in our resource grammar:
 
 		Num = {s: Str ; n : Number} ;
 		Quant = {s : QuForm => Case => Str } ;
 		Det = {s : Animacy => Case => Str ; n : Number ; s2 : Str } ;
  
-The 's' field of 'Num' is always empty in our implementation (it is [necessary for technical reasons](https://groups.google.com/d/msg/gf-dev/aRjt_2JfvA0/iTcZbTu5AAAJ) related to the implementation of GFs parser).
+The `s` field of `Num` is always empty in our implementation (it is [necessary for technical reasons](https://groups.google.com/d/msg/gf-dev/aRjt_2JfvA0/iTcZbTu5AAAJ) related to the implementation of GFs parser).
 
-Quantifiers in Dothraki (such as "jin" -- "this" and "rek" -- "that") are inflected for animacy, number and case, but the singular and plural inanimate forms are always identical, so 'QuForm' is defined as follows:  
+Quantifiers in Dothraki (such as "jin" -- "this" and "rek" -- "that") are inflected for animacy, number and case, but the singular and plural inanimate forms are always identical, so `QuForm` is defined as follows:  
 
 		QuForm = QAnim Number | QInanim ;
  
-Unlike a 'Quant', a 'Det' has a fixed number.
+Unlike a `Quant`, a `Det` has a fixed number.
 
-An interesting feature of determiners in Dothraki is that they can appear either before the noun ("jinak adra" -- "this turtle") or after (such as determiners built from possessive pronouns: "adra anni" -- "my turtle"). Conceivably (though we cannot currently say for certain, due to lack of examples and documentation on Dothraki determiner structure), a determiner could even be split into two parts ("my two turtles" -- "akat adrasi anni"?). In anticipation of this, 'Det' has two 'Str' components, 's' and 's2'. Since possessive pronouns are the only examples of postposed determiners we know so far, and these happen not to inflect with animacy or case, the 's2' part is simply a 'Str', whereas the 's' part is a table of inflected forms.
+An interesting feature of determiners in Dothraki is that they can appear either before the noun ("jinak adra" -- "this turtle") or after (such as determiners built from possessive pronouns: "adra anni" -- "my turtle"). Conceivably (though we cannot currently say for certain, due to lack of examples and documentation on Dothraki determiner structure), a determiner could even be split into two parts ("my two turtles" -- "akat adrasi anni"?). In anticipation of this, `Det` has two `Str` components, `s` and `s2`. Since possessive pronouns are the only examples of postposed determiners we know so far, and these happen not to inflect with animacy or case, the `s2` part is simply a `Str`, whereas the `s` part is a table of inflected forms.
 
 #### 2.3.2 Verbs and Verb Phrases
 
-The relevant categories here are 'V' (intransitive verbs), 'V2' (transitive verbs with an 'NP' complement) and 'VP' (verb phrases), whose lincats are as follows:
+The relevant categories here are `V` (intransitive verbs), `V2` (transitive verbs with an `NP` complement) and `VP` (verb phrases), whose lincats are as follows:
 
 		-- in ResDot --
 		param VFormPN = Pers1 Number | Pers2 | Pers3 Number ;
@@ -124,45 +124,45 @@ The relevant categories here are 'V' (intransitive verbs), 'V2' (transitive verb
 		VPSlash = Verb ** {objCase : Case ; subjpost : Str} ;
 		VP = Verb ** {compl : Str; subjpost : Str} ;
 
-The basic structure 'Verb' contains the infinitive and participle as well as all conjugated forms of a verb. The somewhat convoluted setup of the 'VForm' parameter type is owed to the peculiarities of conjugation in Dothraki: First off, somewhat unusually, in all tenses and moods, verb forms vary with the polarity of the sentence ("Me dothra**e**" -- "He rides", "Me vos dothra**o**" -- "He does not ride"). In the present and future tenses, verbs are inflected for person and number, but the second person singular and plural forms are always identical (hence the definition of 'VFormPN'). In the past tense, verbs are inflected for number only, not for person (but unlike in the present and future tenses, second person singular and plural forms *do* differ). There are also formal and informal imperative forms.
+The basic structure `Verb` contains the infinitive and participle as well as all conjugated forms of a verb. The somewhat convoluted setup of the `VForm` parameter type is owed to the peculiarities of conjugation in Dothraki: First off, somewhat unusually, in all tenses and moods, verb forms vary with the polarity of the sentence ("Me dothra**e**" -- "He rides", "Me vos dothra**o**" -- "He does not ride"). In the present and future tenses, verbs are inflected for person and number, but the second person singular and plural forms are always identical (hence the definition of `VFormPN`). In the past tense, verbs are inflected for number only, not for person (but unlike in the present and future tenses, second person singular and plural forms *do* differ). There are also formal and informal imperative forms.
 
-Transitive verbs are basically the same as intransitive verbs, but they also assign a case to their 'NP' complement (mostly accusative, but other cases do appear), which is stored in the 'objCase' field. 
+Transitive verbs are basically the same as intransitive verbs, but they also assign a case to their `NP` complement (mostly accusative, but other cases do appear), which is stored in the `objCase` field. 
 
-A verb phrase essentially consists of a verb with a complement. There is also a field 'subjpost' which again encodes a peculiar feature of Dothraki grammar: A number of constructions, which, in other languages, are rendered by verbal auxiliaries (can, must) or verbs with 'VP' complements (try to), are realized in Dothraki via non-inflecting particles (e.g. "laz" and "eth" corresponding to "can" and "must"), which do not otherwise affect the conjugation of the main verb ("Me dothrak" -- "He rides", "Me laz dothrak" -- "He can ride", "Me kis dothrak" -- "He tries to ride"). These have to be regarded as part of the verb phrase but, syntactically, are not preposed to the verb phrase but postposed to the subject of the clause (this makes a difference, e.g., in relative clauses, which have VSO word order instead of the standard SVO word order). The same is true of passive constructions, which are indicated by "nem" postposed to the subject ("Lajak dothrae" -- "The warrior rides", "Hrazef nem dothrae" -- "The horse is ridden"; note that the verb still agrees with the syntactical subject of the clause).
+A verb phrase essentially consists of a verb with a complement. There is also a field `subjpost` which again encodes a peculiar feature of Dothraki grammar: A number of constructions, which, in other languages, are rendered by verbal auxiliaries (can, must) or verbs with `VP` complements (try to), are realized in Dothraki via non-inflecting particles (e.g. "laz" and "eth" corresponding to "can" and "must"), which do not otherwise affect the conjugation of the main verb ("Me dothrak" -- "He rides", "Me laz dothrak" -- "He can ride", "Me kis dothrak" -- "He tries to ride"). These have to be regarded as part of the verb phrase but, syntactically, are not preposed to the verb phrase but postposed to the subject of the clause (this makes a difference, e.g., in relative clauses, which have VSO word order instead of the standard SVO word order). The same is true of passive constructions, which are indicated by "nem" postposed to the subject ("Lajak dothrae" -- "The warrior rides", "Hrazef nem dothrae" -- "The horse is ridden"; note that the verb still agrees with the syntactical subject of the clause).
 
-'VPSlash' represents a verb phrase missing a complement and kind of sits between 'V2' and 'VP'. It is generated from a 'V2' (via 'SlashV2a : V2 -> SlashVP') and can then either be turned into a 'VP' by adding an object (via 'ComplSlash : VPSlash -> NP -> VP') or into a 'ClSlash' (clause missing an object) by adding a subject (via 'SlashVP : VPSlash -> NP -> ClSlash'), to be used e.g. in a relative sentence ("the goat which *the warrior stabbed*"). As such it does not have a complement, like 'VP', and retains the 'objCase' from 'V2', but it does have the 'subjpost' field from 'VP' (so we can form e.g. "the goat which the warrior *can stab*" -- "dorvi fin *vindee* lajak *laz*").
+`VPSlash` represents a verb phrase missing a complement and kind of sits between `V2` and `VP`. It is generated from a `V2` (via `SlashV2a : V2 -> SlashVP`) and can then either be turned into a `VP` by adding an object (via `ComplSlash : VPSlash -> NP -> VP`) or into a `ClSlash` (clause missing an object) by adding a subject (via `SlashVP : VPSlash -> NP -> ClSlash`), to be used e.g. in a relative sentence ("the goat which *the warrior stabbed*"). As such it does not have a complement, like `VP`, and retains the `objCase` from `V2`, but it does have the `subjpost` field from `VP` (so we can form e.g. "the goat which the warrior *can stab*" -- "dorvi fin *vindee* lajak *laz*").
 
-In order to implement verbal auxiliaries such as "can" and "must", which are represented as 'VV's in GF, we also have a dummy lincat for 'VV':
+In order to implement verbal auxiliaries such as "can" and "must", which are represented as `VV`s in GF, we also have a dummy lincat for `VV`:
 
 		VV = {s : Str} ;
 
-Since "can", "must" etc. are simply uninflected particles in Dothraki, this is enough to represent those. This should of course not be considered a final design, since it is unlikely that all verbs with verb phrase complement can be realized like this in Dothraki. However, there is currently very little documentation available on how other 'VV' verbs are realized, so this dummy implementation will have to do for now.
+Since "can", "must" etc. are simply uninflected particles in Dothraki, this is enough to represent those. This should of course not be considered a final design, since it is unlikely that all verbs with verb phrase complement can be realized like this in Dothraki. However, there is currently very little documentation available on how other `VV` verbs are realized, so this dummy implementation will have to do for now.
 
 #### 2.3.3 (Relative) Clauses and Sentences
 
-There are no big surprises in the lincats of 'Cl' and 'QCl' (clauses and question clauses, respectively) or 'S' and 'QS' (sentences an question sentences):
+There are no big surprises in the lincats of `Cl` and `QCl` (clauses and question clauses, respectively) or `S` and `QS` (sentences an question sentences):
 
 		S, QS = {s : Str} ;
 		Cl, QCl = {s : Tense => Anteriority => Polarity => Str} ;
 
 The lincats of these categories are fairly canonical in many languages and in Dothraki they are basically the same as in English or German.<sup>2</sup>
 
-<sup>2</sup> The main differences between these languages come from whether the linearization also depends on some kind of 'Order' parameter, for example distinguishing indirect from direct questions or subordinate from main clauses. It might be necessary to add something like that to our lincat later, if more information about e.g. indirect questions in Dothraki becomes available, but for now there is no indication that we need such an extra parameter.
+<sup>2</sup> The main differences between these languages come from whether the linearization also depends on some kind of `Order` parameter, for example distinguishing indirect from direct questions or subordinate from main clauses. It might be necessary to add something like that to our lincat later, if more information about e.g. indirect questions in Dothraki becomes available, but for now there is no indication that we need such an extra parameter.
 
-Relative clauses are more interesting. The relevant categories here are 'RP' (relative pronoun), 'ClSlash' (a clause missing an object), 'RCl' (relative clauses) and 'RS' (relative sentence):
+Relative clauses are more interesting. The relevant categories here are `RP` (relative pronoun), `ClSlash` (a clause missing an object), `RCl` (relative clauses) and `RS` (relative sentence):
 		
 		RP = {s : QuForm => Case => Str } ;
 		RCl = {s : Tense => Anteriority => Polarity => Animacy => Number => Str } ;
 		ClSlash = {s : Tense => Anteriority => Polarity => Str; subj: Str ; objCase : Case} ;
 		RS = {s : Animacy => Number => Str } ;
   
-Relative pronouns in Dothraki inflect according to the animacy and number of the noun phrase they attach to, and the case that the relativized noun phrase would have been assigned in the embedded relative sentence (similar to German). Hence, the linearization of 'RS' depends on the animacy and number of the noun phrase it is eventually attached to and 'RCl' is to 'RS' what 'Cl' is to 'S', i.e. it is a relative sentence, whose tense, anteriority and polarity have not yet been fixed. 'ClSlash' has to remember the case of the missing object, so it can assign it to the relative pronoun, if used in a relative sentence (via 'RelSlash : RP -> ClSlash -> RCl'). 
+Relative pronouns in Dothraki inflect according to the animacy and number of the noun phrase they attach to, and the case that the relativized noun phrase would have been assigned in the embedded relative sentence (similar to German). Hence, the linearization of `RS` depends on the animacy and number of the noun phrase it is eventually attached to and `RCl` is to `RS` what `Cl`  is to `S`, i.e. it is a relative sentence, whose tense, anteriority and polarity have not yet been fixed. `ClSlash` has to remember the case of the missing object, so it can assign it to the relative pronoun, if used in a relative sentence (via `RelSlash : RP -> ClSlash -> RCl`). 
 
-There is one more important difference between 'Cl' and 'ClSlash'. When a clause is constructed from a verb phrase and subject via 'PredVP : NP -> VP -> Cl', the noun phrase is just prepended to the verb phrase. We cannot do this when constructing a 'ClSlash' via 'SlashVP : NP -> VPSlash -> ClSlash', because of a quirk in Dothraki word order: Whereas regular main clauses and questions follow SVO word order, relative clauses have VSO word order. So depending on whether a 'ClSlash' is eventually turned into a relative sentence (via 'RelSlash : RP -> ClSlash -> RCl') or a question (via 'QuestSlash : IP -> ClSlash -> QCl'), we have to choose the word order accordingly ("dorvi fin vindee lajak" -- "the goat which the warrior stabs" vs "Fin lajak vindee?" -- "What does the warrior stab?"). Therefore, 'ClSlash' contains the (linearized) subject in a field, 'subj'.
+There is one more important difference between `Cl` and `ClSlash`. When a clause is constructed from a verb phrase and subject via `PredVP : NP -> VP -> Cl`, the noun phrase is just prepended to the verb phrase. We cannot do this when constructing a `ClSlash` via `SlashVP : NP -> VPSlash -> ClSlash`, because of a quirk in Dothraki word order: Whereas regular main clauses and questions follow SVO word order, relative clauses have VSO word order. So depending on whether a `ClSlash` is eventually turned into a relative sentence (via `RelSlash : RP -> ClSlash -> RCl`) or a question (via `QuestSlash : IP -> ClSlash -> QCl`), we have to choose the word order accordingly ("dorvi fin vindee lajak" -- "the goat which the warrior stabs" vs "Fin lajak vindee?" -- "What does the warrior stab?"). Therefore, `ClSlash` contains the (linearized) subject in a field, `subj`.
 
 #### 2.3.4 Adjectives
 
-The relevant categories here are 'A' (adjectives), 'AP' (adjectival phrases) and 'Comp' ("complement of a copula", though see below):
+The relevant categories here are `A` (adjectives), `AP` (adjectival phrases) and `Comp` ("complement of a copula", though see below):
 
 		A = {s : Degree => Number => ACase => Str ; pred : VForm => Str } ;		
 		AP = {s : Number => ACase => Str ; pred : VForm => Str } ;
@@ -174,11 +174,11 @@ There are two basic uses for adjectival phrases: attributive (as in "the strong 
 
 instead of duplicating these forms in the table.
 
-In English or German, predicative use of an adjective employs a copula ("to be" or "sein"), which is inflected for tense, whereas the adjective is invariant. The same happens in sentences like "the man is a warrior", where the copula "to be" connects the two noun phrases. Dothraki, however, is an entirely copulaless language. When an adjective is used predicatively, the adjective itself is essentially turned into a verb and inflected for tense and polarity ("the strong warrior" -- "lajak haj"; "The warrior is strong" -- "lajak haja"; "the warrior will be strong" -- "lajak vahaja"; "the warrior was not strong" -- "lajak vos ahajo"). Similarly, in a sentence like "the man is a warrior", the 'NP' itself inflects for tense (with the ablative and allative form indicating past and future tense, respectively): "The woman is a warrior" -- "Chiori lajak"; "The woman was a warrior" -- "Chiori lajakoon"; "The woman will be a warrior" -- "Chiori lajakaan".
+In English or German, predicative use of an adjective employs a copula ("to be" or "sein"), which is inflected for tense, whereas the adjective is invariant. The same happens in sentences like "the man is a warrior", where the copula "to be" connects the two noun phrases. Dothraki, however, is an entirely copulaless language. When an adjective is used predicatively, the adjective itself is essentially turned into a verb and inflected for tense and polarity ("the strong warrior" -- "lajak haj"; "The warrior is strong" -- "lajak haja"; "the warrior will be strong" -- "lajak vahaja"; "the warrior was not strong" -- "lajak vos ahajo"). Similarly, in a sentence like "the man is a warrior", the `NP` itself inflects for tense (with the ablative and allative form indicating past and future tense, respectively): "The woman is a warrior" -- "Chiori lajak"; "The woman was a warrior" -- "Chiori lajakoon"; "The woman will be a warrior" -- "Chiori lajakaan".
 
-As a result the category 'Comp' (i.e. "strong" in "the warrior is strong" and "a warrior" in "the woman is a warrior") essentially behaves like an intransitive verb in Dothraki. 'A' and 'AP' have to contain all conjugated forms of the verb as it might be used in a predicative context.<sup>3</sup> 
+As a result the category `Comp` (i.e. "strong" in "the warrior is strong" and "a warrior" in "the woman is a warrior") essentially behaves like an intransitive verb in Dothraki. `A` and `AP` have to contain all conjugated forms of the verb as it might be used in a predicative context.<sup>3</sup> 
 
-<sup>3</sup>Indeed our lincats for 'A', 'AP' and 'Comp', while very much unlike the lincats in the English and German resource grammars, are quite similar to the lincats in the resource grammar for Japanese, another language that does not use a copula for predicative use of adjectives. Here, like in our implementation, 'Comp' and 'AP' look essentially like verb phrases: 
+<sup>3</sup>Indeed our lincats for `A`, `AP` and `Comp`, while very much unlike the lincats in the English and German resource grammars, are quite similar to the lincats in the resource grammar for Japanese, another language, in which the adjective itself is inflected for tense and polarity in predicative use via a complex set of suffixes. As in our resource grammar, this leads to `AP` and `Comp` being structurally very similar to `VP`:
 
     VP = {
 		verb : Speaker => Animateness => Style => TTense => Polarity => Str ;  
@@ -199,6 +199,21 @@ As a result the category 'Comp' (i.e. "strong" in "the warrior is strong" and "a
 		needSubject : Bool} ;
 
 
+#### 2.3.5 Other categories
+
+Adverbial phrases, like in most other languages, are simply uninflected token strings, as implemented in `CommonX`:
+
+    Adv = {s : Str} ; 
+	Prep = {s : Str ; c : Case} ;
+
+Adverbial phrases can be formed from noun phrases using prepositions, which assign case in Dothraki, or sometimes are expressed *only* by case. For example, `to_Prep` from module `Structural` is implemented in Dothraki simply as `{s = [] ; c = All}`: What is expressed in other laguages via the preposition "to", is understood in Dothraki from the modified noun phrase appearing in allative case.
+
+Conjunctions in Dothraki have different forms depending on whether they are used to conjoin noun phrases/sentences, or as phrasal conjunctions to start a sentence:
+
+	Conj = {s : Str; p : Str; n : Number} ;
+
+E.g. the conjunction "and" when used to connect noun phrases is "ma" (as in "ma lajak ma khaleesi" -- "the warrior and the queen"), but translates as "majin", when used as a phrasal conjunction ("Majin lajak zoqwe khaleesies." -- "And the warrior kissed the queen."). 
+
 
 Figure 3 shows the main categories of the GF Resource Grammar Library and the current status of our implementation. The yellow categories have been fully or at least partially implemented in our resource grammar. For the first milestone, we do not aim to implement every single instance of every category. Instead, we want to first implement the most important categories in a proper way, to make later expansion easier. For example, there are 32 different instances of the “mkCl” function for the clause category “Cl” (Grammatical Framework, 2016b). We did not implement all of them in the current version of our resource grammar, but since there are already some “mkCl” functions included, it is easier to add more functions of the same type later on. 
 
@@ -208,8 +223,190 @@ With the current implementation status, it is already possible to parse and tran
 
 Beispieltext....
 
-### 2.4 Operating Instructions 
-Anleitung... 
+### 2.4 Implementation of syntactical functions in Dothraki
+
+#### 2.4.1 Morphology
+
+Dothraki, generally speaking, has a much richer morphology than English, making the constructors for lexical categories supplied in `ParadigmsSimpleDot` fairly complex. As an example, let us describe the construction of verbs (nouns and adjectives present similar challenges). Here is the constructor `mk2V : Str -> Str -> V` which builds a `V` from the infinitive form and the past singular (the two forms which would often be given in dictionaries):
+
+    mk2V : Str -> Str -> Verb = \zalat,zal -> let {stem = stemV zalat zal} in {
+    	inf = zalat ;
+    	s = case stem of {
+    		fati@(fat + ("a"|"e"|"i"|"o")) => table {
+    			APast Pos Sg => zal ;
+    			APast Pos Pl => fati + "sh" ;
+    			APast Neg Sg => fat + "o" ;
+    			APast Neg Pl => fat + "osh" ;
+    			
+    			APresent pol pn => presForm fati pol pn ; 
+    			
+    			AFuture Pos pn => presForm (pre {"a"|"e"|"i"|"o" => "v" ; _ => "a"} + fati) Pos pn ;
+    			AFuture Neg pn => presForm (pre {"a"|"e"|"i"|"o" => "v" ; _ => "o"} + fati) Neg pn ;
+    			
+    			ImpFormal Pos => stem ;
+    			ImpFormal Neg => fat + "o" ;
+    			
+    			ImpInformal Pos => fati + "s" ;
+    			ImpInformal Neg => fat + "os"
+    		} ;
+    		em => table {
+    			APast Pos Sg => zal ;
+    			APast Pos Pl => em + "ish" ;
+    			APast Neg Sg => em + "o" ;
+    			APast Neg Pl => em + "osh" ;
+    			
+    			APresent pol pn => presForm em pol pn ;
+    			
+    			AFuture Pos pn => presForm (pre {"a"|"e"|"i"|"o" => "v" ; _ => "a"} + em) Pos pn ;
+    			AFuture Neg pn => presForm (pre {"a"|"e"|"i"|"o" => "v" ; _ => "o"} + em) Neg pn ;
+    			
+    			ImpFormal Pos => em + "i" ;
+    			ImpFormal Neg => em + "o" ;
+    			
+    			ImpInformal Pos => em + "as" ;
+    			ImpInformal Neg => em + "os"
+    		} 
+    	} ;
+    	part = case stem of {
+    		fat + ("a"|"e"|"i"|"o") => stem + "y" ;
+    		_ => stem + "ay"
+    	}
+    } ;
+
+Here `presForm : Str -> Polarity -> VFormPN -> Str` is another function, that generates the present tense forms of a verb. This is reused for the future tense forms, which have the same endings, but are distinguished by a prefix.
+
+    presForm : Str -> Polarity -> VFormPN -> Str = \stem,pol,pn -> case stem of {
+    	fati@(fat + ("a"|"e"|"i"|"o")) => case <pol,pn> of {
+    		<Pos, Pers1 Sg> => fati + "k" ;
+    		<Pos, Pers1 Pl> => fati + "ki" ;
+    		<Pos, Pers2> => fati + "e" ;
+    		<Pos, Pers3 Sg> => fati + "e" ;
+    		<Pos, Pers3 Pl> => fati + "e" ;
+    		
+    		<Neg, Pers1 Sg> => fat + "ok" ;
+    		<Neg, Pers1 Pl> => fat + "oki" ;
+    		<Neg, Pers2> => fati + "o" ;
+    		<Neg, Pers3 Sg> => fati + "o" ;
+    		<Neg, Pers3 Pl> => fati + "o"
+   		} ;
+   		em => case <pol,pn> of {
+    		<Pos, Pers1 Sg> => em + "ak" ;
+    		<Pos, Pers1 Pl> => em + "aki" ;
+    		<Pos, Pers2> => em + "i" ;
+    		<Pos, Pers3 Sg> => em + "a" ;
+    		<Pos, Pers3 Pl> => em + "i" ;
+    		
+    		<Neg, Pers1 Sg> => em + "ok" ;
+    		<Neg, Pers1 Pl> => em + "oki" ;
+    		<Neg, Pers2> => em + "i" ;
+    		<Neg, Pers3 Sg> => em + "o" ;
+    		<Neg, Pers3 Pl> => em + "i"
+   		}
+   	} ;
+
+
+As can be seen here, suffixes often differ according to whether the stem ends in a vowel or a consonant, which is handled by GF's pattern matching mechanisms. Future tense forms are indicated by a prefix ("v" if the stem starts with a vowel, "a" if the stem starts with a consonant), which we implement employing GF's special "prefix-dependent choice" type.
+
+In case the past singular form of the verb is not explicitly supplied, it needs to be guessed, which can be complicated:
+
+    mk1V : Str -> Verb = \w -> case w of {
+    	ezo + "lat" => mk2V w ezo ;
+    	riss + "at" => mk2V w (addepenthesis riss) 
+    } ;
+
+In general, the past singular form is just the stem of the verb, which mostly is derived by removing the "-lat" or "-at" infinitive ending<sup>4</sup>. However, this is complicated by the rules of epenthesis: The stem of "rissat" is "riss-", but the past singular is "risse", because a Dothraki word cannot end in "-ss". The rules for which consonant clusters may appear at the end of a word are complicated and for the most part captured in the function `addepenthesis : Str -> Str`, which adds an epenthesis "-e" to a string, if it ends in a disallowed consonant cluster:
+
+	addepenthesis : Str -> Str = \w -> case w of {
+		_ + ("a"|"e"|"i"|"o") => w ;
+		_ + ("w"|"g"|"q") => w + "e" ;
+		x + ("y"|"r"|"l") => case x of {
+			_ + ("a"|"e"|"i"|"o") => w ;
+			_ => w + "e"
+		} ;
+		x + ("m"|"n") => case x of {
+			_ + ("a"|"e"|"i"|"o") => w ;
+			y + ("w"|"y"|"r"|"l") => case y of {
+				_ + ("a"|"e"|"i"|"o") => w ;
+				_ => w + "e"
+			} ;
+			_ => w + "e"
+		} ;
+		x + ("th"|"s"|"sh"|"z"|"zh"|"kh"|"f"|"v") => case x of {
+			_ + ("a"|"e"|"i"|"o") => w ;
+			y + ("w"|"y"|"r"|"l"|"m"|"n") => case y of {
+				_ + ("a"|"e"|"i"|"o") => w ;
+				_ => w + "e"
+			} ;
+			_ => w + "e" 
+		} ;
+		x + ("j"|"ch"|"t"|"d"|"k") => case x of {
+			_ + ("a"|"e"|"i"|"o") => w ;
+			y + "w"|"y"|"r"|"l"|"m"|"n"|"th"|"s"|"sh"|"z"|"zh"|"kh"|"f"|"v") => case y of {
+				_ + ("a"|"e"|"i"|"o") => w ;
+				_ => w + "e"
+			} ;
+			_ => w + "e"
+		}
+	} ;
+  
+
+<sup>4</sup>Some verbs, such as "zalat" end in "-lat" but the "l" is part of the stem, not the infinitive ending. This cannot be guessed and has to be indicated in a dictionary.
+
+This heuristic will give the right result in most (but not all) cases. Like in other resource grammars, there is always the option of supplying an irregular form by hand, if the heuristic fails.
+
+#### 2.4.2 Syntax
+
+Many of the considerations about Dothraki syntax, that have gone into the design of our resource grammar, have already been mentioned in Section 2.3. As one example of how the design of our lincats is used to implement syntactical functions, let us go through the various ways of constructing clauses:
+
+	PredVP np vp = {s = \\t,a,p =>
+		np.s!Nom
+		++ vp.subjpost 
+		++ verbStr vp t a p np.agr
+		++ vp.compl ;
+	} ;
+
+The function `PredVP : NP -> VP -> Cl` from module `Sentence` is the basic way of constructing a clause from a subject and a verb phrase (23 out of the 31 overloads of `mkCl` from the resource grammar API are implemented in terms of `PredVP`). In our implementation this function concatenates four elements:
+
+1. The nominative form of the subject noun phrase,
+2. any particles indicating the mood of the verb phrase (such as "nem" indicating passive voice, or "laz"/"eth" corresponding roughly to "can"/"must" in English)
+3. the verb inflected for tense, anteriority, polarity and person/number of the noun phrase,
+4. and the complement of the verb phrase.
+
+Conjugation of the verb is implemented in the function `verbStr : Verb -> Tense -> Anteriority -> Polarity -> Agr -> Str` in the module `ResDot`. The argument `vp` in `PredVP` above is of type `VP` which is defined as `VP = Verb ** {compl : Str; subjpost : Str}`. GF has a mostly structural (as opposed to nominative) type system and thus `VP` is automatically subtype of `Verb`, and variables of `VP` type can be used where a `Verb` is expected.
+
+The function `verbStr` is reused in other functions concerned with the constrcution of clauses.
+
+	SlashVP np vpsl = {
+		s = \\t,a,p => verbStr vpsl t a p np.agr ;
+		subj = np.s!Nom ++ vpsl.subjpost;
+		objCase = vpsl.objCase
+	} ;
+
+The function `SlashVP : NP -> VPSlash -> ClSlash` is used in several overrides of the API functions `mkClSlash` as well as in some overrides of `mkQCl` and `mkRCl`. Since `VPSlash` is also an extension of `Verb`, we can reuse `verbStr` to conjugate the verb. The subject phrase is not prepended to the verb (for reasons explained in 2.3.2), but instead kept in the field `subj`. Unlike `VP`, a `VPSlash` has no complement, but instead the case of the missing object has to be remembered.
+
+    RelVP rp vp = {
+    	s = \\t,a,p,anim,n =>
+		rp.s!(anToQuForm anim n)!Nom
+		++ vp.subjpost
+		++ verbStr vp t a p (Ag P3 n)
+		++ vp.compl ;
+    } ;
+
+The function `RelVP : RP -> VP -> RCl` is the basic way of creating relative clauses in which the subject of the sentence is being relativized (22 of the 25 overrides of `mkRCl` are based on `RelVP`). This implementation is quite similar to `PredVP`, but with the relative pronoun taking the place of the subject, and being inflected for animacy and number.  The verb agrees in number with the relative pronoun and is always in the third person.
+
+Finally, clauses can be formed using `ExistNP : NP -> Cl`.
+
+    ExistNP np = {s = \\t,a,p => 
+		np.s!Gen
+		++ (verbStr vekhat_V t a p np.agr)
+	} ;
+
+This is for creating sentences such as "Lajaki vekha" -- "There is a warrior". Unusually, the verb "vekhat" assigns genitive case to the subject of the sentence. Apart from that, we again use `verbStr` to conjugate the verb "vekhat" (`vekhat_V` is defined in module `ExtraDot`).
+
+
+
+### 2.5 Examples
+
 
 
 ## 3 Discussion
