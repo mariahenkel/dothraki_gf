@@ -214,18 +214,19 @@ Anleitung...
 
 ## 3 Discussion
 ### 3.1 Limitations
-Warum nicht alles auf einmal? Zu viel Arbeit, alles gleichzeitig, keine Möglichkeit zu testen, ….
+(Warum nicht alles auf einmal? Zu viel Arbeit, alles gleichzeitig, keine Möglichkeit zu testen, ….)
 
 For the implementation of a resource grammar, a good grammar source is needed (Grammatical Framework, 2016b). Although the full resource grammar for the Dothraki language is not yet complete, it is becoming harder and harder to find reliable resources regarding further aspects of grammar we would like to implement (e.g. usage of structural words). As it is a constructed language, and relatively new, we hope that further and more precise information will be documented and published with time. 
 Yet, even if we had all the information needed for a full implementation, it would not have been possible for us to write a full resource grammar in such a short amount of time, especially as we are still new to the GF programming language and not experienced when it comes to implementing resource grammars. Hence, we focus on providing a good basis of implemented rules, so that we – and others – can expand the project in the future.
 
-Incompleteness/overgeneration of GF approach (grammar rules vs. natural language)….
-Regeln versuchen so viel wie mögl. abzudecken, aber nicht immer möglich, siehe Buch? Zitat?...
+(Incompleteness/overgeneration of GF approach (grammar rules vs. natural language)….)
+(Regeln versuchen so viel wie mögl. abzudecken, aber nicht immer möglich, siehe Buch? Zitat?...)
 
 ### 3.2 Outlook
 Expand grammar to a full resource grammar. Community?
 
 ### 3.3 Conclusion
+
 
 ## References 
 Brown, R., & Frederking, R. (1995). Applying statistical English language modeling to symbolic machine translation. In Proceedings of the sixth international conference on theoretical and methodological issues in machine translation (TMI-95) (pp. 221-239).
