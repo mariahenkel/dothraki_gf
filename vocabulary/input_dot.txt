@@ -1393,7 +1393,7 @@
 :''ni.'' wild powerful sword strike
 *'''hlofa''' [ˈhlofa] <span id="hlofa"></span>
 :''ni.'' wrist, ankle
-*'''hoerat'' [hoeˈɾat] <span id="hoerat"></span>
+*'''hoerat''' [hoeˈɾat] <span id="hoerat"></span>
 :''vtr.'' to praise
 :{{Quote|Shafka jif hoeri hrazef anni.|You should thank my horses.}}
 *'''holat''' [hoˈlat] <span id="holat"></span>
@@ -1458,7 +1458,7 @@
 :''na.'' foreigner
 *'''ifat''' [iˈfat] <span id="ifat"></span>
 :''vin.'' to walk
-:''vtr.&rarr;gen'' to walk beside
+:''vtr.&rarr;gen.'' to walk beside
 :{{Vsup|if}}
 *'''ifeqevron''' [ifeqɛvˈɾon] <span id="ifeqevron"></span>
 :''n.'' species of forest spiders
@@ -1615,7 +1615,7 @@
 :{{Nsup|jed}}
 *'''jekhtat''' [d͡ʒexˈtat] <span id="jekhtat"></span>
 :''vin.'' to bounce, to ricochet
-:''vtr.→abl.'' to bounce off of
+:''vtr.&rarr;abl.'' to bounce off of
 *'''jela''' [ˈd͡ʒela] <span id="jela"></span>
 :''ni.'' lemon
 :{{Nsup|jel}}
@@ -2514,7 +2514,7 @@
 
 *'''qacha''' [ˈqɑt͡ʃa] <span id="qacha"></span>
 :''n.'' firefly
-*'''qachat [qɑˈt‿ʃat] <span id="qachat"></span>
+*'''qachat''' [qɑˈt‿ʃat] <span id="qachat"></span>
 :''vtr.'' to display
 :{{Quote|Kifinosi me qach athlayafar mae?|How did he show his happiness?}}
 *'''qaf''' [qɑf] <span id="qaf"></span>
