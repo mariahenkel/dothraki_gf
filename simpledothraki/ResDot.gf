@@ -154,7 +154,7 @@ resource ResDot = ParamX ** open Prelude in {
 		--   (i.e. "dorvi" becomes "dorv" in the accusative, because r is more sonorant than v, 
 		--   but "alegra" becomes "alegre", since g is less sonorant than r, so "alegr" is disallowed)  	
 		addepenthesis : Str -> Str = \w -> case w of {
-			_ + ("a"|"e"|"i"|"o") => w ;
+			_ + ("a"|"e"|"i"|"o"|"h") => w ;
 			_ + ("w"|"g"|"q") => w + "e" ;
 			x + ("y"|"r"|"l") => case x of {
 				_ + ("a"|"e"|"i"|"o") => w ;

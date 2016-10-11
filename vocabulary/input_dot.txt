@@ -3008,8 +3008,6 @@
 :''adj.''' alive
 :'''thirat''' ''v.'' to live
 :{{Vsup|thir}}
-*'''thirat atthiraride''' [θiˈɾat ˈaθθiɾaɾide] <span id="thirat atthiraride"></span>
-:''v.'' to dream; (lit.) to live a wooden life
 *'''thirisir''' [θiɾiˈsir] <span id="thirisir"></span>
 :''na.'' age
 :{{Quote|Fini thirisir yeri arrek?|How old were you?}}

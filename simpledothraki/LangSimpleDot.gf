@@ -2,7 +2,7 @@
 
 concrete LangSimpleDot of LangSimple =
   GrammarSimpleDot,
-  LexiconSimpleDot
+  BigLexiconDot
   ** {
 
 } ;

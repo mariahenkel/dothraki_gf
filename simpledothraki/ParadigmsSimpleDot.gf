@@ -36,10 +36,15 @@ resource ParadigmsSimpleDot = open
         mkPN : Str -> Str -> PN				-- Khal Drogo
     } ;
     
-    mkV : Str -> V ;
+    mkV : overload {
+    	mkV : Str -> V ;
+    	mkV : Str -> Str -> V ;
+    } ;
     
     mkV2 : overload {
     	mkV2 : Str -> Case -> V2 ;
+    	mkV2 : Str -> Str -> Case -> V2 ;
+    	mkV2 : Str -> Str -> V2 ;
     	mkV2 : Str -> V2 ; 					-- convenience method for transitive verbs assigning accusative case
     } ;
     
@@ -219,13 +224,18 @@ resource ParadigmsSimpleDot = open
     	riss + "at" => mk2V w (addepenthesis riss) 
     } ;
     
-    mkV : Str -> V = \w -> mk1V w ** {lock_V=<>};
+    mkV = overload {
+    	mkV : Str -> V = \w -> mk1V w ** {lock_V=<>};
+    	mkV : Str -> Str -> V = \w,p -> mk2V w p ** {lock_V=<>};
+    } ;
     
     mkV2def : Str -> Case -> V2 = \w,objCase -> (mk1V w) ** {objCase = objCase ; lock_V2=<>};
     
 	mkV2 = overload {
 		mkV2 : Str -> Case -> V2 = mkV2def ;
-		mkV2 : Str -> V2 = \w -> mkV2def w Acc ; 
+		mkV2 : Str -> Str -> Case -> V2 = \w,p,objCase -> (mk2V w p) ** {objCase = objCase ; lock_V2 = <>} ; 
+		mkV2 : Str -> Str -> V2 = \w,p -> (mk2V w p) ** {objCase = Acc ; lock_V2 = <>} ; 
+		mkV2 : Str -> V2 = \w -> mkV2def w Acc ;
 	} ;
 
     mkAnc : Str -> (Number => ACase => Str) = \haj -> table {
@@ -249,12 +259,12 @@ resource ParadigmsSimpleDot = open
         } ;
 
     mkA : Str -> A = \haj -> let {compar = postfixA (prefixA haj)} in lin A { 
-    	s = table {
+    	s = table Degree {
         	Posit => mkAnc haj ;
         	Compar => mkAnc compar ;
         	Superl => mkAnc (compar + "az")
     	} ;
-    	pred = (mkV (case haj of {
+    	pred = (mk1V (case haj of {
     		samva@(samv + ("a"|"e"|"i"|"o")) => samva + "lat" ;
     		_ => haj + "at"
     	})).s ;

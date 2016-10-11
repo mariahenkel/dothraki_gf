@@ -101,6 +101,10 @@ oper
     mkA : (good,better,best,well : Str) -> A  -- completely irreg.
     } ;
 
+    compoundA : A -> A ; -- force comparison with more/most
+    simpleA   : A -> A ; -- force comparison with -er,-est
+    irregAdv  : A -> Str -> A ;  -- adverb irreg, e.g. "fast"
+
 
   mkV : overload {
 
@@ -140,12 +144,22 @@ oper
   };
 
 
+  partV  : V -> Str -> V ; -- with particle, e.g. switch + on
+  reflV  : V -> V ;  -- reflexive e.g. behave oneself
+
   mkV2 : overload {
     mkV2  : Str -> V2 ;       -- kill --%
     mkV2  : V -> V2 ;         -- transitive, e.g. hit
+    mkV2  : Str -> Prep -> V2 ; -- believe in --%
+    mkV2  : V -> Prep -> V2 ;
   };
 
+  ingVV : V -> VV ; -- e.g. start (VPing)
+  mkInterj : Str -> Interj
+  = \s -> lin Interj (ss s) ;
+
   mkVV  : V -> VV ; -- e.g. want (to VP)
+  infVV : V -> VV ; -- e.g. want (to VP)
 
 
   mkAdv : Str -> Adv ; -- e.g. today
@@ -287,6 +301,9 @@ oper
     in
     mk5V fit (fit + "s") y z fitting ;
 
+  partV v p = lin V {s = \\f => v.s ! f ; p = p ; isRefl = v.isRefl} ;
+  reflV v = lin V {s = v.s ; p = v.p ; isRefl = True} ;
+
   us_britishV : Str -> V = \s -> case s of {
     _ + ("el" | "al" | "ol") => regV s | mkV s (s + "s") (s + "led") (s + "led") (s + "ling") ;
     _ + "or" => regV s | regV (Predef.tk 2 s + "our") ;
@@ -341,12 +358,25 @@ oper
     typ = VVInf
     } ;
 
+  infVV  v = lin VV {
+    s = table {VVF vf => v.s ! vf ; _ => v.s ! VInf} ;
+    p = v.p ; 
+    typ = VVAux
+    } ;
+
+  ingVV  v = lin VV {
+    s = table {VVF vf => v.s ! vf ; _ => v.s ! VInf} ;
+    p = v.p ; 
+    typ = VVPresPart
+    } ;
 
   prefixV : Str -> V -> V = \p,v -> lin V { s = \\vform => p + v.s ! vform; p = v.p ; isRefl = v.isRefl } ;
 
   mkV2 = overload {
     mkV2  : V -> V2 = dirV2 ;
     mkV2  : Str -> V2 = \s -> dirV2 (regV s) ;
+    mkV2  : V -> Prep -> V2 = prepV2 ;
+    mkV2  : Str -> Prep -> V2 = \v,p -> prepV2 (regV v) p ;
   }; 
 
   mkConj = overload {
@@ -366,13 +396,21 @@ oper
 
   regA : Str -> A ;
 
-    mkA = overload {
+  mkA = overload {
     mkA : Str -> A = regA ;
     mkA : (fat,fatter : Str) -> A = \fat,fatter -> 
       mkAdjective fat fatter (init fatter + "st") (adj2adv fat) ;
     mkA : (good,better,best,well : Str) -> A = \a,b,c,d ->
       mkAdjective a b c d
     } ;
+
+  compoundA = compoundADeg ;
+
+  simpleA a = 
+    let ad = (a.s ! AAdj Posit Nom) 
+    in regADeg ad ;
+
+  irregAdv a adv = lin A {s = table {AAdv => adv; aform => a.s ! aform}} ;
 
   regA a = case a of {
     _ + ("a" | "e" | "i" | "o" | "u" | "y") + ? + _ + 

@@ -2,7 +2,7 @@
 
 concrete LangSimpleEng of LangSimple =
   GrammarSimpleEng,
-  LexiconSimpleEng
+  BigLexiconEng
   ** {
 
 } ;

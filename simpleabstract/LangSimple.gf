@@ -1,6 +1,6 @@
 abstract LangSimple = 
   GrammarSimple, 
-  LexiconSimple
+  BigLexicon
   ** {
   flags startcat=Text ;
   } ;
