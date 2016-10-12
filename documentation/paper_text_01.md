@@ -414,15 +414,16 @@ Beispieltext....
 To conclude our project documentation, we will now discuss problems and limitations as well as briefly describe future plans before we summarize the project in its current state and our experience while working on it.
  
 ### 3.1 Limitations
-To begin programming a resource grammar for the first time was not easy, since it is not possible to start with, for example, just one category and then test the implementation. As there are so many dependencies in the resource grammar library, it is recommended to take the resource grammar of a similar language and change it step by step. This way, as long as our implementation of the Dothraki language was incomplete, the resource grammar would fill the gaps with the wrong language. Another way is to start out with an independent mini resource grammar, but in that case you cannot make use of the resources of the library. Finding our own solution for this problem took time, but in the end we are satisfied with how it turned out.
+To begin programming a resource grammar for the first time was not easy, since it is not possible to start with, for example, just one category and then test the implementation. As there are so many dependencies in the resource grammar library, it is recommended to take the resource grammar of a similar language and change it step by step. But this way, as long as our implementation of the Dothraki language was incomplete, the resource grammar would fill the gaps with the wrong language grammar. Another way is to start out with an independent mini resource grammar, but in that case you cannot make use of the resources of the library. Finding our own solution for this problem took time, but in the end we are satisfied with how it turned out.
 
 For the implementation of a resource grammar, a good grammar source is needed (Grammatical Framework, 2016b). Although the full resource grammar for the Dothraki language is not yet complete, it is becoming harder and harder to find reliable resources regarding further aspects of grammar we would like to implement (e.g. usage of structural words). As it is a constructed language, and relatively new, we hope that further and more precise information will be documented and published with time. 
 Yet, even if we had all the information needed for a full implementation, it would not have been possible for us to write a full resource grammar in such a short amount of time, especially as we are still new to the GF programming language and not experienced when it comes to implementing resource grammars. Hence, we focus on providing a good basis of implemented rules, so that we – and others – can expand the project in the future.
 
 ### 3.2 Outlook
-Expand grammar to a full resource grammar. Community?
+In the future, we would like to expand our resource grammar to a full resource grammar and add it to the GF resource grammar library. We are already working on and hosting the project online, for everyone to see, so that the GF and/or Dothraki community may help us to achieve this goal. Some more rules we can implement right now, for some we have to wait until more information regarding the Dothraki language is being published.
 
 ### 3.3 Conclusion
+
 
 
 ## References 
