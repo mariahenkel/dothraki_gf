@@ -52,7 +52,7 @@ Just like the GF repositories (Détrez & Camilleri, 2016), our full project is h
 
 The “simpleapi” folder (like the “api” folder in the full resource grammar library) contains the outward facing part of the library – the types and functions available to application grammar developers. Those are implemented in terms of more basic functions, which are declared in the abstract grammar(s) contained in the “simpleabstract” folder. For each language, in our case just English and Dothraki, there is one folder (here: “simpledothraki” and “simpleenglish”) which contains the concrete implementations of these abstract grammars. Some of these parts, those shared by all languages, are implemented in the “common” folder. We are planning to remove the “simple” from all folder- and filenames as soon as the resource grammar is complete. Since we already use the structure of a full resource grammar, it should work accordingly. It should be noted, that we are working with the “simpleenglish” resource grammar, to be able to translate Dothraki phrases into English for testing and presenting purposes. Later on, the full English resource grammar, already available via the GF Resource Grammar Library, will be used.
 The mini resource grammar can already be used for application grammars. The “example” folder contains application grammar rules to show how the resource grammar can be applied.
-There are two more folders: The “documentation” folder is holding two versions of our documentation, one markdown file for readers on GitHub and one print version. Finally, the “vocabulary” folder contains the vocabulary extractor, a supporting python script, written by us to add a relatively large number of words to our dictionary automatically. It takes the source code of the Dothraki vocabulary site (Ice and Fire Wiki, 2016) as input, extracts words and their translations from it and transforms them into the right format, needed for the resource library. For example, the entry "ador [aˈdor], ni. chair" on the website will create the three output strings: "ador_N = mkN "ador" inanimate;", "chair_N = mkN "chair";" and "ador_N = chair_N;" – one entry for the Dothraki linearization, one entry for the English linearization and one entry for the dictionary. This way, we were able to add more than 1644 words to our dictionary, and will be able to add even more as soon as the resource grammar is expanding.
+There are two more folders: The “documentation” folder is holding two versions of our documentation, one markdown file for readers on GitHub and one print version. Finally, the “vocabulary” folder contains the vocabulary extractor, a supporting python script, written by us to add a relatively large number of words to our dictionary automatically. It takes the source code of the Dothraki vocabulary site (Ice and Fire Wiki, 2016) as input, extracts words and their translations from it and transforms them into the right format, needed for the resource library. For example, the entry "ador [a?dor], ni. chair" on the website will create the three output strings: "ador_N = mkN "ador" inanimate;", "chair_N = mkN "chair";" and "ador_N = chair_N;" – one entry for the Dothraki linearization, one entry for the English linearization and one entry for the dictionary. This way, we were able to add more than 1644 words to our dictionary, and will be able to add even more as soon as the resource grammar is expanding.
 
 ### 2.3 Implementation of Grammatical Categories in Dothraki
 
@@ -178,7 +178,7 @@ In English or German, predicative use of an adjective employs a copula ("to be" 
 
 As a result the category `Comp` (i.e. "strong" in "the warrior is strong" and "a warrior" in "the woman is a warrior") essentially behaves like an intransitive verb in Dothraki. `A` and `AP` have to contain all conjugated forms of the verb as it might be used in a predicative context.<sup>3</sup> 
 
-<sup>3</sup>Indeed our lincats for `A`, `AP` and `Comp`, while very much unlike the lincats in the English and German resource grammars, are quite similar to the lincats in the resource grammar for Japanese, another language in which the adjective itself is inflected for tense and polarity in predicative use via a complex set of suffixes. As in our resource grammar, this leads to `AP` and `Comp` being structurally very similar to `VP`:
+<sup>3</sup>Indeed our lincats for `A`, `AP` and `Comp`, while very much unlike the lincats in the English and German resource grammars, are quite similar to the lincats in the resource grammar for Japanese, another language, in which the adjective itself is inflected for tense and polarity in predicative use via a complex set of suffixes. As in our resource grammar, this leads to `AP` and `Comp` being structurally very similar to `VP`:
 
     VP = {
 		verb : Speaker => Animateness => Style => TTense => Polarity => Str ;  
@@ -199,7 +199,7 @@ As a result the category `Comp` (i.e. "strong" in "the warrior is strong" and "a
 		needSubject : Bool} ;
 
 
-#### 2.3.5 Other categories
+#### 2.3.5 Other Categories
 
 Adverbial phrases, like in most other languages, are simply uninflected token strings, as implemented in `CommonX`:
 
@@ -414,18 +414,17 @@ Beispieltext....
 To conclude our project documentation, we will now discuss problems and limitations as well as briefly describe future plans before we summarize the project in its current state and our experience while working on it.
  
 ### 3.1 Limitations
-(Warum nicht alles auf einmal? Zu viel Arbeit, alles gleichzeitig, keine Möglichkeit zu testen, ….)
+To begin programming a resource grammar for the first time was not easy, since it is not possible to start with, for example, just one category and then test the implementation. As there are so many dependencies in the resource grammar library, it is recommended to take the resource grammar of a similar language and change it step by step. But this way, as long as our implementation of the Dothraki language was incomplete, the resource grammar would fill the gaps with the wrong language grammar. Another way is to start out with an independent mini resource grammar, but in that case you cannot make use of the resources of the library. Finding our own solution for this problem took time, but in the end we are satisfied with how it turned out.
 
 For the implementation of a resource grammar, a good grammar source is needed (Grammatical Framework, 2016b). Although the full resource grammar for the Dothraki language is not yet complete, it is becoming harder and harder to find reliable resources regarding further aspects of grammar we would like to implement (e.g. usage of structural words). As it is a constructed language, and relatively new, we hope that further and more precise information will be documented and published with time. 
 Yet, even if we had all the information needed for a full implementation, it would not have been possible for us to write a full resource grammar in such a short amount of time, especially as we are still new to the GF programming language and not experienced when it comes to implementing resource grammars. Hence, we focus on providing a good basis of implemented rules, so that we – and others – can expand the project in the future.
 
-(Incompleteness/overgeneration of GF approach (grammar rules vs. natural language)….)
-(Regeln versuchen so viel wie mögl. abzudecken, aber nicht immer möglich, siehe Buch? Zitat?...)
-
 ### 3.2 Outlook
-Expand grammar to a full resource grammar. Community?
+In the future, we would like to expand our resource grammar to a full resource grammar and add it to the GF resource grammar library. We are already working on and hosting the project online, for everyone to see, so that the GF and/or Dothraki community may help us to achieve this goal. Some more parts we can implement right now, for some we have to wait until more information regarding the Dothraki language is being published. In the end, we also want to add the full vocabulary to our dictionary.
 
 ### 3.3 Conclusion
+Now that the first milestone of our project lies behind us, we can evaluate the working process and the result. As we had some starting problems at the beginning of the project, we are proud to have been able to create such a big portion of the resource grammar in the given time. By relying on the basics learned during the seminar and by aiming for such an ambitious goal, we surely learned a lot during the process. As we are convinced that our project can be helpful and interesting for other people in the future, we were motivated to keep on working on the resource grammar and to try to find the best solution for every problem. This term paper does not mark the end of this project, but we are curious to hear what you, our lecturers, and other people think of the work we have done so far.
+
 
 
 ## References 
@@ -466,5 +465,3 @@ Ranta, A. (2015). The Status of the GF Resource Grammar Library. Grammatical Fra
 Tongues of Ice and Fire Wiki (2016). Vocabulary. Retrieved from http://wiki.dothraki.org/Vocabulary
 
 Wikipedia (2016). Grammatical Framework. Retrieved from https://en.wikipedia.org/wiki/Grammatical_Framework
-
-
