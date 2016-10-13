@@ -9,12 +9,10 @@ Dothraki Nouns Mindmap: [http://text2mindmap.com/B7b25jR](http://text2mindmap.co
 
 ### TO DO
 
-* ~~rename files, restructure~~ not yet
+* ~~rename files, restructure~~ (not yet!)
 * more test cases for epenthesis
-
 * ~~idiomatic dothraki application grammar~~
-* DOCUMENTATION
-* check dictionary with EngDict of resource grammar library
+* DOCUMENTATION (ongoing)
 
 
 ### DONE
@@ -48,3 +46,4 @@ Dothraki Nouns Mindmap: [http://text2mindmap.com/B7b25jR](http://text2mindmap.co
 * "can" and "must"
 * the warrior is hot
 * translate vocabulary
+* check dictionary with EngDict of resource grammar library
