@@ -178,7 +178,7 @@ In English or German, predicative use of an adjective employs a copula ("to be" 
 
 As a result the category `Comp` (i.e. "strong" in "the warrior is strong" and "a warrior" in "the woman is a warrior") essentially behaves like an intransitive verb in Dothraki. `A` and `AP` have to contain all conjugated forms of the verb as it might be used in a predicative context.<sup>3</sup> 
 
-<sup>3</sup>Indeed our lincats for `A`, `AP` and `Comp`, while very much unlike the lincats in the English and German resource grammars, are quite similar to the lincats in the resource grammar for Japanese, another language, in which the adjective itself is inflected for tense and polarity in predicative use via a complex set of suffixes. As in our resource grammar, this leads to `AP` and `Comp` being structurally very similar to `VP`:
+<sup>3</sup>Indeed our lincats for `A`, `AP` and `Comp`, while very much unlike the lincats in the English and German resource grammars, are quite similar to the lincats in the resource grammar for Japanese, another language in which the adjective itself is inflected for tense and polarity in predicative use via a complex set of suffixes. As in our resource grammar, this leads to `AP` and `Comp` being structurally very similar to `VP`:
 
     VP = {
 		verb : Speaker => Animateness => Style => TTense => Polarity => Str ;  
