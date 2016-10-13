@@ -420,9 +420,10 @@ For the implementation of a resource grammar, a good grammar source is needed (G
 Yet, even if we had all the information needed for a full implementation, it would not have been possible for us to write a full resource grammar in such a short amount of time, especially as we are still new to the GF programming language and not experienced when it comes to implementing resource grammars. Hence, we focus on providing a good basis of implemented rules, so that we – and others – can expand the project in the future.
 
 ### 3.2 Outlook
-In the future, we would like to expand our resource grammar to a full resource grammar and add it to the GF resource grammar library. We are already working on and hosting the project online, for everyone to see, so that the GF and/or Dothraki community may help us to achieve this goal. Some more rules we can implement right now, for some we have to wait until more information regarding the Dothraki language is being published.
+In the future, we would like to expand our resource grammar to a full resource grammar and add it to the GF resource grammar library. We are already working on and hosting the project online, for everyone to see, so that the GF and/or Dothraki community may help us to achieve this goal. Some more parts we can implement right now, for some we have to wait until more information regarding the Dothraki language is being published. In the end, we also want to add the full vocabulary to our dictionary.
 
 ### 3.3 Conclusion
+Now that the first milestone of our project lies behind us, we can evaluate the working process and the result. As we had some starting problems at the beginning of the project, we are proud to have been able to create such a big portion of the resource grammar in the given time. By relying on the basics learned during the seminar and by aiming for such an ambitious goal, we surely learned a lot during the process. As we are convinced that our project can be helpful and interesting for other people in the future, we were motivated to keep on working on the resource grammar and to try to find the best solution for every problem. This term paper does not mark the end of this project, but we are curious to hear what you, our lecturers, and other people think of the work we have done so far.
 
 
 
