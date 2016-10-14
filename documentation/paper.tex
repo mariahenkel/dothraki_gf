@@ -1366,34 +1366,176 @@ and limitations as well as briefly describe future plans before
 we summarize the project in its current state and our experience 
 while working on it.
  
-\subsection{Limitations}
-To begin programming a resource grammar for the first time was 
-not easy, since it is not possible to start with, for example, 
-just one category and then test the implementation. As there are 
-so many dependencies in the resource grammar library, it is recommended 
-to take the resource grammar of a similar language and change it step 
-by step. But this way, as long as our implementation of the Dothraki 
-language was incomplete, the resource grammar would fill the gaps with 
-the wrong language grammar. Another way is to start out with an 
-independent mini resource grammar, but in that case you cannot make 
-use of the resources of the library. Finding our own solution for
-this problem took time, but in the end we are satisfied with how
-it turned out.
+\subsection{Difficulties}
+Beginning to write a resource grammar for the first time was 
+not easy. Due to the structure of the full RGL, it is not 
+possible to implement a resource grammar for a new language
+step-by-step, adding linearizations for a few important
+categories and expanding gradually, at least not when basing
+it directly on the abstract specifications from the full RGL.
 
-For the implementation of a resource grammar, a good grammar
-source is needed (Grammatical Framework, 2016b). Although the
-full resource grammar for the Dothraki language is not yet complete,
-it is becoming harder and harder to find reliable resources regarding
-further aspects of grammar we would like to implement (e.g.
-usage of structural words). As it is a constructed language, and
-relatively new, we hope that further and more precise information
-will be documented and published with time. 
-Yet, even if we had all the information needed for a full implementation,
-it would not have been possible for us to write a full resource grammar
-in such a short amount of time, especially as we are still new to the
-GF programming language and not experienced when it comes to implementing
-resource grammars. Hence, we focus on providing a good basis of implemented
-rules, so that we – and others – can expand the project in the future.
+Of course, it is not feasible either to implement the entire
+resource grammar before being able to do any kind of testing.
+As a remedy for this problem, Ranta recommends
+taking the resource grammar of a similar language as a
+starting point and changing it step 
+by step \cite[p.\ 224]{gf-book}. 
+This proved difficult in our case, since Dothraki, as a constructed
+language, of course does not have family ties to any existing language. 
+While its grammar is certainly inspired by phenomena seen in
+natural languages, these appear to be picked from a variety
+of different language families (many of which, as non-linguists, we are not
+particularly familiar with). Furthermore, taking
+a language like English as a starting point, which is certainly similar
+to Dothraki in many aspects, but wildly different in others,
+proved to be fraught with difficulties as well. This is because
+of the web of dependencies in a grammar,
+changes at one point, such as increasing the number of cases 
+from two to five, tend to require changes in a number
+of different places all over the grammar, an effect that
+can quickly snowball. Finding our own solution for
+this problem, namely growing the abstract part gradually 
+(by selectively copying over parts from the full RGL) along with
+the concrete implementation, took time, but in the end we 
+are satisfied with how it turned out.
+
+\subsection{Limitations}
+As Ranta notes in \cite{gf-slides}, the most important
+sources for creating a resource grammar are
+``[a] \emph{good} grammar book'' and ``[a] \emph{good} dictionary''.
+
+That poses some problems in the case of Dothraki.
+There are basically only two sources of information
+on Dothraki grammar: The writings of inventor 
+David J.\ Peterson \cite{peterson-web},
+the community-operated ``Tongues of Ice and Fire`` wiki
+at \url{wiki.dothraki.org}. These tend to be great resources
+for the basic parts of the language. Peterson's
+blog contains detailed, accessible explanations of
+many grammatical phenomena featured in
+the snippets of Dothraki, that have appeared on the show
+up to its third season. And the enthusiastic Dothraki community
+has done great work organizing and detailing this information.
+
+However, as our work progressed, it has become harder and harder
+to find good information on some of the more subtle or
+obscure parts of the grammar. It should be noted that the
+total corpus of text in the Dothraki language 
+still comprises only a few hundred sentences.
+By now, we have already mostly
+incorporated the information available from the two sources
+mentioned above (the two largest remaining omissions are wh-questions and
+numerals). In many cases we have run up against the limits
+of what information is available and sometimes we have been
+forced to resort to the Dothraki corpus itself
+in an effort to try and reverse engineer
+language features that so far have not been explained by
+their inventor.
+
+We give three examples:
+\begin{itemize}
+  \item As noted in Section \ref{sec-verbs} our resource grammar
+  so far only contains a dummy implementation of
+  verbs with a verb phrase complement (§VV§s). In English, 
+  (auxiliary) verbs like ``can'', ``must'' and ``want to'' are
+  of this kind. In Dothraki, as explained in the quoted section,
+  ``can'' and ``must'' are rendered as particles
+  (``laz'' and ``eth'') and this is what our current
+  implementation captures. However, certainly not all
+  §VV§s are rendered like this
+  in Dothraki. These non-inflected particles almost surely
+  are a small closed class of words, whereas §VV§s are
+  plentiful (think ``agree to (doing sth)'', ``consider (doing sth)'',
+  ``enjoy (doing sth)'', ``expect to (do sth)'' etc.).
+  However, there is almost no explanation available
+  on the syntactical structure of such verbs in Dothraki.
+  
+  When they have appeared on the show, verb phrase
+  complements are usually avoided in favour of
+  embedded clauses:
+  
+  \begin{quote}
+  ``The khaleesi wants to eat something different tonight.'' =
+  ``Khaleesi zala meme adakha esinakh ajjalan.'' (lit.\ ``The khaleesi wants that she eats something different tonight'')\\
+  ``You'd rather be sold into slavery?'' = ``Yer zali meyer nem vazhi ven zafra?'' (lit.\ ``You want that you are sold into slavery?'')
+  \end{quote}
+  
+  As far as we can tell, in the entire corpus there are only four sentences
+  in which the verb ``zalat'' (to want) is used with what seems to be a
+  true verb phrase complement:
+  \begin{quote}
+    ``Hash shafka zali addrivat mae [...]?'' = ``Do you want me to kill him?''\\
+    ``[...] hash yer zali zifichelat moon?'' = ``[...] you want to steal from him?''\\
+    ``Anha zalak nesat ven fini ven athyazhar khaleesisi.'' = ``I'd like to know what a Khaleesi tastes like.''\\
+    ``Hash yeri vo zali nesat rek dirgak anha?'' = ``Don't you want to know what I think?''
+  \end{quote}
+  We could not find any other instances of §VV§ verbs being used
+  with a true verb phrase complement in the corpus.
+  
+  From these four sentences it certainly appears like verb phrase complements
+  (similar to English) are formed with the verb in the infinitive
+  (``addrivat'', ``zifichelat'' and ``nesat'' are all infinitive forms).
+  However, as far as we can tell, this has not been discussed by 
+  Peterson so far, nor is there any information about it on the wiki.
+  
+  It seems rather premature and speculative
+  to conclude from just four sentences (all featuring
+  the same verb) that this is the general way verb phrase
+  complements are rendered in Dothraki. Therefore, we are at an
+  impasse: Until further information becomes available,
+  we cannot implement §VV§s (other than the few
+  special ones like ``can'' and ``must'').
+  
+  \item The module \name{Structural} contains a number
+  of common structural words that should be available in 
+  every language. Quite a few of these are simply not yet
+  available in Dothraki (``somewhere'', ``almost'',
+  ``quite'', ``otherwise'', ``at least'' etc.), but
+  even those that have translations in the vocabulary list
+  are sometimes difficult to implement. For example, the
+  vocabulary list notes that ``someone'' translates as
+  ``ato''. But since this is a noun phrase, it probably
+  must inflect somehow.
+  Inflection in nouns depends on their animacy, but
+  it is not clear whether inanimate or animate declension
+  is used here (or some irregular inflection, as with determiners). 
+  In the corpus ``ato'' appears exactly once,
+  in the nominative. In the end, we had no other choice
+  but to guess the declension (we decided on standard
+  animate inflection).
+  
+  Similarly, ``eyak'' supposedly means ``everybody'', according
+  to the vocabulary, but in the only place it is used
+  in the corpus, it seems to be used in the sense of ``everything''.
+  In that instance it is used in the genitive (probably; the phrase
+  is ``hatif eyaki'' and the preposition ``hatif'' can assign
+  genitive, allative or ablative case, depending on meaning).
+  In the end we decided on a declension based on this one occurence and
+  by analogy with ``vosak'' (= ``nobody''), which occurs in
+  the accusative once.
+  
+  In the end, in many cases in the \name{Structural} module, 
+  we had to employ something more akin to educated guesswork rather
+  than being able to rely on definitive sources.
+  
+  \item §Comp§s (``complementizers to a copula'') can be used
+  to form imperatives: ``Be strong!'' or ``Be a warrior!''.
+  The first has an obvious rendering in Dothraki (by putting
+  the verb ``hajat'' = ``to be strong'' derived from ``haj'' = ``strong''
+  in the imperative), but the second does not. In Dothraki
+  there is no analogue of the copula ``to be'' that could be
+  used in the imperative here. In the corpus, no sentence
+  like this exists. For now, we cannot implement this
+  correctly.
+\end{itemize}
+
+We are hopeful that, in spite of these current limitations,
+our work so far can serve as a good basis for implementing
+more language features as further and more precise information 
+on them becomes available.
+
+
+
 
 \subsection{Outlook}
 In the future, we would like to expand our resource grammar to a
