@@ -1,4 +1,28 @@
 \documentclass[a4paper,11pt,twoside]{article}
+
+\makeatletter
+
+\newcommand\frontmatter{%
+    \cleardoublepage
+  %\@mainmatterfalse
+  \pagenumbering{roman}}
+
+\newcommand\mainmatter{%
+    \cleardoublepage
+ % \@mainmattertrue
+  \pagenumbering{arabic}}
+
+\newcommand\backmatter{%
+  \if@openright
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
+ % \@mainmatterfalse
+   }
+
+\makeatother
+
 \usepackage[utf8]{inputenc}
 \usepackage{verbatim}
 \usepackage[british]{babel}
@@ -37,6 +61,7 @@
 \usepackage{listings}
 \lstdefinestyle{customc}{
   belowcaptionskip=1\baselineskip,
+  escapeinside=``,
   breaklines=true,
   xleftmargin=\parindent,
   showstringspaces=false,
@@ -49,23 +74,36 @@
 
 \usepackage[explicit,toctitles]{titlesec}
 
+\usepackage[table]{xcolor}
+
+\hyphenation{Doth-ra-ki}
+
 
 \title{The Warrior Stabs the Goat: Creating a Dothraki Resource Grammar with Grammatical Framework}
 \author{Benno Kuckuck}
 
 \begin{document}
-
+\frontmatter
 \begin{titlepage}
 \clearpage{\pagestyle{empty}\cleardoublepage}
 \phantom{bla}
 %\vfill
-\vfill
 \begin{center}
+\includegraphics[width=5cm]{hhu-logo.jpg}
+
+\vspace{2cm}
+
+{\Large Term Paper}
+\vspace{1cm}
+\hrule
+\vspace{0.4cm}
 \textsc{\Huge The Warrior Stabs the Goat}
 \vspace{0.5cm}
 
 {\LARGE Creating a Dothraki Resource Grammar with Grammatical Framework}
 
+\vspace{0.4cm}
+\hrule
 \vspace{2.5cm}
 
 {\Large Maria Henkel}\\
@@ -89,6 +127,42 @@ Course: Introduction to ``Grammatical Framework'', SS 2016
 \vfill
 \end{titlepage}
 
+\tableofcontents
+
+\newpage
+
+\thispagestyle{empty}
+\begin{center}
+\Large
+  \includegraphics[width=5cm]{drogo.png}
+  \vspace{1.5cm}
+  
+  \begin{minipage}{10cm}
+  \centering
+  ``Khal Drogo shillo chiories she krazaaj. Chiori fin vijazer 
+  adraes zoqwe Khales Drogo. Khal Drogo vinde ma chiories ma 
+  adraes she krazaaj. Khal Drogo vachrara.''
+  
+  \vspace{0.7cm}
+  \hrule
+  \vspace{0.3cm}
+  
+  \color{gray}
+``Khal Drogo met a woman on a mountain. The woman, who 
+protected a turtle, kissed Khal Drogo. Khal Drogo stabbed the 
+woman and the turtle on the mountain. Khal Drogo stinks.''
+
+\vspace{0.5cm}
+\color{black}
+GF Run-Time System, 2016
+  \end{minipage}
+\end{center}
+
+\newpage
+
+\thispagestyle{empty}
+  
+\mainmatter
 \section{Introduction}
 Grammatical Framework (GF) is a functional programming language, 
 created in 1998 \cite{gf-book}, doubling as a categorial grammar 
@@ -107,15 +181,17 @@ produce ungrammatical sentences, while the GF translator
 a correct translation:
 
 \begin{center}
-  \begin{tabular}{p{3.7cm}p{4cm}p{3.7cm}}
+  \rowcolors{2}{gray!25}{white}
+  \begin{tabular}{p{3.7cm}|p{4cm}|p{3.7cm}}
+  \rowcolor{gray!50}
     Input & Output Google Translate & Output GF Translator\\\hline
     I heal these women. & 
     Ich diese Frauen zu heilen. & 
     Ich verheile diese Frauen.\\
     The warrior will kiss that cheese behind the tree. & 
-    Der Krieger wird Kuss, der K\''ase hinter dem Baum. & 
-    Der Krieger wird jenen K\''ase hinter dem Baum k\''ussen.\\
-    Diese hei\ss e Frau heilt diese K\''onigin im Meer. & 
+    Der Krieger wird Kuss, der K\"ase hinter dem Baum. & 
+    Der Krieger wird jenen K\"ase hinter dem Baum k\"ussen.\\
+    Diese hei\ss e Frau heilt diese K\"onigin im Meer. & 
     This hot woman heals the queen of the sea.  & 
     This hot woman heals this queen in the sea.
   \end{tabular}
@@ -234,10 +310,10 @@ impossible (for more on this point, see the discussion in Section \ref{sec-discu
 In Ranta's book \cite[pp.\ 237--245]{gf-book} (see Figure \ref{fig-ita}), a mini resource 
 grammar for Italian is implemented as an example.
 
-\begin{figure}[h]\label{fig-ita}
+\begin{figure}[h]
 \centering
   \includegraphics[width=10cm]{ita.png}
-  \caption{Mini Resource Grammar Modules and Dependencies \cite[p.\ 209]{gf-book}}
+  \caption{\label{fig-ita}Mini Resource Grammar Modules and Dependencies \cite[p.\ 209]{gf-book}}
 \end{figure}
 
 Our work lies somewhere between this example and a full resource grammar. 
@@ -254,10 +330,10 @@ of API methods implemented, the comparison is even starker: Ranta's
 example grammar implements 19 API methods, our grammar 
 implements almost 200.}
 
-\begin{figure}[h]\label{fig-rgl}
+\begin{figure}[h]
 \centering
   \includegraphics[width=13.5cm]{rgl.jpg}
-  \caption{Module Structure of a Full Resource Grammar \cite{gf-slides}}
+  \caption{\label{fig-rgl}Module Structure of a Full Resource Grammar \cite{gf-slides}}
 \end{figure}
 
 Just like the GF repositories \cite{detrez-camilleri}, 
@@ -308,7 +384,7 @@ The GF Resource Grammar Library consists essentially of three parts:
   also supply a large dictionary of words available in
   that language (allowing application grammar writers
   to use e.g.\ \verb+rise_N+ directly, instead of having to use
-  \verb+mk_V ``rise'' ``rose'' ``risen''+ and risking getting
+  \verb+mk_V "rise" "rose" "risen"+ and risking getting
   the irregular forms wrong).
 \end{enumerate}
 
@@ -356,7 +432,7 @@ There are three more folders, which are not part of the resource grammar:
 \end{itemize}
 
 
-\begin{figure}[h]\label{fig-folders}
+\begin{figure}[h]
 \begin{itemize}[itemsep=0.5pt]
 \item simpleapi
 \item simpleabstract
@@ -371,10 +447,11 @@ There are three more folders, which are not part of the resource grammar:
 \item documentation 
 \item vocabulary
 \end{itemize}
-\caption{The project's folder structure}
+\caption{\label{fig-folders}The project's folder structure}
 \end{figure}
 
-\subsection{Implementation of Grammatical Categories in Dothraki}\label{sec-cats}
+\subsection{Implementation of Grammatical Categories in Dothraki}
+\label{sec-impl}
 In this section we will go into some of the design decisions 
 involved in the implementation of the Dothraki resource grammar. 
 In order to get a high-level overview, we will first take a look 
@@ -427,7 +504,7 @@ Agr = Ag Person Number ;
 There does not currently seem to be a need to store animacy 
 in the agreement record. This is unlike English, where the 
 §NP§s gender can affect the verb phrase 
-(''The boy loves himself.'' but ``The girl loves herself.'') 
+(``The boy loves himself.'' but ``The girl loves herself.'') 
 and thus needs to be stored in the §NP§. 
 Finally, proper names are (so far as we can tell) 
 always animate and third person singular, so none of that 
@@ -466,12 +543,12 @@ QuForm = QAnim Number | QInanim ;
 Unlike a §Quant§, a §Det§ has a fixed number.
 An interesting feature of determiners in Dothraki is 
 that they can appear either before the noun 
-(''jinak adra'' = ``this turtle'') or after (such as determiners built 
+(``jinak adra'' = ``this turtle'') or after (such as determiners built 
 from possessive pronouns: ``adra anni'' = ``my turtle''). 
 Conceivably,\footnote{we cannot currently say for certain, 
 due to lack of examples and documentation on 
 Dothraki determiner structure} a determiner could even be split 
-into two parts (''my two turtles'' $\stackrel{?}=$ ``akat adrasi anni''). 
+into two parts (``my two turtles'' $\stackrel{?}=$ ``akat adrasi anni''). 
 In anticipation of this, §Det§ has two §Str§ components, §s§ and §s2§. 
 Since possessive pronouns are the only examples of postposed 
 determiners we know so far, and these happen not to 
@@ -740,7 +817,7 @@ AP = {
 \end{lstlisting}
 
 
-\subsubsection{Other categories}
+\subsubsection{Other Categories}
 
 Adverbial phrases, like in most other languages, are simply 
 uninflected token strings, as implemented in §CommonX§:
@@ -774,10 +851,10 @@ conjunction (''Majin lajak zoqwe khaleesies.'' =
 
 
 
-\begin{figure}\label{fig-cats}
+\begin{figure}
   \centering
   \includegraphics[width=13cm]{cats.png}
-  \caption{GF Resource Grammar Library Categories \cite{gf-slides}}
+  \caption{\label{fig-cats}GF Resource Grammar Library Categories \cite{gf-slides}}
 \end{figure}
 
 Figure \ref{fig-cats} shows the main categories of the GF Resource 
@@ -786,7 +863,7 @@ The yellow categories have been fully or at least partially
 implemented in our resource grammar.
 
 
-\subsection{Implementation of syntactical functions in Dothraki}
+\subsection{Implementation of Syntactical Functions in Dothraki}
 
 \subsubsection{Morphology}
 
@@ -955,8 +1032,10 @@ option of supplying an irregular form by hand, if the heuristic fails.
 
 Many of the considerations about Dothraki syntax, 
 that have gone into the design of our resource grammar, 
-have already been mentioned in \ref{sec-cats}
-As one example of how the design of our lincats is used to implement syntactical functions, let us go through the various ways of constructing clauses:
+have already been mentioned in \ref{sec-impl}.
+As one example of how the design of our lincats is used to 
+implement syntactical functions, let us go through the 
+various ways of constructing clauses:
 
 \begin{lstlisting}
 PredVP np vp = {s = \\t,a,p =>
@@ -1062,35 +1141,291 @@ to the subject of the sentence. Apart from that,
 we again use §verbStr§ to conjugate the verb ``vekhat'' 
 (§vekhat_V§ is defined in module §ExtraDot§).
 
-\subsection{Voca
+\subsection{Vocabulary Extraction}\label{sec-vocab}
+
+\subsubsection{Dictionaries and Lexicons in the RGL}
+As mentioned earlier, many of the resource grammars in GF's
+library also come with a dictionary often called \name{Dict\emph{XXX}}.
+
+For example, in \name{DictGer} from the German resource grammar, we
+find entries such as:
+\begin{lstlisting}
+entziehen_V = irregV "entziehen" "entzieht" "entzog" "entz`\"o`ge" 
+  "entzogen" ; 
+kreis_N = mkN  "Kreis" "Kreise" masculine ;
+\end{lstlisting}
+An application grammar writer can then use these definitions and does not
+have to worry about the gender of nouns, plural forms 
+or irregular conjugations.
+
+In fact, the dictionaries in the RGL come in the
+form of an abstract grammar with a concrete implementation. The
+abstract grammar, often called \name{Dict\emph{XXX}Abs}, contains
+entries like
+\begin{lstlisting}
+entziehen_V : V ;
+kreis_N : N ;
+\end{lstlisting}
+
+These dictionaries, of course, cannot be used directly for translation.
+However, there are two ways in which the RGL supports direct
+translation between two langauges. First, there is the abstract
+grammar \name{Lexicon} in the \name{abstract} folder, which covers
+about 350 more or less commonly used words:
+\begin{lstlisting}
+...
+drink_V2 : V2 ;
+dry_A : A ;
+dull_A : A ;
+dust_N : N ;
+...
+\end{lstlisting}
+This abstract grammar is then implemented in many of the languages
+of the RGL. From \name{LexiconGer}:\footnote{The choice of names here is unfortunate:
+In the common linguistic sense of the words, \name{DictGer} is a lexicon, while
+\name{LexiconGer} is a dictionary...}
+\begin{lstlisting}
+drink_V2 = dirV2 Irreg.trinken_V ;
+dry_A = regA "trocken" ;
+dull_A = regA "stumpf" ;
+dust_N = reg2N "Staub" "St`\"a`ube" masculine ;
+\end{lstlisting}
+
+The \name{Lexicon} module is part of the abstract grammar
+\name{Lang} and its concrete implementations
+in various languages. Of course, the vocabulary is far
+too small to be useful for applications, but it is useful for
+experimentation and for testing the resource grammars.
+
+The RGL also has a folder \name{translator} which
+mirrors this structure on a much larger scale:
+The abstract grammar \name{Dictionary} contains 65,000 English 
+words,\footnote{as well as 450 Finnish proper names...} and
+the concrete implementations \name{Dictionary\emph{XXX}} contain
+their translations into various languages. This is used, e.g.,
+in the GF online translator \cite{gf-translate}.
+
+\subsubsection{The Dothraki dictionary}
+
+The publicly available vocabulary list for Dothraki \cite{vocab} currently
+contains about 1,500 words.\footnote{This is still not enough to implement
+the abstract \name{Lexicon} module from GF's resource grammar library:
+Many common words do not yet have a Dothraki equivalent.}
+In order to make these accessible for GF application grammars
+and for the purpose of translation from and to English, we
+supply, as part of our project, a Python script that translates
+the wiki source of this list into a GF-compatible format.
+
+The script creates five files in total, adhering closely 
+to the structure established in the full RGL, as explained above:
+\begin{itemize}
+  \item the abstract grammar \name{DictDotAbs.gf} and 
+  its concrete implementation \name{DictDot.gf} in the
+  folder \name{simpledothraki},
+  \item the abstract grammar \name{BigLexicon.gf} in
+  \name{simpleabstract} and its implementations
+  \name{BigLexiconEng.gf} and \name{BigLexiconDot.gf} in
+  \name{simpleenglish} and \name{simpledothraki}, respectively.
+\end{itemize}
 
 
+\begin{figure}
+\begin{tabular}{l|l}
+\begin{minipage}{.44\linewidth}
+\begin{lstlisting}
+*'''aranikh''' [a?a'nix]
+:''ni.'' subject, topic, theme
+
+*'''gerat''' [ge'?at]
+:''vtr.&rarr;abl.'' to lack
+:{{Vsup|ger}}
+\end{lstlisting}
+\end{minipage}&
+\begin{minipage}{.55\linewidth}
+\begin{lstlisting}
+`\textsf{in simpledothraki/DictDotAbs.gf}:`
+aranikh_N : N ;
+gerat_V2 : V2 ;
+
+`\textsf{in simpledothraki/DictDot.gf}:`
+aranikh_N = mkN "aranikh" inanimate ;
+gerat_V2 = mkV2 "gerat" "ger" ablative ;
+
+`\textsf{in simpleabstract/BigLexicon.gf}:`
+subject_N : N ;
+topic_N : N ;
+theme_N : N ;
+lack_V2 : V2 ;
+
+`\textsf{in simpledothraki/BigLexiconDot.gf}:`
+subject_N = DictSimpleEng.subject_N;
+topic_N = DictSimpleEng.topic_N;
+theme_N = DictSimpleEng.theme_N;
+lack_V2 = DictDot.gerat_V2;
+
+`\textsf{in simpleenglish/BigLexiconEng.gf}:`
+subject_N = DictDot.aranikh_N;
+topic_N = DictDot.aranikh_N;
+theme_N = DictDot.aranikh_N;
+lack_V2 = DictSimpleEng.lack_V2;
+\end{lstlisting}
+\end{minipage}
+\end{tabular}
+\caption{\label{fig-vocab}Two vocabulary wiki entries and generated GF definitions}
+\end{figure}
+
+Figure \ref{fig-vocab} shows an example of the GF code the script
+generates. A word is added to \name{BigLexicon} whenever a
+corresponding word is found in \name{DictEng}, the massive
+English dictionary that is part of the RGL.
+
+The wiki vocabulary list has 1,380 entries at the time
+of this writing. From these, our script creates
+1,410 definitions in \name{DictDot}.\footnote{the somewhat larger
+number comes from the fact that many words can be used
+in two different ways, for example both as an intransitive
+and as a transitive verb, giving more than one entry in \name{DictDot}}
+
+There are a total of 1,916 English translations in the vocabulary list.
+The script is able to extract 1,059 entries for \name{BigLexicon}
+from this. Many translations cannot be directly added to
+\name{BigLexicon} for various reasons:
+\begin{itemize}
+  \item Some English words appear as translations for
+  more than one Dothraki word. The script picks the first
+  one it finds.\footnote{Obviously, that might not result in the
+  best or most appropriate translation being picked, but that issue
+  can be addressed by later manual editing of the generated list.}
+  \item Many Dothraki words do not correspond to any one English word.
+  For example the list contains entries for ``defensive sword strike'',
+  ``sound of fire going out'', ``roast quail'' or
+  ``time period of approximately two minutes''. While for some of these,
+  it might be desirable to have dictionary 
+  entries,\footnote{For example, there could be an entry
+  §roast_quail_CN : CN§ in \name{BigLexicon} with linearizations
+  §roast_quail_CN = mkCN DictEng.roast_A (mkCN DictEng.quail_N)§
+  in
+  \name{BigLexiconEng} and §roast_quail_CN = mkCN DictDot.mechikh_N§
+  in \name{BigLexiconDot}.} this process is almost impossible
+  to automate and must be done by hand.
+\end{itemize}
+
+
+
+
+While \name{DictDot} and \name{DictDotAbs} are meant to be used
+in application grammars, the \name{BigLexicon\emph{XXX}} files
+can be used for testing and translation. An example of this
+is shown in the next section.
+
+
+\subsection{Example}
 
 With the current implementation status, it is already possible 
-to parse and translate a wide range of phrases. The following 
-example text is fully supported by the current version of the 
-Dothraki resource grammar:
+to parse and translate a wide range of phrases. For experimentation
+and testing we supply the \name{LangSimple\emph{XXX}} abstract and
+conrete grammars which simply import the \name{SyntaxSimple\emph{XXX}}
+and \name{BigLexicon\emph{XXX}} modules (completely
+analogous to the \name{Lang\emph{XXX}} module in the
+full RGL) and can be used directly
+from the GF command line:
 
-Beispieltext…
+\begin{lstlisting}
+> i simpleenglish/LangSimpleEng.gf
+linking ... OK
 
-3.  Discussion 
-3.1 Limitations
-Warum nicht alles auf einmal? Zu viel Arbeit, alles gleichzeitig, keine Möglichkeit zu testen, ….
+Languages: LangSimpleEng
+2745 msec
+LangSimple> i simpledothraki/LangSimpleDot.gf
+linking ... OK
 
-For the implementation of a resource grammar, a good grammar source is needed (Grammatical Framework, 2016b). Although the full resource grammar for the Dothraki language is not yet complete, it is becoming harder and harder to find reliable resources regarding further aspects of grammar we would like to implement (e.g. usage of structural words). As it is a constructed language, and relatively new, we hope that further and more precise information will be documented and published with time. 
-Yet, even if we had all the information needed for a full implementation, it would not have been possible for us to write a full resource grammar in such a short amount of time, especially as we are still new to the GF programming language and not experienced when it comes to implementing resource grammars. Hence, we focus on providing a good basis of implemented rules, so that we – and others – can expand the project in the future.
+Languages: LangSimpleDot LangSimpleEng
+187 msec
+LangSimple> p "the warrior which protected the turtle has stabbed my goat with a dagger ." | l
+lajak fin viljazer adraes ray vinde dorv anni ma mihesofoon .
+the warrior which protected the turtle has stabbed my goat with a dagger .
+lajak fin viljazer adraes ray vinde dorv ma mihesofoon anni .
+the warrior which protected the turtle has stabbed my goat with a dagger .
 
-Incompleteness/overgeneration of GF approach (grammar rules vs. natural language)….
-Regeln versuchen so viel wie mögl. abzudecken, aber nicht immer möglich, siehe Buch? Zitat?...
-3.2 Outlook
-Expand grammar to a full resource grammar. Community?
-3.3 Conclusion
-Sinnvolles projekt, ambitioniertes ziel, viel gelernt, nicht einfach, stolz…
+31 msec
+\end{lstlisting}
+
+The multiple outputs for the last command are 
+quite typical and derive from the fact that the parse of the English 
+sentence is ambiguous:
+Was the duck stabbed with a dagger or was a duck with a dagger stabbed?
+Note that, in this case, the Dothraki translations differ, because the
+possessive pronoun ``anni'' follows the noun phrase
+(either ``dorv'' = ``goat'' or ``dorv ma mihesofoon'' = ``goat with a dagger'').
 
 
+\section{Discussion}\label{sec-discuss}
+
+To conclude our project documentation, we will now discuss problems 
+and limitations as well as briefly describe future plans before 
+we summarize the project in its current state and our experience 
+while working on it.
  
-Appendix
-Source Code
+\subsection{Limitations}
+To begin programming a resource grammar for the first time was 
+not easy, since it is not possible to start with, for example, 
+just one category and then test the implementation. As there are 
+so many dependencies in the resource grammar library, it is recommended 
+to take the resource grammar of a similar language and change it step 
+by step. But this way, as long as our implementation of the Dothraki 
+language was incomplete, the resource grammar would fill the gaps with 
+the wrong language grammar. Another way is to start out with an 
+independent mini resource grammar, but in that case you cannot make 
+use of the resources of the library. Finding our own solution for
+this problem took time, but in the end we are satisfied with how
+it turned out.
+
+For the implementation of a resource grammar, a good grammar
+source is needed (Grammatical Framework, 2016b). Although the
+full resource grammar for the Dothraki language is not yet complete,
+it is becoming harder and harder to find reliable resources regarding
+further aspects of grammar we would like to implement (e.g.
+usage of structural words). As it is a constructed language, and
+relatively new, we hope that further and more precise information
+will be documented and published with time. 
+Yet, even if we had all the information needed for a full implementation,
+it would not have been possible for us to write a full resource grammar
+in such a short amount of time, especially as we are still new to the
+GF programming language and not experienced when it comes to implementing
+resource grammars. Hence, we focus on providing a good basis of implemented
+rules, so that we – and others – can expand the project in the future.
+
+\subsection{Outlook}
+In the future, we would like to expand our resource grammar to a
+full resource grammar and add it to the GF resource grammar library.
+We are already working on and hosting the project online, for everyone
+to see, so that the GF and/or Dothraki community may help us to achieve
+this goal. Some more parts we can implement right now, for some we have
+to wait until more information regarding the Dothraki language is being
+published. In the end, we also want to add the full vocabulary to our
+dictionary.
+
+\subsection{Conclusion}
+Now that the first milestone of our project lies behind us,
+we can evaluate the working process and the result. As we had
+some starting problems at the beginning of the project, we are
+proud to have been able to create such a big portion of the
+resource grammar in the given time. By relying on the basics
+learned during the seminar and by aiming for such an ambitious
+goal, we surely learned a lot during the process. As we are
+convinced that our project can be helpful and interesting for
+other people in the future, we were motivated to keep on working
+on the resource grammar and to try to find the best solution for
+every problem. This term paper does not mark the end of this project,
+but we are curious to hear what you, our lecturers, and other people
+think of the work we have done so far.
+
+\backmatter
+ 
+\section*{Appendix}
+
+\paragraph{Source Code}
+
 The complete source code can be viewed and downloaded via GitHub: 
 \url{https://github.com/mahen2/dothraki_gf}
 
