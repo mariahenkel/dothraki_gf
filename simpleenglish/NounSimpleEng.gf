@@ -53,6 +53,11 @@ concrete NounSimpleEng of NounSimple = CatSimpleEng ** open MorphoSimpleEng, Res
         }
       } ;
 
+    MassNP cn = {
+      s = \\c => cn.s ! Sg ! npcase2case c ;
+      a = agrP3 Sg
+      } ;
+
     UseN n = n ;
     AdvCN cn ad = {s = \\n,c => cn.s ! n ! c ++ ad.s ; g = cn.g} ;
     

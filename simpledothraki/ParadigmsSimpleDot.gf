@@ -237,6 +237,8 @@ resource ParadigmsSimpleDot = open
 		mkV2 : Str -> Str -> V2 = \w,p -> (mk2V w p) ** {objCase = Acc ; lock_V2 = <>} ; 
 		mkV2 : Str -> V2 = \w -> mkV2def w Acc ;
 	} ;
+	
+	mkVV : Str -> VV = \s -> lin VV {s = s} ;
 
     mkAnc : Str -> (Number => ACase => Str) = \haj -> table {
             Sg => table {

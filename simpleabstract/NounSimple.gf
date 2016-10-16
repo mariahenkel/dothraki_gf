@@ -8,6 +8,8 @@ abstract NounSimple = CatSimple ** {
     IndefArt   : Quant ;
     DefArt     : Quant ;
 	
+    MassNP     : CN -> NP ;            -- (beer)
+
     NumSg   : Num ;
     NumPl   : Num ;
 	

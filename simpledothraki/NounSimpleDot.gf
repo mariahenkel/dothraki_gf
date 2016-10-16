@@ -13,6 +13,12 @@ concrete NounSimpleDot of NounSimple = CatSimpleDot ** open MorphoSimpleDot, Res
 
 		IndefArt, DefArt = {s = \\_,_ => []; s2 = []} ;
 		
+	    MassNP cn = {
+    		s = \\c => cn.s ! Sg ! c ;
+      		agr = Ag P3 Sg ;
+      	} ;
+      	
+      	
 		NumSg = {s = [] ; n = Sg} ;
 		NumPl = {s = [] ; n = Pl} ;
 		

@@ -42,7 +42,8 @@
 
 \newcommand{\name}[1]{\textsf{#1}}
 
-\usepackage[activate]{pdfcprot}
+%\usepackage[activate]{pdfcprot}
+\usepackage{microtype}
 \usepackage[active]{srcltx}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -75,6 +76,8 @@
 \usepackage[explicit,toctitles]{titlesec}
 
 \usepackage[table]{xcolor}
+
+\usepackage{breakcites}
 
 \hyphenation{Doth-ra-ki}
 
@@ -176,15 +179,19 @@ in most cases its translations are more precise than those of the
 more commonly used statistical tools \cite{brown-frederking}. 
 For example, on somewhat complicated input,
 the ``Google Translate'' service \cite{google} will in many cases
-produce ungrammatical sentences, while the GF translator 
+produce ungrammatical or wrong translations, while the GF translator 
 \cite{gf-translate} has no problems producing 
-a correct translation:
+a correct translation (as of 22 September 2016):
 
 \begin{center}
   \rowcolors{2}{gray!25}{white}
   \begin{tabular}{p{3.7cm}|p{4cm}|p{3.7cm}}
   \rowcolor{gray!50}
     Input & Output Google Translate & Output GF Translator\\\hline
+    Ich komme im Krieg um. & I'm in the war. & I die in the war.\\
+    Ich denke in der Vorlesung immer nach, bevor ich rede. &
+    I always think about the lecture before I speak. &
+    I always think in the lecture, before I talk.\\
     I heal these women. & 
     Ich diese Frauen zu heilen. & 
     Ich verheile diese Frauen.\\
@@ -198,9 +205,18 @@ a correct translation:
 \end{center}
 
 
+
 Symbolic formalisms like GF -- unlike Google Translate -- depend 
 on a large knowledge base of predefined grammar rules 
-to achieve high-quality language processing: Its 
+to achieve high-quality language processing:\footnote{As can be seen
+when trying to translate grammatical constructions that are not 
+explicitly covered by GF's grammar rules.
+For a taste of this, try translating ``Die Krone der K\"onigin ist sch\"on''
+or ``Das Buch, das die Frau mir gab, war alt'' to English using the
+GF translator (possessive constructions and object
+relativization for verbs taking more than one object are currently
+not covered satisfactorily in GF's abstract grammar model).}
+Its 
 own standard library, the GF Resource Grammar Library, covers 
 more than 38 different languages \cite{gf-status} -- although many of 
 them are not yet complete -- and is still growing. 
@@ -286,7 +302,7 @@ implementation of GF.\hfill\cite{ranta-rgl}
 \end{quote} 
 This division of labour benefits not just the application programmers,
 however, but also the linguistics experts implementing the 
-application-independent libraries:\\ Firstly, because a resource 
+application-independent libraries: Firstly, because a resource 
 grammar, once written, can ``serve an unlimited number of applications'' 
 \cite[p.\ 200]{gf-book}, but also because ``the existing library 
 specification will help to identify the linguistic issues 
@@ -433,6 +449,9 @@ There are three more folders, which are not part of the resource grammar:
 
 
 \begin{figure}[h]
+\centering
+\fbox{
+\begin{minipage}{5cm}
 \begin{itemize}[itemsep=0.5pt]
 \item simpleapi
 \item simpleabstract
@@ -447,7 +466,9 @@ There are three more folders, which are not part of the resource grammar:
 \item documentation 
 \item vocabulary
 \end{itemize}
-\caption{\label{fig-folders}The project's folder structure}
+\end{minipage}
+}
+\caption{\label{fig-folders}The project's folders}
 \end{figure}
 
 \subsection{Implementation of Grammatical Categories in Dothraki}
@@ -1229,7 +1250,7 @@ to the structure established in the full RGL, as explained above:
 \end{itemize}
 
 
-\begin{figure}
+\begin{figure}[t]
 \begin{tabular}{l|l}
 \begin{minipage}{.44\linewidth}
 \begin{lstlisting}
@@ -1287,7 +1308,7 @@ in two different ways, for example both as an intransitive
 and as a transitive verb, giving more than one entry in \name{DictDot}}
 
 There are a total of 1,916 English translations in the vocabulary list.
-The script is able to extract 1,059 entries for \name{BigLexicon}
+The script is able to extract 1,130 entries for \name{BigLexicon}
 from this. Many translations cannot be directly added to
 \name{BigLexicon} for various reasons:
 \begin{itemize}
@@ -1310,6 +1331,10 @@ from this. Many translations cannot be directly added to
   to automate and must be done by hand.
 \end{itemize}
 
+As an example of how extra vocabulary, that cannot be automatically
+extracted from the vocabulary list, can be supplied manually the module 
+\name{ExtraLex\emph{XXX}} contains a (currently minimal) sampling of
+additional words.
 
 
 
@@ -1356,7 +1381,91 @@ sentence is ambiguous:
 Was the duck stabbed with a dagger or was a duck with a dagger stabbed?
 Note that, in this case, the Dothraki translations differ, because the
 possessive pronoun ``anni'' follows the noun phrase
-(either ``dorv'' = ``goat'' or ``dorv ma mihesofoon'' = ``goat with a dagger'').
+(either ``dorv'' = ``goat'' or ``dorv ma mihesofoon'' = ``goat with a 
+dagger'').\footnote{There are often \emph{lots} of different parses when
+parsing Dothraki sentences. Dothraki has no articles,
+does not distinguish between he/she/it and rarely distinguishes
+singular and plural for inanimate nouns. The sentence
+``Me vindee dorv'' can mean ``He stabs the goat'', ``She stabs the goat'',
+``He stabs goats'', etc. The three possible choices for ``me'' and
+five possible choices for ``dorv'' (singular/plural definite/indefinite article  or mass noun) 
+already give fifteen parses and that's
+not even counting all the \emph{really} strange interpretations
+deriving from the fact that ``vindee'' could also be the future 
+tense of ``indelat'' = ``to drink''...}
+
+
+Here is a more elaborate example:\footnote{The sentences are lightly editted compared
+to the parser input/output, to account for the
+fact that the lexer requires spaces around
+punctuation and first words of sentences may not be capitalized.
+There are also usually multiple possible parses, in which case we picked
+the most appropriate one.}
+
+
+\begin{quote}
+I found this woman on the mountain, Khal Drogo. 
+She was asleep and there was a dead lizard behind her. 
+Its head had been cut off. 
+She is a sorceress! 
+They squeeze the blood from the lizard and they drink it. 
+Then they crush the bones and they cook them with many roots and the fresh skins of snakes. 
+It is known. 
+She will try to poison you! 
+Do you believe me? 
+Therefore you must kill her! 
+Don't listen to her. 
+A woman who cooks poison mustn't survive. 
+She is dangerous. 
+Everybody knows. 
+You are the leader whom the horde respects. 
+Cut her throat with your arakh! 
+\end{quote}
+
+\begin{quote}
+Anha ez jinakes chiories she krazaaj, zhey Khal Drogo.
+Me remek ma zhavi driva irge mae vekh.
+Nhare mae nem ray zirisse.
+Mori efi qoy ha zhavoon ma mori indee mae.
+Hash mori kaffi tolor ma mori jolini mora ma ma sanoon garfothoon ma ilekoon choshi gezrisi.
+Me nem nesa.
+Me kis vizza shafka!
+Hash shafka shilloe anna?
+Majin shafka eth addrivi mae!
+Vos charos maan.
+Chiori fin jolina iz eth vos thiroo.
+Me zhowaka.
+Eyak nesa.
+Shafka akkelenak finnaan choma khalasar.
+Rissas foth mae ma arakhoon shafki!
+\end{quote}
+
+
+It demonstrates the following
+features supported by our resource grammar:
+\begin{itemize}[itemsep=0pt]
+  \item Transitive and intransitive verbs
+  \item Tenses: Past perfect, present, future, present perfect, past perfect
+  \item Negation
+  \item Passive voice
+  \item Verbal auxiliaries
+  \item Imperatives
+  \item Personal pronouns
+  \item Demonstratives
+  \item Possessive pronouns
+  \item Existential clauses
+  \item Adverbial phrases with prepositions
+  \item Zero-copula sentences
+  \item Adjectives (attributive and predicative)
+  \item Relative clauses (both subject and object relativization)
+  \item Proper names
+  \item Mass nouns
+  \item Vocatives
+  \item Yes/no questions
+  \item Conjunctions (for noun and verb phrases)
+  \item Phrasal conjunctions
+  \item Structural words (every, many, somebody, nobody, ...)
+\end{itemize}
 
 
 \section{Discussion}\label{sec-discuss}
@@ -1399,7 +1508,7 @@ this problem, namely growing the abstract part gradually
 the concrete implementation, took time, but in the end we 
 are satisfied with how it turned out.
 
-\subsection{Limitations}
+\subsection{Limitations}\label{sec-lim}
 As Ranta notes in \cite{gf-slides}, the most important
 sources for creating a resource grammar are
 ``[a] \emph{good} grammar book'' and ``[a] \emph{good} dictionary''.
@@ -1407,15 +1516,15 @@ sources for creating a resource grammar are
 That poses some problems in the case of Dothraki.
 There are basically only two sources of information
 on Dothraki grammar: The writings of inventor 
-David J.\ Peterson \cite{peterson-web},
+David J.\ Peterson \cite{peterson-web} and
 the community-operated ``Tongues of Ice and Fire`` wiki
-at \url{wiki.dothraki.org}. These tend to be great resources
+at \url{wiki.dothraki.org}. To be sure, these tend to be great resources
 for the basic parts of the language. Peterson's
 blog contains detailed, accessible explanations of
 many grammatical phenomena featured in
-the snippets of Dothraki, that have appeared on the show
+the snippets of Dothraki that have appeared on the show
 up to its third season. And the enthusiastic Dothraki community
-has done great work organizing and detailing this information.
+has done tremendous work in organizing and detailing this information.
 
 However, as our work progressed, it has become harder and harder
 to find good information on some of the more subtle or
@@ -1424,8 +1533,7 @@ total corpus of text in the Dothraki language
 still comprises only a few hundred sentences.
 By now, we have already mostly
 incorporated the information available from the two sources
-mentioned above (the two largest remaining omissions are wh-questions and
-numerals). In many cases we have run up against the limits
+mentioned above. In many cases we have run up against the limits
 of what information is available and sometimes we have been
 forced to resort to the Dothraki corpus itself
 in an effort to try and reverse engineer
@@ -1450,7 +1558,7 @@ We give three examples:
   However, there is almost no explanation available
   on the syntactical structure of such verbs in Dothraki.
   
-  When they have appeared on the show, verb phrase
+  Where §VV§s do appear in the corpus, verb phrase
   complements are usually avoided in favour of
   embedded clauses:
   
@@ -1486,6 +1594,13 @@ We give three examples:
   we cannot implement §VV§s (other than the few
   special ones like ``can'' and ``must'').
   
+  The problem is only more pronounced for the even more
+  obscure categories of verbs, such as §VA§, §VQ§, §V2A§, §V2Q§,
+  or §V2S§.\footnote{To give an idea: Of the around 65,000 words in \name{DictEng},
+  there are 49 of type §VA§, 7 of type §VQ§, 15 of type §V2A§, four of type
+  §V2S§ and one of type §V2Q§. Obviously, evidence of usage of such words in the
+  Dothraki corpus is scarce.}
+  
   \item The module \name{Structural} contains a number
   of common structural words that should be available in 
   every language. Quite a few of these are simply not yet
@@ -1495,18 +1610,19 @@ We give three examples:
   are sometimes difficult to implement. For example, the
   vocabulary list notes that ``someone'' translates as
   ``ato''. But since this is a noun phrase, it probably
-  must inflect somehow.
+  must inflect for case somehow.
   Inflection in nouns depends on their animacy, but
   it is not clear whether inanimate or animate declension
   is used here (or some irregular inflection, as with determiners). 
-  In the corpus ``ato'' appears exactly once,
-  in the nominative. In the end, we had no other choice
+  In the corpus, ``ato'' appears exactly once,
+  in the nominative, thus giving no useful hints. In the end, we had no other choice
   but to guess the declension (we decided on standard
   animate inflection).
   
   Similarly, ``eyak'' supposedly means ``everybody'', according
-  to the vocabulary, but in the only place it is used
-  in the corpus, it seems to be used in the sense of ``everything''.
+  to the vocabulary, but no declension is given and the word appears
+  only once in the corpus.\footnote{and curiously,
+  it seems to be used more in the sense of ``everything''}
   In that instance it is used in the genitive (probably; the phrase
   is ``hatif eyaki'' and the preposition ``hatif'' can assign
   genitive, allative or ablative case, depending on meaning).
@@ -1536,34 +1652,40 @@ on them becomes available.
 
 
 
-
 \subsection{Outlook}
-In the future, we would like to expand our resource grammar to a
-full resource grammar and add it to the GF resource grammar library.
+The obvious goal for the future of our project is to expand the
+resource grammar further, hopefully to a point where it can eventually be added
+to the GF resource grammar library.
 We are already working on and hosting the project online, for everyone
 to see, so that the GF and/or Dothraki community may help us to achieve
-this goal. Some more parts we can implement right now, for some we have
+this goal. Some parts could probably be implemented right now 
+(the largest omissions right now being wh-questions and numerals; 
+§V3§s and reflexive verbs would be useful, too, but their implementation 
+would likely
+run up against some of the problems laid out in Section \ref{sec-lim}), 
+for some we have
 to wait until more information regarding the Dothraki language is being
-published. In the end, we also want to add the full vocabulary to our
-dictionary.
+published. Finally, it would also be useful to improve the dictionary
+by augmenting our current automatic extraction approach with
+some manual curation.
+
+
 
 \subsection{Conclusion}
 Now that the first milestone of our project lies behind us,
-we can evaluate the working process and the result. As we had
-some starting problems at the beginning of the project, we are
-proud to have been able to create such a big portion of the
+we can evaluate the working process and the result. After having
+overcome our initial problems setting up the project, we are
+proud of having been able to create such a big portion of the
 resource grammar in the given time. By relying on the basics
 learned during the seminar and by aiming for such an ambitious
 goal, we surely learned a lot during the process. As we are
-convinced that our project can be helpful and interesting for
+convinced that our project can be useful and interesting for
 other people in the future, we were motivated to keep on working
 on the resource grammar and to try to find the best solution for
 every problem. This term paper does not mark the end of this project,
 but we are curious to hear what you, our lecturers, and other people
 think of the work we have done so far.
 
-\backmatter
- 
 \section*{Appendix}
 
 \paragraph{Source Code}
@@ -1571,6 +1693,8 @@ think of the work we have done so far.
 The complete source code can be viewed and downloaded via GitHub: 
 \url{https://github.com/mahen2/dothraki_gf}
 
+\backmatter
+ 
 \makeatletter
 \renewcommand\@biblabel[1]{}
 \renewenvironment{thebibliography}[1]
