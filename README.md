@@ -7,6 +7,10 @@ Documentation of this project: [https://github.com/mahen2/dothraki_gf/tree/maste
 
 Dothraki Nouns Mindmap: [http://text2mindmap.com/B7b25jR](http://text2mindmap.com/B7b25jR)
 
+The code in folders simpleapi, simpleabstract and simpleenglish is taken from the Grammatical Framework Resource Grammar Library available [here](http://www.grammaticalframework.org/download/index.html). It is used  in our project under the provisions of the GNU Lesser General Public License.
+
+
+
 ### TO DO
 
 * ~~rename files, restructure~~ (not yet!)
